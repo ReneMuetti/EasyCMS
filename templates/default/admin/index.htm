@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title><lang app_name /> :: <lang page_titles_admin /></title>
+
+        <meta http-equiv="Content-Type" content="text/html; charset=<var_user_config output_iso_charset />" />
+        <meta http-equiv="Content-Script-Type" content="text/javascript" />
+        <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+        <meta http-equiv="pragma" content="no-cache" />
+        <meta http-equiv="Expires" content="0" />
+
+        <meta charset="<var_user_config output_iso_charset />" />
+
+        <meta name="robots" content="noindex, nofollow, noarchive" />
+        <meta name="MSSmartTagsPreventParsing" content="true" />
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+
+        <link href="<var_config baseurl />favicon.gif" rel="icon" type="image/icon" />
+        <link href="<var_config baseurl />favicon.gif" rel="icon" type="image/x-icon" />
+        <link href="<var_config baseurl />favicon.gif" rel="shortcut icon" />
+        <link href="<var_config baseurl />favicon.gif" rel="apple-touch-icon" />
+
+        <var header_js />
+        <var header_css />
+
+        <link rel="stylesheet" type="text/css" media="screen" href="<var_config baseurl />skin/css/fonts.css" />
+        <link rel="stylesheet" type="text/css" media="screen" href="<var_config baseurl />skin/css/colors.css" />
+        <link rel="stylesheet" type="text/css" media="screen" href="<var_config baseurl />skin/css/base.css" />
+        <link rel="stylesheet" type="text/css" media="screen" href="<var_config baseurl />skin/css/admin.css" />
+
+        <link rel="stylesheet" type="text/css" media="screen" href="<var_config baseurl />skin/font-awesome/css/fontawesome.css" />
+        <link rel="stylesheet" type="text/css" media="screen" href="<var_config baseurl />skin/font-awesome/css/brands.css" />
+        <link rel="stylesheet" type="text/css" media="screen" href="<var_config baseurl />skin/font-awesome/css/solid.css" />
+
+        <script type="text/javascript" src="<var_config baseurl />skin/js/jquery-<var global_jquery_version />.min.js"></script>
+        <script type="text/javascript" src="<var_config baseurl />skin/js/functions.js"></script>
+        <script type="text/javascript" src="<var_config baseurl />skin/js/navigation.js"></script>
+        <script type="text/javascript" src="<var_config baseurl />skin/js/admin.js"></script>
+
+        <script type="text/javascript">
+            let baseurl = "<var_config baseurl />";
+            let protokoll = "<var_config protocol />";
+            let ajax_error = "<lang global_ajax_error />"
+        </script>
+
+        <base href="<var_config baseurl />" />
+    </head>
+    <body>
+        <header>
+            <var global_header />
+        </header>
+        <main>
+            <aside>
+                <nav>
+                    <var global_navbar />
+                </nav>
+            </aside>
+            <section id="<var page_identifier />">
+                <var page_content />
+            </section>
+        </main>
+        <footer>
+            <var global_footer />
+        </footer>
+
+        <var before_finished />
+    </body>
+</html>

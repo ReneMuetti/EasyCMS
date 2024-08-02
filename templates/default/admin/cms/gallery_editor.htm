@@ -1,0 +1,82 @@
+
+<form action="<var_config baseurl />admin_index.php" method="post">
+    <input type="hidden" name="action" value="content_gallery" />
+    <input type="hidden" name="do" value="<var cms_form_action />" />
+    <input type="hidden" name="galleryid" value="<var cms_gallery_id />" />
+    <input type="hidden" name="gallerycfg" id="gallerycfg" value='<var cms_gallery_config />' />
+    <input type="hidden" name="images" id="images" value='<var cms_gallery_image_data />' />
+
+    <div id="cms-gallery-popup" style="display:none" data-curr-path="<var cms_gallery_default_path />">
+        <div id="cms-gallery-popup-items">
+            <div class="fa-3x">
+                <i class="fas fa-spinner fa-spin"></i>
+            </div>
+        </div>
+        <div id="cms-gallery-popup-footer"></div>
+    </div>
+
+    <div class="glass-block-border glass-border">
+        <div class="glass-block">
+            <h2><lang admin_cms_gallery_options /></h2>
+            <div class="flex-2">
+                <div>
+                    <div class="elment-block">
+                        <label for="title"><lang admin_cms_gallery_title /></label>
+                        <input type="text" class="glass-border" name="title" id="cms-gallery-title" placeholder="<lang admin_cms_gallery_title_ph />" value="<var cms_gallery_title />" />
+                    </div>
+                    <div class="elment-block">
+                        <label for="type"><lang admin_cms_gallery_type /></label>
+                        <div class="select-box glass-block-border glass-border">
+                            <select class="glass-border" name="type" id="cms-gallery-type" onchange="loadGalleryConfiguration(this)">
+                                <var cms_gallery_types />
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="elment-block">
+                        <label for="enable"><lang admin_cms_gallery_status /></label>
+                        <input type="checkbox" name="enable" id="cms-gallery-status" value="1" <var cms_gallery_enable /> />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="cms-gallery-options" class="glass-block">
+        <var cms_gallery_option_fields />
+    </div>
+
+    <div class="glass-block-border glass-border">
+        <div class="glass-block">
+            <h2><lang admin_cms_gallery_images /></h2>
+            <div id="cms-gallery-content" class="elment-block">
+                <a class="button" href="javascript:void(0)" onclick="addNewImage()"><lang admin_cms_gallery_new_image /></a>
+                <ul id="cms-gallery-elements"><var cms_gallery_image_list /></ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="glass-block-border glass-border">
+        <div class="glass-block">
+            <div class="element-block center-content button-flex" style="max-width:1000px; margin:0 auto;">
+                <a class="button" href="<var_config baseurl />admin_index.php?action=content_gallery" style="margin:0;"><lang global_abort /></a>
+                <button class="button" onclick="saveCurrentGallery()"><lang admin_cms_gallery_save /></button>
+            </div>
+        </div>
+    </div>
+</form>
+
+<script>
+    let popup_title = "<lang admin_cms_gallery_block_popup_title />";
+    let path_mask = "<var cms_gallery_path_mask />";
+</script>
+
+<script src="<var_config baseurl />skin/js/jquery-ui/jquery-ui.min.js"></script>
+<script src="<var_config baseurl />skin/js/cms_gallery.js"></script>
+
+<script>
+    $(document).ready(function(){
+        <var cms_gallery_loading_action />
+    });
+</script>

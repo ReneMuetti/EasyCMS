@@ -1,0 +1,15 @@
+        <tr>
+            <td><var user_id /></td>
+            <td><var user_username /></td>
+            <td class="align-center"><var user_added /></td>
+            <td><span class="status <var user_raw_status />"><var user_status /></span></td>
+            <td><span class="status <var user_raw_enabled />"><var user_enabled /></span></td>
+            <td class="account-actions">
+                <a class="account-edit-link" href="<var_config baseurl />admin_index.php?action=accounts&amp;do=edit&amp;accountid=<var user_id />">
+                    <img src="<var_config baseurl />skin/images/edit.png" />
+                </a>
+                <a class="account-disable-link" href="<var_config baseurl />admin_index.php?action=accounts&amp;do=delete&amp;accountid=<var user_id />">
+                    <img src="<var_config baseurl />skin/images/delete.png" />
+                </a>
+            </td>
+        </tr>

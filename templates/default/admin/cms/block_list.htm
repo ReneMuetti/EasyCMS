@@ -1,0 +1,33 @@
+
+<div id="cms-block-new" class="glass-block-border glass-border">
+    <div class="glass-block">
+        <h2><lang admin_cms_block_new /></h2>
+        <div class="elment-block button-flex">
+            <a class="button" href="<var_config baseurl />admin_index.php?action=cms_blocks&amp;do=newblock"><lang admin_cms_block_new /></a>
+        </div>
+    </div>
+</div>
+
+<table class="glass-border">
+    <colgroup>
+        <col class="col-block-id" />
+        <col />
+        <col class="col-block-username" />
+        <col class="col-block-date" />
+        <col class="col-blockt-state" />
+        <col class="col-block-action" />
+    </colgroup>
+    <thead>
+        <tr>
+            <th><lang admin_table_cms_block_id /></th>
+            <th class="align-left"><lang admin_table_cms_block_title /></th>
+            <th><lang admin_table_cms_block_last_username /></th>
+            <th><lang admin_table_cms_block_last_date /></th>
+            <th><lang admin_table_cms_block_enabled /></th>
+            <th><lang admin_table_cms_block_action /></th>
+        </tr>
+    </thead>
+    <tbody>
+<var admin_table_cms_block_list />
+    </tbody>
+</table>

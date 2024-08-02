@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language>
+    <app_name>Easy CMS</app_name>
+    <default_admin_title>Administration</default_admin_title>
+    <page_titles>
+        <index>Startseite</index>
+        <admin>Administration</admin>
+        <login>Anmeldung</login>
+        <register>Registrierung</register>
+        <admin_myaccount>mein Konto</admin_myaccount>
+        <admin_accounts>Benutzerkonten verwalten</admin_accounts>
+        <admin_dashboard>Übersicht</admin_dashboard>
+        <admin_cms_navigation>Navigation bearbeiten</admin_cms_navigation>
+        <admin_cms_pages>CMS-Seiten verwalten</admin_cms_pages>
+        <admin_cms_blocks>CMS-Blöcke verwalten</admin_cms_blocks>
+        <admin_content_files><![CDATA[Inhalte &rArr; Dateien]]></admin_content_files>
+        <admin_content_gallery><![CDATA[Inhalte &rArr; Gallerien]]></admin_content_gallery>
+        <admin_system_config><![CDATA[System &rArr; Konfiguration]]></admin_system_config>
+        <admin_system_info><![CDATA[System &rArr; Informationen]]></admin_system_info>
+    </page_titles>
+	<global>
+		<option_actions_select>- Bitte wählen -</option_actions_select>
+		<status_yes>Ja</status_yes>
+		<status_no>Nein</status_no>
+        <status_delete>Gelöscht</status_delete>
+		<close>Schließen</close>
+		<abort>Abbrechen</abort>
+		<unkonwn_action>Fehler!! Unbekannte Aktion!</unkonwn_action>
+		<error_loading_module>Fehler!! Das Modul kann nicht geladen werden!</error_loading_module>
+		<error_sending_data>Die Verarbeitung der Daten ist fehlgeschlagen!</error_sending_data>
+		<ajax_error>Ajax-Abfrage-Fehler: </ajax_error>
+		<upload_error_0>Es liegt kein Fehler vor, die Datei wurde erfolgreich hochgeladen</upload_error_0>
+		<upload_error_1>Die hochgeladene Datei überschreitet die Richtlinie upload_max_filesize in php.ini</upload_error_1>
+		<upload_error_2>Die hochgeladene Datei überschreitet die im HTML-Formular angegebene Richtlinie MAX_FILE_SIZE</upload_error_2>
+		<upload_error_3>Die hochgeladene Datei wurde nur teilweise hochgeladen</upload_error_3>
+		<upload_error_4>Es wurde keine Datei hochgeladen</upload_error_4>
+		<upload_error_5>Unbekannter Upload-Fehler</upload_error_5>
+		<upload_error_6>Ein temporärer Ordner fehlt</upload_error_6>
+		<upload_error_7>Die Datei konnte nicht auf die Festplatte geschrieben werden</upload_error_7>
+		<upload_error_8>Eine PHP-Erweiterung stoppte den Datei-Upload</upload_error_8>
+		<directory_error_0>Das Verzeichniss ist nicht beschreibbar!</directory_error_0>
+		<directory_error_1>Das Zielverzeichnis existiert bereits!</directory_error_1>
+		<directory_error_2>Das Zielverzeichnis konnte nicht erstellt werden!</directory_error_2>
+		<directory_error_3>Das Zielverzeichnis ist nicht vorhanden!</directory_error_3>
+		<directory_error_4>Fehler beim Löschen des Zielverzeichnis!</directory_error_4>
+		<file_error_0>Die Datei wurde nicht gefunden!</file_error_0>
+		<file_error_1>Die Datei ist nicht beschreibbar!</file_error_1>
+		<file_error_2>Die Datei konnte nicht gelöscht werden!</file_error_2>
+	</global>
+	<database>
+	    <line> Zeile</line>
+	    <query> Abfrage</query>
+	    <secound> Sekunden</secound>
+	    <query_error>Abfrage-Fehler</query_error>
+	    <error_create_statement>Fehler beim Erstellen des Statement:</error_create_statement>
+	    <error_assign_statement>Fehler beim Zuweisen innerhalb des Statement</error_assign_statement>
+	    <error_assign_statement_value>Fehler beim zuweisen eines Statement-Wertes:</error_assign_statement_value>
+	    <view_log_for_details>Weiter Informationen befinden sich im LOG-File</view_log_for_details>
+	    <connection_error>Datenbankfehler :: Verbindungs-Fehler</connection_error>
+	    <connection_not_available>Keine Verbindung zur Datenbank möglich!</connection_not_available>
+	</database>
+	<navigation>
+	    <index>Startseite</index>
+	    <account>mein Konto</account>
+	    <logout>Abmelden</logout>
+	    <admin>Administration</admin>
+	    <admin_accounts>Benutzer verwalten</admin_accounts>
+	    <cms>CMS</cms>
+	    <cms_navigation>Navigation</cms_navigation>
+	    <cms_pages>Seiten</cms_pages>
+	    <cms_blocks>Blöcke</cms_blocks>
+	    <content>Inhalt</content>
+	    <content_files>Dateien</content_files>
+	    <content_gallery>Gallerien</content_gallery>
+	    <system>System</system>
+	    <system_config>Konfiguration</system_config>
+	    <system_information>Informationen</system_information>
+	</navigation>
+	<login_page>
+	    <label_username>Benutzername</label_username>
+	    <label_password>Passwort</label_password>
+	    <label_password_confirm>Passwort wiederholen</label_password_confirm>
+	    <label_email>E-Mail-Adresse</label_email>
+	    <label_login_button>Anmelden</label_login_button>
+	    <label_register_button>Registrieren</label_register_button>
+
+	    <default_login_error>Benutzername oder Passwort ist falsch!</default_login_error>
+
+	    <login_register_string>Du hast noch kein Konto?</login_register_string>
+	    <login_error_title>Login-Fehlermeldung</login_error_title>
+	    <register_error_title>Registrierung fehlgeschlagen</register_error_title>
+	    <register_success_title>Registrierung abgeschlossen</register_success_title>
+	    <register_success_message>Die Registrierung istr abgeschlossen.</register_success_message>
+	    <register_success_info>Das Konto muß von einem Administrator aktiviert werden.</register_success_info>
+
+	    <error_1>Benutzer nicht gefunden oder der Account ist inaktiv!</error_1>
+	    <error_2>kein Benutzername gesetzt!</error_2>
+	    <error_3>kein Passwort gesetzt!</error_3>
+	    <error_4>Die Sicherheitsinformationen stimmen sind ungültig!</error_4>
+	    <error_5>Hash-Key nicht vorhanden!</error_5>
+	    <error_6>Mehrfach-Sicherheitsdaten erkannt!</error_6>
+	    <error_7>Sicherheitsdaten konnten nicht gesetzt werden!</error_7>
+	    <error_8>Anmeldung fehlgeschlagen!</error_8>
+	    <error_9>keine Benutzerdaten gefunden!</error_9>
+	    <error_10>Der Benutzer-Account ist nicht aktiv.</error_10>
+	    <error_11>Der Benutzer-Account ist nicht bestätigt.</error_11>
+	    <error_12>Die Login-Sicherheit konnte nicht bestätig werden.</error_12>
+
+	    <error_register_username_empty>Es wurde kein Benutzername angegeben!</error_register_username_empty>
+	    <error_register_passwort_not_equal>Passwörter nicht gesetzt oder stimmen nicht überein!</error_register_passwort_not_equal>
+	    <error_register_email_empty>Keine E-Mail-Adresse angegeben!</error_register_email_empty>
+	    <error_save_to_database>Fehler beim Speichern der Account-Daten!</error_save_to_database>
+	</login_page>
+	<profile>
+	    <title_info>Benutzer</title_info>
+	    <username>Benutzername</username>
+	    <email>E-Mail-Adresse</email>
+	    <language>Sprache</language>
+	    <enabled>Aktiviert</enabled>
+	    <status>Status</status>
+
+	    <title_password>Passwort</title_password>
+	    <password>Passwort</password>
+	    <password_confirm>Passwort wiederholen</password_confirm>
+
+	    <title_account>Konto</title_account>
+	    <added>Beigetreten</added>
+	    <last_login>letzte Anmeldung</last_login>
+	    <last_access>letzter Zugriff</last_access>
+
+	    <title_language>Sprache</title_language>
+	    <gui_language>Sprache der Oberfläche</gui_language>
+
+	    <save>Speichern</save>
+	    <back>Zurück</back>
+
+	    <change_title>Einstellung aktualisiert</change_title>
+	    <change_text>Das Feld wird aktualisiert</change_text>
+	    <error_password_not_equal>Die eingegebenen Passwörter sind nicht gleich!</error_password_not_equal>
+	    <error_no_change_data>Es wurden keine Daten verändert!</error_no_change_data>
+	    <error_profile_update>Fehler beim aktualisieren des Profiles!</error_profile_update>
+	    <success_profile_update>Das Profil wurde erfolgreich aktualisiert.</success_profile_update>
+	    <success_profile_deleted>Das Profil wurde erfolgreich gelöscht.</success_profile_deleted>
+	    <error_profile_cannot_deleted>Dieses Profil kann nicht gelöscht werden!</error_profile_cannot_deleted>
+	</profile>
+	<admin>
+	    <confirmed>Bestätigt</confirmed>
+	    <pending>Unbestätigt</pending>
+
+	    <user_status>Status</user_status>
+	    <user_enable>Aktiviert</user_enable>
+	    <user_admin>Admin</user_admin>
+
+	    <navigation_structure>Navigations-Menü</navigation_structure>
+	    <navigation_new_entry>neuen Menüpunkt anlegen</navigation_new_entry>
+	    <navigation_new_edit_entry>Menüpunkt anlegen oder bearbeiten</navigation_new_edit_entry>
+	    <navigation_save_entry>Menüpunkt speichern</navigation_save_entry>
+	    <navigation_entry_titel>Titel</navigation_entry_titel>
+	    <navigation_entry_titel_ph>Titel für neuen Eintrag</navigation_entry_titel_ph>
+	    <navigation_entry_type>Eintrag-Typ</navigation_entry_type>
+	    <navigation_entry_type_internal>interner Link (CMS-Seite)</navigation_entry_type_internal>
+	    <navigation_entry_type_external>externer Link</navigation_entry_type_external>
+	    <navigation_entry_destination_cms>CMS-Seite auswählen</navigation_entry_destination_cms>
+	    <navigation_entry_destination_external>externer Link</navigation_entry_destination_external>
+	    <navigation_destination_external_ph>externe URL angeben</navigation_destination_external_ph>
+	    <navigation_entry_status>Menüpunk aktivieren</navigation_entry_status>
+	    <navigation_message_no_title_exits>Es wurde kein Titel angegeben!</navigation_message_no_title_exits>
+	    <navigation_message_no_cms_page_selected>Es wurde keine CMS-Seite angegeben!</navigation_message_no_cms_page_selected>
+	    <navigation_message_no_external_link>Es wurde kein externer Link angegeben!</navigation_message_no_external_link>
+
+	    <cms_block_new>neuer CMS-Block</cms_block_new>
+	    <cms_block_options>CMS-Block Optionen</cms_block_options>
+	    <cms_block_title>CMS-Block Titel</cms_block_title>
+	    <cms_block_title_ph>Bitte einen Block-Titel eingeben</cms_block_title_ph>
+	    <cms_block_status>CMS-Block aktivieren</cms_block_status>
+	    <cms_block_editor>CMS-Block bearbeiten</cms_block_editor>
+	    <cms_block_save>CMS-Block speichern</cms_block_save>
+	    <cms_block_save_success>Der CMS-Block wurde gespeichert.</cms_block_save_success>
+	    <cms_block_save_fail>Fehler beim Speichern des CMS-Block!</cms_block_save_fail>
+	    <cms_block_load_fail>Der CMS-Block kann nicht geladen werden!</cms_block_load_fail>
+	    <cms_block_delete_success>Der CMS-Block wurde gelöscht.</cms_block_delete_success>
+	    <cms_block_delete_fail>Der CMS-Block kann nicht gelöscht werden!</cms_block_delete_fail>
+	    <cms_block_popup_title>Bild einfügen</cms_block_popup_title>
+
+	    <cms_page_new>neue CMS-Seite</cms_page_new>
+	    <cms_page_layout_header>Header-Layout</cms_page_layout_header>
+	    <cms_page_layout_content>Inhalts-Layout</cms_page_layout_content>
+	    <cms_page_layout_footer>Footer-Layout</cms_page_layout_footer>
+	    <cms_page_options>Seiten-Einstellungen</cms_page_options>
+	    <cms_page_title>CMS-Seiten Titel</cms_page_title>
+	    <cms_page_title_ph>Bitte einen Seiten-Bezeichner eingeben</cms_page_title_ph>
+	    <cms_page_keywords>Schlüsselwörter</cms_page_keywords>
+	    <cms_page_keywords_ph>Schlüsselwörter mit Komma getrennt</cms_page_keywords_ph>
+	    <cms_page_description>Beschreibung</cms_page_description>
+	    <cms_page_description_ph>kurze Beschreibung des Seiten-Inhaltes</cms_page_description_ph>
+	    <cms_page_seo>SEO-URL</cms_page_seo>
+	    <cms_page_seo_ph>SEO-URL angeben (leer lassen für automatische Verarbeitung)</cms_page_seo_ph>
+	    <cms_page_home>als Startseite setzen</cms_page_home>
+	    <cms_page_status>CMS-Seite aktivieren</cms_page_status>
+	    <cms_page_editor>CMS-Seite bearbeiten</cms_page_editor>
+	    <cms_page_save>CMS-Seite speichern</cms_page_save>
+	    <cms_page_new_block>neuen Block einfügen</cms_page_new_block>
+	    <cms_page_new_block_title>Block Nr</cms_page_new_block_title>
+	    <cms_page_block_popup_title>Blockinhalt {{id}} zuordnen</cms_page_block_popup_title>
+	    <cms_page_save_success>Die CMS-Seite wurde gespeichert.</cms_page_save_success>
+	    <cms_page_save_fail>Fehler beim Speichern der CMS-Seite!</cms_page_save_fail>
+	    <cms_page_load_fail>Die CMS-Seite konnte nicht geladen werden!</cms_page_load_fail>
+	    <cms_page_block_select_fail>Der CMS-Block konnte nicht zugeordnet werden!</cms_page_block_select_fail>
+	    <cms_page_delete_success>Die CMS-Seite wurde gelöscht.</cms_page_delete_success>
+	    <cms_page_delete_fail>Die CMS-Seite kann nicht gelöscht werden!</cms_page_delete_fail>
+
+	    <cms_gallery_new>neue Gallerie erstellen</cms_gallery_new>
+	    <cms_gallery_block_popup_title>Bilder zur Gallerie hinzufügen</cms_gallery_block_popup_title>
+	    <cms_gallery_block_popup_append_close>Hinzufügen und Schließen</cms_gallery_block_popup_append_close>
+	    <cms_gallery_new_image>Bilder hinzufügen</cms_gallery_new_image>
+	    <cms_gallery_save>Gallerie speichern</cms_gallery_save>
+	    <cms_gallery_images>Gallerie-Bilder</cms_gallery_images>
+	    <cms_gallery_load_fail>Die Gallerie konnte nicht geladen werden!</cms_gallery_load_fail>
+	    <cms_gallery_options>Gallerie-Optionen</cms_gallery_options>
+	    <cms_gallery_title>Gallerie-Titel</cms_gallery_title>
+	    <cms_gallery_title_ph>Bitte einen Gallerie-Titel eingeben</cms_gallery_title_ph>
+	    <cms_gallery_type>Gallerie-Typ</cms_gallery_type>
+	    <cms_gallery_type_not_present>Der gewählte Gallerie-Typ ist nicht vorhanden!</cms_gallery_type_not_present>
+	    <cms_gallery_type_blocks>Bilder-Blöcke</cms_gallery_type_blocks>
+	    <cms_gallery_type_splide>Splide (leichter, flexibler und zugänglicher Slider/Karusell)</cms_gallery_type_splide>
+	    <cms_gallery_status>Aktiviert</cms_gallery_status>
+	    <cms_gallery_item_title_ph>Geben sie einen Bild-Titel an</cms_gallery_item_title_ph>
+	    <cms_gallery_item_description_ph>Geben Sie eine Bild-Beschreibung an</cms_gallery_item_description_ph>
+	    <cms_gallery_type_blocks_select_title>max. Anzahl der Elements pro Zeile</cms_gallery_type_blocks_select_title>
+	    <cms_gallery_type_blocks_select>Elements pro Zeile</cms_gallery_type_blocks_select>
+	    <cms_gallery_type_blocks_show_title_title>zeige Element-Titel</cms_gallery_type_blocks_show_title_title>
+	    <cms_gallery_type_blocks_show_description_title>Zeige Element-Beschreibung</cms_gallery_type_blocks_show_description_title>
+	    <cms_gallery_save_success>Gallerie wurde gespeichert</cms_gallery_save_success>
+	    <cms_gallery_save_fail>Gallerie wurde nicht gespeichert!</cms_gallery_save_fail>
+
+	    <media_manager>Verwaltung für Dateien und Verzeichnisse</media_manager>
+	    <media_manager_empty>kein Inhalt vorhanden</media_manager_empty>
+	    <media_manager_items>Elemente</media_manager_items>
+	    <media_manager_show_symbols>Symbole</media_manager_show_symbols>
+	    <media_manager_new_directory>Neues Verzeichnis</media_manager_new_directory>
+	    <media_manager_new_directory_button_caption>Verzeichnis anlegen</media_manager_new_directory_button_caption>
+	    <media_manager_chancel_directory_button_caption>Abbrechen</media_manager_chancel_directory_button_caption>
+	    <media_manager_select_file_types>Datei-Typ zum Hochladen auswählen</media_manager_select_file_types>
+	    <media_manager_select_file_for_upload>Datei zum hochladen auswählen</media_manager_select_file_for_upload>
+	    <media_manager_start_upload>Upload starten</media_manager_start_upload>
+	    <media_manager_message_import_start>Import wird gestartet</media_manager_message_import_start>
+	    <media_manager_message_upload_progress>Verarbeitung</media_manager_message_upload_progress>
+	    <media_manager_message_upload_progress_pice>Segment(e)</media_manager_message_upload_progress_pice>
+	    <media_manager_message_upload_complete>Abgeschlossen</media_manager_message_upload_complete>
+	    <media_manager_message_import_progress_abort>Der Import wurde abgebrochen!</media_manager_message_import_progress_abort>
+	    <media_manager_message_import_complete>Import abgeschlossen</media_manager_message_import_complete>
+	    <media_manager_message_update_filelist>Dateiliste wird aktualisiert...</media_manager_message_update_filelist>
+	    <media_manager_wrong_file_to_be_upload>Der Hochgeladene Datei-Typ kann nicht gespeichert werden!</media_manager_wrong_file_to_be_upload>
+	    <media_manager_destination_file_exists>Eine Datei mit dem gleichen Namen existiert bereits!</media_manager_destination_file_exists>
+	    <media_manager_filter_image>Bilder</media_manager_filter_image>
+	    <media_manager_filter_archive>Archive</media_manager_filter_archive>
+	    <media_manager_filter_documents>Dokumente</media_manager_filter_documents>
+
+	    <table_account_id>ID</table_account_id>
+	    <table_account_username>Benutzername</table_account_username>
+	    <table_account_added>Beigetreten</table_account_added>
+	    <table_account_status>Status</table_account_status>
+	    <table_account_enabled>Aktiviert</table_account_enabled>
+	    <table_account_action>Aktion</table_account_action>
+	    <table_account_empty>keine Benutzer-Account vorhanden oder die Liste konnte nicht geladen werden!</table_account_empty>
+
+	    <table_cms_block_id>ID</table_cms_block_id>
+	    <table_cms_block_title>Titel</table_cms_block_title>
+	    <table_cms_block_last_username>Benutzername</table_cms_block_last_username>
+	    <table_cms_block_last_date>Datum</table_cms_block_last_date>
+	    <table_cms_block_enabled>Aktiviert</table_cms_block_enabled>
+	    <table_cms_block_action>Aktion</table_cms_block_action>
+	    <table_cms_block_empty>kein CMS-Block vorhanden oder die Liste konnte nicht geladen werden!</table_cms_block_empty>
+
+	    <table_cms_page_id>ID</table_cms_page_id>
+	    <table_cms_page_title>Titel</table_cms_page_title>
+	    <table_cms_page_last_username>Benutzername</table_cms_page_last_username>
+	    <table_cms_page_last_date>Datum</table_cms_page_last_date>
+	    <table_cms_page_home>Startseite</table_cms_page_home>
+	    <table_cms_page_enabled>Aktiviert</table_cms_page_enabled>
+	    <table_cms_page_action>Aktion</table_cms_page_action>
+	    <table_cms_page_empty>kein CMS-Seiten vorhanden oder die Liste konnte nicht geladen werden!</table_cms_page_empty>
+
+	    <table_cms_gallery_id>ID</table_cms_gallery_id>
+	    <table_cms_gallery_title>Titel</table_cms_gallery_title>
+	    <table_cms_gallery_type>Gallery-Typ</table_cms_gallery_type>
+	    <table_cms_gallery_last_username>Benutzername</table_cms_gallery_last_username>
+	    <table_cms_gallery_last_date>Datum</table_cms_gallery_last_date>
+	    <table_cms_gallery_enabled>Aktiviert</table_cms_gallery_enabled>
+	    <table_cms_gallery_action>Aktion</table_cms_gallery_action>
+	    <table_cms_gallery_empty>keine Gallerie vorhanden oder die Liste kann nicht geladen werden!</table_cms_gallery_empty>
+	</admin>
+	<system>
+	    <table_info_name>Name</table_info_name>
+	    <table_info_version>Version</table_info_version>
+	    <table_info_description>Beschreibung</table_info_description>
+	    <table_info_url>URL</table_info_url>
+	</system>
+</language>

@@ -1,0 +1,3 @@
+<IfModule mod_env.c>
+   SetEnv PHPRC /var/www/vhosts/geith-steinrestaurierung.de/dev.geith-steinrestaurierung.de/.user.ini
+</IfModule>

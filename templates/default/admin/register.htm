@@ -1,0 +1,87 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title><lang app_name /> :: <lang page_titles_register /></title>
+
+        <meta http-equiv="Content-Type" content="text/html; charset=<var_user_config output_iso_charset />" />
+        <meta http-equiv="Content-Script-Type" content="text/javascript" />
+        <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+        <meta http-equiv="pragma" content="no-cache" />
+        <meta http-equiv="Expires" content="0" />
+
+        <meta charset="<var_user_config output_iso_charset />" />
+
+        <meta name="robots" content="noindex, nofollow, noarchive" />
+        <meta name="MSSmartTagsPreventParsing" content="true" />
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+
+        <link href="<var_config baseurl />favicon.gif" rel="icon" type="image/icon" />
+        <link href="<var_config baseurl />favicon.gif" rel="icon" type="image/x-icon" />
+        <link href="<var_config baseurl />favicon.gif" rel="shortcut icon" />
+        <link href="<var_config baseurl />favicon.gif" rel="apple-touch-icon" />
+
+        <link rel="stylesheet" type="text/css" href="<var_config baseurl />skin/css/colors.css"  media="screen" />
+        <link rel="stylesheet" type="text/css" href="<var_config baseurl />skin/css/base.css"  media="screen" />
+        <link rel="stylesheet" type="text/css" href="<var_config baseurl />skin/css/admin.css"  media="screen" />
+
+        <var header_js />
+        <var header_css />
+
+        <script type="text/javascript">
+            var baseurl = '<var_config baseurl />';
+            var protokoll = '<var_config protocol />';
+        </script>
+
+        <base href="<var_config baseurl />" />
+    </head>
+    <body>
+        <header>
+            <var global_header />
+        </header>
+        <main>
+            <aside>
+                <nav>
+                </nav>
+            </aside>
+            <section id="register">
+
+<div id="register-box">
+    <div class="register-square login-border" style="--i:0;"></div>
+    <div class="register-square login-border" style="--i:1;"></div>
+    <div class="register-square login-border" style="--i:2;"></div>
+    <div class="register-square login-border" style="--i:3;"></div>
+    <div class="register-square login-border" style="--i:4;"></div>
+    <div id="register-container" class="glass-block-border glass-border">
+        <div id="register-form" class="glass-block">
+            <h2><lang page_titles_register /></h2>
+            <form action="<var_config baseurl />admin/register.php" method="post">
+                <input type="hidden" name="action" value="doregister" />
+                <div class="elment-block">
+                    <input type="text" name="username" placeholder="<lang login_page_label_username />" class="glass-border" />
+                </div>
+                <div class="elment-block">
+                    <input type="password" name="password" placeholder="<lang login_page_label_password />" class="glass-border" />
+                </div>
+                <div class="elment-block">
+                    <input type="password" name="password_confirm" placeholder="<lang login_page_label_password_confirm />" class="glass-border" />
+                </div>
+                <div class="elment-block">
+                    <input type="text" name="email" placeholder="<lang login_page_label_email />" class="glass-border" />
+                </div>
+                <div class="elment-block">
+                    <input type="submit" value="<lang login_page_label_register_button />" class="glass-border" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+            </section>
+        </main>
+        <footer>
+            <var global_footer />
+        </footer>
+
+        <var before_finished />
+    </body>
+</html>

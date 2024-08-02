@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title><lang app_name /> :: <lang page_titles_register /></title>
+
+        <meta http-equiv="Content-Type" content="text/html; charset=<var_user_config output_iso_charset />" />
+        <meta http-equiv="Content-Script-Type" content="text/javascript" />
+        <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+        <meta http-equiv="pragma" content="no-cache" />
+        <meta http-equiv="Expires" content="0" />
+
+        <meta name="robots" content="noindex, nofollow, noarchive" />
+        <meta name="MSSmartTagsPreventParsing" content="true" />
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+
+        <link href="<var_config baseurl />favicon.gif" rel="icon" type="image/icon" />
+        <link href="<var_config baseurl />favicon.gif" rel="icon" type="image/x-icon" />
+        <link href="<var_config baseurl />favicon.gif" rel="shortcut icon" />
+        <link href="<var_config baseurl />favicon.gif" rel="apple-touch-icon" />
+
+        <link rel="stylesheet" type="text/css" href="<var_config baseurl />skin/css/base.css"  media="screen" />
+
+        <var header_js />
+        <var header_css />
+
+        <script type="text/javascript">
+            var baseurl = '<var_config baseurl />';
+            var protokoll = '<var_config protocol />';
+        </script>
+
+        <base href="<var_config baseurl />" />
+    </head>
+    <body>
+        <header>
+            <var global_header />
+        </header>
+        <main>
+            <aside>
+                <nav>
+                </nav>
+            </aside>
+            <section id="register">
+
+<div>.: <lang login_page_register_success_title /> :.</div>
+<div>
+    <lang login_page_register_success_message />
+    <br />
+    <lang login_page_register_success_info />
+</div>
+
+            </section>
+        </main>
+        <footer>
+            <var global_footer />
+        </footer>
+
+        <var before_finished />
+    </body>
+</html>

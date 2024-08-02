@@ -1,0 +1,104 @@
+main {
+    display:block;
+}
+aside {
+    display: none;
+}
+section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100%;
+}
+
+.login-error {
+    z-index: 1;
+    flex-direction: column;
+    width: 400px;
+    margin-bottom: 20px;
+    padding: 20px;
+}
+.login-error h2 {
+    margin-bottom: 15px;
+    color: var(--rgba-color-dark-07);
+}
+.login-error ul {
+    list-style: none;
+    width: 100%;
+}
+.login-error li:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+#login-container, #register-container {
+    width: 400px;
+    min-height: 400px;
+}
+#login-form, #register-form {
+    padding: 40px;
+}
+#login-form input[type="text"], #login-form input[type="password"], #login-form input::placeholder,
+#register-form input[type="text"], #register-form input[type="password"], #register-form input::placeholder {
+    color: var(--font-color-light);
+}
+#login-register {
+    margin-top: 5px;
+    color: var(--font-color-dark);
+}
+#login-register a {
+    color: var(--font-color-dark);
+    font-weight: 600;
+}
+.login-box {
+    margin-top: 20px;
+}
+.login-square, .register-square {
+    position: absolute;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 25px 45px var(--rgba-color-dark-01);
+    background: var(--rgba-color-light-01);
+    border-radius: 10px;
+    animation: animate 10s linear infinite;
+    animation-delay: calc( -1s * var(--i) );
+}
+.login-square:nth-child(1), .register-square:nth-child(1) {
+    top: -50px;
+    right: -60px;
+    width: 100px;
+    height: 100px;
+}
+.login-square:nth-child(2), .register-square:nth-child(2) {
+    top: 150px;
+    left: -100px;
+    width: 120px;
+    height: 120px;
+    z-index: 2;
+}
+.login-square:nth-child(3), .register-square:nth-child(3) {
+    bottom: 50px;
+    right: -60px;
+    width: 80px;
+    height: 80px;
+    z-index: 2;
+}
+.login-square:nth-child(4), .register-square:nth-child(4) {
+    bottom: -80px;
+    left: 100px;
+    width: 50px;
+    height: 50px;
+}
+.login-square:nth-child(5), .register-square:nth-child(5) {
+    top: -80px;
+    left: 140px;
+    width: 60px;
+    height: 60px;
+}
+@keyframes animate {
+    0%, 100% {
+        transform: translateY(-40px);
+    }
+    50% {
+        transform: translateY(40px);
+    }
+}

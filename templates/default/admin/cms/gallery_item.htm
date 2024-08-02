@@ -1,0 +1,11 @@
+<li data-position="<var gallery_item_position />" data-image="<var gallery_item_img_path />">
+    <div>
+        <img src="<var_config baseurl /><var gallery_item_img_url />" />
+    </div>
+    <div>
+        <input type="text" value="<var gallery_item_title />" placeholder="<lang admin_cms_gallery_item_title_ph />" data-attribute="title" />
+        <input type="text" value="<var gallery_item_description />" placeholder="<lang admin_cms_gallery_item_description_ph />" data-attribute="description" />
+    </div>
+    <a class="gallery-item-delete-link" href="javascript:void(0)" onclick="removeItemFromGallery(this)">
+        <img src="<var_config baseurl />skin/images/delete.png" /></a>
+</li>

@@ -1,0 +1,73 @@
+
+<div id="nav-container" class="glass-block-border glass-border">
+    <div class="glass-block">
+        <h2><lang admin_navigation_structure /></h2>
+        <ul id="nav-template">
+<var cms_navigation />
+        </ul>
+    </div>
+</div>
+
+<div id="cms-nav-popup">
+    <input type="hidden" name="nav_id" name="nav-id" value="" />
+    <input type="hidden" name="nav_id" name="nav-parent-id" value="" />
+    <input type="hidden" name="nav_id" name="nav-position" value="" />
+    <div id="cms-nav-form" class="glass-block-border glass-border">
+        <div class="glass-block">
+            <h2><lang admin_navigation_new_edit_entry /></h2>
+
+            <div class="glass-block">
+                <div class="flex-2" id="cms-nav-form-first-row">
+                    <div class="elment-block">
+                        <label for="nav_title"><lang admin_navigation_entry_titel /></label>
+                        <input type="text" class="glass-border" name="nav_title" id="nav-title" placeholder="<lang admin_navigation_entry_titel_ph />" value="" />
+                    </div>
+                    <div class="elment-block">
+                        <label for="nav_status"><lang admin_navigation_entry_status /></label>
+                        <input type="checkbox" name="nav_status" id="nav-status" value="1" />
+                    </div>
+                </div>
+            </div>
+            <div class="glass-block">
+                <div class="elment-block">
+                    <label for="nav_type"><lang admin_navigation_entry_type /></label>
+                    <div class="select-box glass-block-border glass-border">
+                        <select name="nav_type" id="nav-type" onchange="changeCmsNavType(this)">
+                            <option value="0" selected><lang admin_navigation_entry_type_internal /></option>
+                            <option value="1"><lang admin_navigation_entry_type_external /></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="elment-block active" id="nav_type_0">
+                    <label for="nav_destination_cms"><lang admin_navigation_entry_destination_cms /></label>
+                    <div class="select-box glass-block-border glass-border">
+                        <select name="nav_destination_cms" id="nav-destination-cms">
+<var current_cms_pages />
+                        </select>
+                    </div>
+                </div>
+                <div class="elment-block" id="nav_type_1">
+                    <label for="nav_destination_external"><lang admin_navigation_entry_destination_external /></label>
+                    <input type="text" class="glass-border" name="nav_destination_external" id="nav-destination-external" placeholder="<lang admin_navigation_destination_external_ph />" value="" />
+                </div>
+            </div>
+
+            <div class="glass-block-border glass-border">
+                <div class="glass-block">
+                    <div class="elment-block center-content button-flex">
+                        <button class="button glass-border" onclick="saveNavEntry()"><lang admin_navigation_save_entry /></button>
+                        <button class="button glass-border" onclick="hidePopup()"><lang global_abort /></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    let navigationEmpty = <var current_nav_empty />;
+    let message_no_title_exits = "<lang admin_navigation_message_no_title_exits />";
+    let message_no_cms_page_selected = "<lang admin_navigation_message_no_cms_page_selected />";
+    let message_no_external_link = "<lang admin_navigation_message_no_external_link />"
+</script>
+<script type="text/javascript" src="<var_config baseurl />skin/js/admin_cms_nav.js"></script>

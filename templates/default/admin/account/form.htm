@@ -1,0 +1,65 @@
+<form action="<var_config baseurl />admin_index.php" method="post">
+    <input type="hidden" name="action" value="<var form_action />" />
+    <input type="hidden" name="do" value="<var do_action />" />
+<var curr_status_block />
+
+    <div class="flex-2">
+        <div class="glass-block-border glass-border">
+            <div class="glass-block">
+                <h2><lang profile_title_info /></h2>
+                <div class="elment-block">
+                    <label for="username"><lang profile_username /></label>
+                    <input type="text" class="glass-border" name="username" placeholder="<lang profile_username />" value="<var curr_username />" />
+                </div>
+                <div class="elment-block">
+                    <label for="email"><lang profile_email /></label>
+                    <input type="text" class="glass-border" name="email" placeholder="<lang profile_email />" value="<var curr_email />" />
+                </div>
+            </div>
+        </div>
+        <div class="glass-block-border glass-border">
+            <div class="glass-block">
+                <h2><lang profile_title_password /></h2>
+                <div class="elment-block">
+                    <label for="password"><lang profile_password /></label>
+                    <input type="password" class="glass-border" name="password" placeholder="<lang profile_password />" value="" />
+                </div>
+                <div class="elment-block">
+                    <label for="password_confirm"><lang profile_password_confirm /></label>
+                    <input type="password" class="glass-border" name="password_confirm" placeholder="<lang profile_password_confirm />" value="" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="flex-2">
+        <div class="glass-block-border glass-border">
+            <div class="glass-block">
+                <h2><lang profile_title_account /></h2>
+                <div class="elment-block">
+                    <label><lang profile_added /></label>
+                    <div class="pseudo-input glass-border"><var curr_added /></div>
+                </div>
+                <div class="elment-block">
+                    <label><lang profile_last_login /></label>
+                    <div class="pseudo-input glass-border"><var curr_last_login /></div>
+                </div>
+                <div class="elment-block">
+                    <label><lang profile_last_access /></label>
+                    <div class="pseudo-input glass-border"><var curr_last_access /></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<var admin_block />
+
+    <div class="glass-block-border glass-border">
+        <div class="glass-block">
+            <div class="elment-block center-content">
+                <input type="submit" value="<lang profile_save />" class="glass-border" />
+            </div>
+        </div>
+    </div>
+
+</form>

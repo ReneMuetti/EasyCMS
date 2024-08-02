@@ -1,0 +1,106 @@
+
+<form action="<var_config baseurl />admin_index.php" method="post">
+    <input type="hidden" name="action" value="cms_pages" />
+    <input type="hidden" name="do" value="<var cms_form_action />" />
+    <input type="hidden" name="pageid" value="<var cms_page_id />" />
+    <input type="hidden" id="layout" name="layout" value='<var cms_page_layout />' />
+    <input type="hidden" id="blockcount" name="blockcount" value="<var cms_page_count />" />
+
+    <div id="cms-block-popup" style="display:none" data-curr-cms-block-id="">
+        <div class="fa-3x">
+            <i class="fas fa-spinner fa-spin"></i>
+        </div>
+    </div>
+
+    <div id="cms-page-editor" class="glass-block-border glass-border">
+        <div class="glass-block">
+            <h2><lang admin_cms_page_options /></h2>
+            <div class="flex-2">
+                <div>
+                    <div class="elment-block">
+                        <label for="title"><lang admin_cms_page_title /></label>
+                        <input type="text" class="glass-border" name="title" id="cms-page-title" placeholder="<lang admin_cms_page_title_ph />" value="<var cms_page_title />" />
+                    </div>
+                    <div class="elment-block">
+                        <label for="description"><lang admin_cms_page_description /></label>
+                        <input type="text" class="glass-border" name="description" id="cms-page-description" placeholder="<lang admin_cms_page_description_ph />" value="<var cms_page_description />" />
+                    </div>
+                    <div class="elment-block">
+                        <label for="keywords"><lang admin_cms_page_keywords /></label>
+                        <input type="text" class="glass-border" name="keywords" id="cms-page-keywords" placeholder="<lang admin_cms_page_keywords_ph />" value="<var cms_page_keywords />" />
+                    </div>
+                </div>
+                <div>
+                    <div class="elment-block">
+                        <label for="enable"><lang admin_cms_page_status /></label>
+                        <input type="checkbox" name="enable" id="cms-page-status" value="1" <var cms_page_enable /> />
+                    </div>
+                    <div class="elment-block">
+                        <label for="home"><lang admin_cms_page_home /></label>
+                        <input type="checkbox" name="home" id="cms-page-home" value="1" <var cms_page_home /> />
+                    </div>
+                    <div class="elment-block">
+                        <label for="seo"><lang admin_cms_page_seo /></label>
+                        <input type="text" class="glass-border" name="seo" id="cms-page-seo" placeholder="<lang admin_cms_page_seo_ph />" value="<var cms_page_seo />" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="glass-block-border glass-border">
+        <div class="glass-block">
+            <h2><lang admin_cms_page_layout_header /></h2>
+            <div id="cms-page-header" class="elment-block">
+                <a class="button" href="javascript:void(0)" onclick="addNewCmsBlock(0)"><lang admin_cms_page_new_block /></a>
+                <div class="gridster">
+                    <ul><var cms_page_layout_header /></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="glass-block-border glass-border">
+        <div class="glass-block">
+            <h2><lang admin_cms_page_layout_content /></h2>
+            <div id="cms-page-content" class="elment-block">
+                <a class="button" href="javascript:void(0)" onclick="addNewCmsBlock(1)"><lang admin_cms_page_new_block /></a>
+                <div class="gridster">
+                    <ul><var cms_page_layout_content /></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="glass-block-border glass-border">
+        <div class="glass-block">
+            <h2><lang admin_cms_page_layout_footer /></h2>
+            <div id="cms-page-footer" class="elment-block">
+                <a class="button" href="javascript:void(0)" onclick="addNewCmsBlock(2)"><lang admin_cms_page_new_block /></a>
+                <div class="gridster">
+                    <ul><var cms_page_layout_footer /></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="glass-block-border glass-border">
+        <div class="glass-block">
+            <div class="element-block center-content button-flex" style="max-width:1000px; margin:0 auto;">
+                <a class="button" href="<var_config baseurl />admin_index.php?action=cms_pages" style="margin:0;"><lang global_abort /></a>
+                <input class="button" type="submit" value="<lang admin_cms_page_save />" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<script>
+    let popup_title = "<lang admin_cms_page_block_popup_title />";
+    let block_select_error = "<lang admin_cms_page_block_select_fail />";
+</script>
+
+<script src="<var_config baseurl />skin/js/jquery-ui/jquery-ui.min.js"></script>
+<script src="<var_config baseurl />skin/js/gridster/jquery.dsmorse-gridster.with-extras.min.js"></script>
+<script src="<var_config baseurl />skin/js/cms_page.js"></script>
+
+<var cms_page_loading />

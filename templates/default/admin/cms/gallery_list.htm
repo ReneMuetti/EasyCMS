@@ -1,0 +1,35 @@
+
+<div id="cms-gallery-new" class="glass-block-border glass-border">
+    <div class="glass-block">
+        <h2><lang admin_cms_gallery_new /></h2>
+        <div class="elment-block button-flex">
+            <a class="button" href="<var_config baseurl />admin_index.php?action=content_gallery&amp;do=newgallery"><lang admin_cms_gallery_new /></a>
+        </div>
+    </div>
+</div>
+
+<table class="glass-border">
+    <colgroup>
+        <col class="col-gallery-id" />
+        <col />
+        <col class="col-gallery-type" />
+        <col class="col-gallery-username" />
+        <col class="col-gallery-date" />
+        <col class="col-gallery-state" />
+        <col class="col-gallery-action" />
+    </colgroup>
+    <thead>
+        <tr>
+            <th><lang admin_table_cms_gallery_id /></th>
+            <th class="align-left"><lang admin_table_cms_gallery_title /></th>
+            <th><lang admin_table_cms_gallery_type /></th>
+            <th><lang admin_table_cms_gallery_last_username /></th>
+            <th><lang admin_table_cms_gallery_last_date /></th>
+            <th><lang admin_table_cms_gallery_enabled /></th>
+            <th><lang admin_table_cms_gallery_action /></th>
+        </tr>
+    </thead>
+    <tbody>
+<var admin_table_cms_gallery_list />
+    </tbody>
+</table>

@@ -1,0 +1,35 @@
+
+<div id="cms-page-new" class="glass-block-border glass-border">
+    <div class="glass-block">
+        <h2><lang admin_cms_page_new /></h2>
+        <div class="elment-block button-flex">
+            <a class="button" href="<var_config baseurl />admin_index.php?action=cms_pages&amp;do=newpage"><lang admin_cms_page_new /></a>
+        </div>
+    </div>
+</div>
+
+<table class="glass-border">
+    <colgroup>
+        <col class="col-page-id" />
+        <col />
+        <col class="col-page-username" />
+        <col class="col-page-date" />
+        <col class="col-page-home" />
+        <col class="col-page-state" />
+        <col class="col-page-action" />
+    </colgroup>
+    <thead>
+        <tr>
+            <th><lang admin_table_cms_page_id /></th>
+            <th class="align-left"><lang admin_table_cms_page_title /></th>
+            <th><lang admin_table_cms_page_last_username /></th>
+            <th><lang admin_table_cms_page_last_date /></th>
+            <th><lang admin_table_cms_page_home /></th>
+            <th><lang admin_table_cms_page_enabled /></th>
+            <th><lang admin_table_cms_page_action /></th>
+        </tr>
+    </thead>
+    <tbody>
+<var admin_table_cms_page_list />
+    </tbody>
+</table>

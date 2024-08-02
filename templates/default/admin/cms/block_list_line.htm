@@ -1,0 +1,13 @@
+        <tr>
+            <td><var cms_block_id /></td>
+            <td><var cms_block_title /></td>
+            <td><var cms_block_edit_username /></td>
+            <td><var cms_block_edit_time /></td>
+            <td><span class="status <var cms_block_raw_enabled />"><var cms_block_enabled /></span></td>
+            <td class="cms-actions">
+                <a class="account-edit-link" href="<var_config baseurl />admin_index.php?action=cms_blocks&amp;do=editblock&amp;blockid=<var cms_block_id />">
+                    <img src="<var_config baseurl />skin/images/edit.png" /></a>
+                <a class="account-disable-link" href="<var_config baseurl />admin_index.php?action=cms_blocks&amp;do=deleteblock&amp;blockid=<var cms_block_id />">
+                    <img src="<var_config baseurl />skin/images/delete.png" /></a>
+            </td>
+        </tr>

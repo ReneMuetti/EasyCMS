@@ -1,0 +1,78 @@
+
+<div id="media-manager-content" class="glass-block-border glass-border" data-current-path="<var current_sub_path />">
+    <div class="glass-block">
+        <h2><lang admin_media_manager /></h2>
+        <div class="glass-block-border glass-border">
+            <div class="glass-block">
+                <div id="media-manager" class="elment-block">
+                    <div id="media-manager-path" data-new-form="false"><var current_path /></div>
+                    <button class="button" onclick="createNewDirectoryForm()" style="margin:15px 0;"><lang admin_media_manager_new_directory /></button>
+                </div>
+            </div>
+        </div>
+        <div class="flex-7-3">
+            <div class="glass-block-border glass-border">
+                <div id="media-manager-left" class="elment-block">
+                    <div id="media-manager-toolbar" class="elment-block">
+                        <a id="media-toolbar-list" href="javascript:void(0)" onclick="changeExplorerStyle('list')" class="current"><span class="fa-solid fa-list"></span></a>
+                        <a id="media-toolbar-grid" href="javascript:void(0)" onclick="changeExplorerStyle('grid')" class=""><span class="fa-solid fa-table-cells-large"></span></a>
+                        <span id="symbol-mode">
+                            <label><lang admin_media_manager_show_symbols /></label>
+                            <input type="checkbox" value="1" onclick="switchSymbolMode(this)" checked="checked" />
+                        </span>
+                    </div>
+                    <div id="media-manager-explorer" class="elment-block explorer-list">
+                        <var current_path_content />
+                    </div>
+                </div>
+            </div>
+            <div class="glass-block-border glass-border" style="flex-direction:column;">
+                <div id="media-manager-uploader" class="elment-block">
+                    <label for="upload-type"><lang admin_media_manager_select_file_types /></label>
+                    <select id="upload-type" onchange="changeUploadFilter(this)">
+                        <var current_select_types />
+                    </select>
+                </div>
+                <form action="<var_config baseurl />admin_index.php" enctype="multipart/form-data" method="post" id="file-upload" style="width:100%;">
+                    <div id="media-manager-uploader" class="elment-block">
+                        <label for="uploadfile"><lang admin_media_manager_select_file_for_upload /></label>
+                        <input type="file" class="glass-border" name="uploadfile" id="uploadfile" accept="" multiple="multiple" />
+                    </div>
+                    <div class="elment-block">
+                        <div id="upload-progress" class="progress-box progress-meter">
+                            <span class="rgb-bar" style="mask: linear-gradient(to left, transparent 100%, var(--rgba-color-white) 0%);"></span>
+                        </div>
+                        <div id="progress-status"></div>
+                    </div>
+                    <div class="elment-block center-content">
+                        <input type="hidden" name="action" id="action" value="upload_file" />
+                        <input type="hidden" name="filter" id="filter" value="" />
+                        <input type="submit" value="<lang admin_media_manager_start_upload />" class="glass-border" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    let new_button_caption = "<lang admin_media_manager_new_directory_button_caption />";
+    let chancel_button_caption = "<lang admin_media_manager_chancel_directory_button_caption />";
+
+    let message_import_start = "<lang admin_media_manager_message_import_start />";
+    let message_upload_progress = "<lang admin_media_manager_message_upload_progress />";
+    let message_upload_progress_pice = "<lang admin_media_manager_message_upload_progress_pice />";
+    let message_upload_complete = "<lang admin_media_manager_message_upload_complete />";
+    let message_import_progress_abort = "<lang admin_media_manager_message_import_progress_abort />";
+    let message_import_complete = "<lang admin_media_manager_message_import_complete />";
+    let message_update_filelist = "<lang admin_media_manager_message_update_filelist />";
+
+    let string_status_yes = "<lang global_status_yes />";
+    let string_status_no = "<lang global_status_no />";
+    let string_status_delete = "<lang global_status_delete />";
+
+    let fileTypeArray = <var current_file_type_array />;
+</script>
+
+<script src="<var_config baseurl />skin/js/media_manager.js"></script>
+<script src="<var_config baseurl />skin/js/media_upload.js"></script>

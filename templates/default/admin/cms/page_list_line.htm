@@ -1,0 +1,14 @@
+        <tr>
+            <td><var cms_page_id /></td>
+            <td><var cms_page_title /></td>
+            <td><var cms_page_edit_username /></td>
+            <td><var cms_page_edit_time /></td>
+            <td><span class="status <var cms_page_raw_home />"><var cms_page_home /></span></td>
+            <td><span class="status <var cms_page_raw_enabled />"><var cms_page_enabled /></span></td>
+            <td class="cms-actions">
+                <a class="account-edit-link" href="<var_config baseurl />admin_index.php?action=cms_pages&amp;do=editpage&amp;pageid=<var cms_page_id />">
+                    <img src="<var_config baseurl />skin/images/edit.png" /></a>
+                <a class="account-disable-link" href="<var_config baseurl />admin_index.php?action=cms_pages&amp;do=deletepage&amp;pageid=<var cms_page_id />">
+                    <img src="<var_config baseurl />skin/images/delete.png" /></a>
+            </td>
+        </tr>

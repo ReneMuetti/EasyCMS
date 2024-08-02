@@ -1,0 +1,14 @@
+        <tr>
+            <td><var cms_gallery_id /></td>
+            <td><var cms_gallery_title /></td>
+            <td class="align-center"><var cms_gallery_type /></td>
+            <td><var cms_gallery_edit_username /></td>
+            <td><var cms_gallery_edit_time /></td>
+            <td><span class="status <var cms_gallery_raw_enabled />"><var cms_gallery_enabled /></span></td>
+            <td class="cms-actions">
+                <a class="account-edit-link" href="<var_config baseurl />admin_index.php?action=content_gallery&amp;do=editgallery&amp;galleryid=<var cms_gallery_id />">
+                    <img src="<var_config baseurl />skin/images/edit.png" /></a>
+                <a class="account-disable-link" href="<var_config baseurl />admin_index.php?action=content_gallery&amp;do=deletegallery&amp;galleryid=<var cms_gallery_id />">
+                    <img src="<var_config baseurl />skin/images/delete.png" /></a>
+            </td>
+        </tr>

@@ -1,0 +1,29 @@
+<div id="login-box">
+    <div class="login-square login-border" style="--i:0;"></div>
+    <div class="login-square login-border" style="--i:1;"></div>
+    <div class="login-square login-border" style="--i:2;"></div>
+    <div class="login-square login-border" style="--i:3;"></div>
+    <div class="login-square login-border" style="--i:4;"></div>
+    <div id="login-container" class="glass-block-border glass-border">
+        <div id="login-form" class="glass-block">
+            <h2><lang page_titles_login /></h2>
+            <form action="<var_config baseurl />admin/login.php" method="post">
+                <input type="hidden" name="action" value="dologin" />
+                <input type="hidden" name="lang" value="<var language />" />
+                <div class="elment-block">
+                    <input type="text" name="username" placeholder="<lang login_page_label_username />" class="login-border" />
+                </div>
+                <div class="elment-block">
+                    <input type="password" name="password" placeholder="<lang login_page_label_password />" class="login-border" />
+                </div>
+                <div class="elment-block">
+                    <input type="submit" value="<lang login_page_label_login_button />" class="login-border" />
+                </div>
+                <p id="login-register">
+                    <lang login_page_login_register_string />
+                    <a href="<var_config baseurl />admin/register.php"><lang page_titles_register /></a>
+                </p>
+            </form>
+        </div>
+    </div>
+</div>

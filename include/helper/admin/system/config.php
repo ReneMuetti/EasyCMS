@@ -1,0 +1,3 @@
+<?php
+
+$pageIdentifier = 'system-configuration';

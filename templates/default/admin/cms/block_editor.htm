@@ -1,0 +1,61 @@
+
+<form action="<var_config baseurl />admin_index.php" method="post">
+    <input type="hidden" name="action" value="cms_blocks" />
+    <input type="hidden" name="do" value="<var cms_form_action />" />
+    <input type="hidden" name="blockid" value="<var cms_block_id />" />
+
+    <div id="cms-block-editor" class="glass-block-border glass-border">
+        <div class="glass-block">
+            <h2><lang admin_cms_block_options /></h2>
+            <div class="flex-3">
+                <div class="elment-block">
+                    <label for="title"><lang admin_cms_block_title /></label>
+                    <input type="text" class="glass-border" name="title" id="cms-block-title" placeholder="<lang admin_cms_block_title_ph />" value="<var cms_block_title />" />
+                </div>
+                <div></div>
+                <div class="elment-block">
+                    <label for="enable"><lang admin_cms_block_status /></label>
+                    <input type="checkbox" name="enable" id="cms-block-status" value="1" <var cms_block_enable /> />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="cms-block-editor" class="glass-block-border glass-border">
+        <div class="glass-block">
+            <h2><lang admin_cms_block_editor /></h2>
+            <div id="cms-block-editor-element" class="element-block">
+                <textarea name="content" id="block-editor" class="summernote"><var cms_block_content /></textarea>
+            </div>
+        </div>
+    </div>
+
+    <div class="glass-block-border glass-border">
+        <div class="glass-block">
+            <div class="element-block center-content button-flex" style="max-width:1000px; margin:0 auto;">
+                <a class="button" href="<var_config baseurl />admin_index.php?action=cms_blocks" style="margin:0;"><lang global_abort /></a>
+                <input class="button" type="submit" value="<lang admin_cms_block_save />" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div id="insert-image-popup" style="display:none" data-curr-path="<var popup_current_path />">
+    <div id="image-popup-items">
+        <div class="fa-3x">
+            <i class="fas fa-spinner fa-spin"></i>
+        </div>
+    </div>
+</div>
+
+<script>
+    let popup_title = "<lang admin_cms_block_popup_title />";
+    let path_mask = "<var image_path_mask />";
+    let editor_lang = "<var summernote_language />";
+</script>
+
+<script src="<var_config baseurl />skin/js/bootstrap-3.4.1.min.js"></script>
+<script src="<var_config baseurl />skin/js/summernote/summernote.min.js"></script>
+<script src="<var_config baseurl />skin/js/summernote/lang/summernote-de-DE.min.js"></script>
+<script src="<var_config baseurl />skin/js/jquery-ui/jquery-ui.min.js"></script>
+<script src="<var_config baseurl />skin/js/cms_block.js"></script>
