@@ -659,15 +659,18 @@ td.cms-actions {
     margin: 20px;
     flex-shrink: 0;
 }
-#cms-gallery-popup-items {
+#cms-gallery-popup-items,
+#image-popup-items {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
     grid-gap: 15px;
 }
-#cms-gallery-popup-items .popup-folder {
+#cms-gallery-popup-items .popup-folder,
+#image-popup-items .popup-folder {
     cursor: pointer;
 }
-#cms-gallery-popup-items .item-type {
+#cms-gallery-popup-items .item-type,
+#image-popup-items .item-type {
     font-size: 8rem;
     text-align: center;
 }
@@ -678,6 +681,29 @@ td.cms-actions {
     -webkit-box-orient: vertical;
     overflow: hidden;
     height: 38px;
+}
+#image-popup-items .single-item-click .item-type {
+    font-size: initial;
+    position: absolute;
+    bottom: 50px;
+}
+#image-popup-items .single-item-click {
+    position: relative;
+    height: 200px;
+    cursor: pointer;
+}
+#image-popup-items .single-item-click img {
+    max-width: 100%;
+    max-height: 115px;
+    margin: 0 auto 20px auto;
+    display: block;
+}
+#image-popup-items .single-item-click .item-name {
+    max-width: 100%;
+    position: absolute;
+    bottom: 10px;
+    height: 46px;
+    word-wrap: anywhere;
 }
 .media-manager-item-popup {
     padding: 10px;

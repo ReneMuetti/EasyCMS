@@ -36,7 +36,7 @@ $(document).ready(function(){
                                           var lang = $.summernote.lang[editor_lang];
                                           var button = ui.button({
                                                   "contents": ui.icon(options.icons.picture),
-                                                  "tooltip" : lang.image.image,
+                                                  //"tooltip" : lang.image.image,
                                                   "click"   : function() {
                                                                   showImagePopup();
                                                               }
@@ -98,7 +98,7 @@ function changeDirectory(goToParent = false, subDirName = "")
 
 function insertImage(sender)
 {
-    let ImageUrl = $(sender).attr("src");
+    let ImageUrl = $(sender).children("img").attr("src");
     if ( ImageUrl ) {
         summernoteContext.invoke("editor.insertImage", ImageUrl);
     }

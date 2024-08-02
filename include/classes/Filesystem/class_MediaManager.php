@@ -73,6 +73,18 @@ class MediaManager
         }
     }
 
+    public function isFileFromType($filename, $filetype)
+    {
+        $extension = substr($filename, strrpos($filename, '.') + 1);
+
+        if ( array_key_exists($extension, $this -> symbolExt) AND ($this -> symbolExt[$extension]['filter'] == $filetype) ) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
     public function getContentFromPath($path)
     {
         $pathContent = $this -> _getCurrentDirectoryContent($path);
@@ -225,11 +237,17 @@ class MediaManager
                 }
 
                 if ( $item['type'] == 'file' ) {
-                    $this -> renderer -> loadTemplate('admin' . DS . 'media' . DS . 'manager_item_popup' . $subTemplate . '.htm');
-                        $this -> renderer -> setVariable('file_type'  , $symbol);
-                        $this -> renderer -> setVariable('file_name'  , $item['name']);
-                        $this -> renderer -> setVariable('file_data'  , $subDirectory . $this -> pathMask . $item['name']);
-                    $explorer[] = $this -> renderer -> renderTemplate();
+                    $relativeFilePath = str_replace(APP_ROOT, '', $fullNewPath) . DS . $item['name'];
+
+                    // Single-Klick only show images as Thumbnails
+                    if ( ($this -> isFileFromType($item['name'], 'image') AND ($subTemplate == '_single')) OR ($subTemplate == '_multi') ) {
+                        $this -> renderer -> loadTemplate('admin' . DS . 'media' . DS . 'manager_item_popup' . $subTemplate . '.htm');
+                            $this -> renderer -> setVariable('file_type'  , $symbol);
+                            $this -> renderer -> setVariable('file_name'  , $item['name']);
+                            $this -> renderer -> setVariable('image_path' , $relativeFilePath);
+                            $this -> renderer -> setVariable('file_data'  , $subDirectory . $this -> pathMask . $item['name']);
+                        $explorer[] = $this -> renderer -> renderTemplate();
+                    }
                 }
                 else {
                     $this -> renderer -> loadTemplate('admin' . DS . 'media' . DS . 'manager_folder_popup.htm');
