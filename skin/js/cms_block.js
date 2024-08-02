@@ -35,13 +35,20 @@ $(document).ready(function(){
                                           var options = $.summernote.options;
                                           var lang = $.summernote.lang[editor_lang];
                                           var button = ui.button({
-                                                  "contents": ui.icon(options.icons.picture),
-                                                  //"tooltip" : lang.image.image,
+                                                  "contents": ui.icon(context.options.icons.picture),
+                                                  "title"   : context.options.langInfo.image.image,
                                                   "click"   : function() {
                                                                   showImagePopup();
                                                               }
                                               });
-                                          return button.render();
+                                          var $button = button.render();
+
+                                          $button.attr("data-toggle", "tooltip").attr("title", context.options.langInfo.image.image);
+                                          $button.tooltip({
+                                              "container": "body"
+                                          });
+
+                                          return $button;
                                       }
                    },
     });
