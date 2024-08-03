@@ -23,14 +23,28 @@ ErrorDocument 404 /404.php
     ############################################
     ## enable rewrites
     RewriteEngine On
+    RewriteBase /
 
     ############################################
-    ## Rewrite-Conditions
+    ## Rewrite-Conditions Admin
     RewriteRule ^admin_(.*)$ /admin/$1 [L]
-    RewriteRule ^ajax_(.*)$ /ajax/$1 [L]
-
     RewriteRule ^admin$ /admin/index.php? [L]
     RewriteRule ^index\.php/admin$ /admin/index.php? [L]
+
+    ############################################
+    ## Rewrite-Conditions Ajax
+    RewriteRule ^ajax_(.*)$ /ajax/$1 [L]
+
+    ############################################
+    ## Rewrite-Conditions Frontend
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+
+    RewriteRule ^index/([^/]+)$ /index.php?page=$1 [L,QSA]
+    RewriteRule ^index\.php/([^/]+)$ /index.php?page=$1 [L,QSA]
+
+    RewriteCond %{REQUEST_URI} !^/index.php
+    RewriteRule ^([^/]+)$ /index.php?page=$1 [L,QSA]
 
     ############################################
     ## TRACE and TRACK HTTP methods disabled to prevent XSS attacks
