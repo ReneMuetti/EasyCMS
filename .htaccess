@@ -39,6 +39,8 @@ ErrorDocument 404 /404.php
     ## Rewrite-Conditions Frontend
     RewriteRule ^index/([^/]+)$ /index.php?page=$1 [L,QSA]
     RewriteRule ^index\.php/([^/]+)$ /index.php?page=$1 [L,QSA]
+
+    RewriteCond %{REQUEST_URI} !^/index.php
     RewriteRule ^([^/]+)$ /index.php?page=$1 [L,QSA]
 
     ############################################
