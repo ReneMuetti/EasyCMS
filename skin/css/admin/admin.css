@@ -1,5 +1,9 @@
+:root {
+    --admin-background-image: url("../../images/admin_page.jpg");
+}
+
 body {
-    background-image: url("../images/admin_page.jpg");
+    background-image: var(--admin-background-image);
     background-repeat: repeat;
 }
 
@@ -378,7 +382,7 @@ td.cms-actions {
     margin: 10% auto 0 auto;
 }
 #cms-nav-form > div {
-    background-image: url("../images/admin_page.jpg");
+    background-image: var(--admin-background-image);
     padding: 20px;
     border-radius: 10px;
 }
@@ -574,8 +578,6 @@ td.cms-actions {
 #media-manager-explorer:not(.show-thumbnails) .item-type img {
     display: none;
 }
-
-
 /* End Media-Manager */
 
 /* Start critical Files in Media-Manager */
