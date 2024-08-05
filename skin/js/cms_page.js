@@ -109,7 +109,9 @@ function addNewCmsBlock(element)
 function removeBlockById(selectCmsBlockId)
 {
     for (let i = 0; i < gridster.length; i++ ) {
-        gridster[i].remove_widget( $('#' + prefix + selectCmsBlockId) );
+        if(typeof gridster[i] !== "undefined") {
+            gridster[i].remove_widget( $('#' + prefix + selectCmsBlockId) );
+        }
     }
 
     saveBlockPositions();
@@ -223,12 +225,24 @@ function saveBlockPositions()
     let blockCounter = 0;
 
     $(pageElements).each(function(index, data) {
-        let currBlockLayout = gridster[index].serialize();
-        layoutConfig.push(data[0], currBlockLayout);
+        if(typeof gridster[index] !== "undefined") {
+            let currBlockLayout = gridster[index].serialize();
+            layoutConfig.push(data[0], currBlockLayout);
 
-        blockCounter += $(data[1] + " li").length;
+            blockCounter += $(data[1] + " li").length;
+        }
     });
 
-    $("#layout").val( JSON.stringify(layoutConfig) );
-    $("#blockcount").val(blockCounter);
+    if ( $("#layout").length ) {
+        $("#layout").val( JSON.stringify(layoutConfig) );
+        $("#blockcount").val(blockCounter);
+    }
+    else {
+        if ( $("#default-layout-header").length ) {
+            $("#default-layout-header").val( JSON.stringify(layoutConfig[1]) );
+        }
+        if ( $("#default-layout-footer").length ) {
+            $("#default-layout-footer").val( JSON.stringify(layoutConfig[3]) );
+        }
+    }
 }

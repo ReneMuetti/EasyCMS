@@ -27,6 +27,7 @@ $website -> db = $database;
 
 $renderer = Templater::getInstance();
 
+$website -> fetch_database_config();
 
 if ( !isset($website -> userinfo['language']) ) {
     // not-loggedin-User switched Language

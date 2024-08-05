@@ -1,0 +1,37 @@
+
+<form action="<var_config baseurl />admin_index.php" method="post">
+    <input type="hidden" name="action" value="system_config" />
+    <input type="hidden" name="do" value="update_config" />
+
+    <div class="glass-block-border glass-border" style="margin-bottom:20px; padding-bottom:15px;">
+        <div class="glass-block">
+
+<var config_blocks />
+
+        </div>
+    </div>
+
+    <div class="glass-block-border glass-border">
+        <div class="glass-block">
+            <div class="element-block center-content button-flex" style="max-width:1000px; margin:0 auto;">
+                <a class="button" href="<var_config baseurl />admin_index.php?action=system_config" style="margin:0;"><lang global_abort /></a>
+                <input class="button" type="submit" value="<lang admin_config_save />" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div id="cms-block-popup" style="display:none" data-curr-cms-block-id="">
+    <div class="fa-3x">
+        <i class="fas fa-spinner fa-spin"></i>
+    </div>
+</div>
+
+<script>
+    let popup_title = "<lang admin_cms_page_block_popup_title />";
+    let block_select_error = "<lang admin_cms_page_block_select_fail />";
+</script>
+
+<script src="<var_config baseurl />skin/js/jquery-ui/jquery-ui.min.js"></script>
+<script src="<var_config baseurl />skin/js/gridster/jquery.dsmorse-gridster.with-extras.min.js"></script>
+<script src="<var_config baseurl />skin/js/cms_page.js"></script>

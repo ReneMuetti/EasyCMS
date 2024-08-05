@@ -215,11 +215,11 @@ class Registry
 	*/
 	public function fetch_database_config()
 	{
-	    $data = $this -> db -> queryObjectArray("SELECT * FROM config");
+	    $config = new Config();
+	    $db_cfg = $config -> loadCurrentConfigData(false, true);
 
-	    foreach($data AS $key => $val)
-	    {
-          $this -> config[$val["name"]] = $val["wert"];
+	    if ( is_array($db_cfg) AND count($db_cfg) ) {
+	        $this -> config = array_merge($this -> config, $db_cfg);
 	    }
 	}
 
@@ -284,4 +284,3 @@ class Registry
 	    }
 	}
 }
-?>

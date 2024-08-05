@@ -3,6 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
+-- Erstellungszeit: 14. Jul 2024 um 05:07
 -- Server-Version: 10.6.18-MariaDB-0ubuntu0.22.04.1
 -- PHP-Version: 8.3.6
 
@@ -15,6 +16,10 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Datenbank: `steinmetz_geith_rebuild`
+--
 
 -- --------------------------------------------------------
 
@@ -44,6 +49,21 @@ CREATE TABLE `blocks` (
   `block_enable` int(1) NOT NULL DEFAULT 1,
   `datetime` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `username` varchar(100) NOT NULL DEFAULT ''
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `config`
+--
+
+CREATE TABLE `config` (
+  `config_id` int(10) NOT NULL,
+  `config_path` varchar(1024) NOT NULL DEFAULT '',
+  `config_value` text NOT NULL,
+  `config_type` varchar(1024) NOT NULL DEFAULT '',
+  `datetime` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `username` varchar(100) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 -- --------------------------------------------------------
@@ -152,6 +172,18 @@ ALTER TABLE `blocks`
   ADD PRIMARY KEY (`block_id`);
 
 --
+-- Indizes für die Tabelle `config`
+--
+ALTER TABLE `config`
+  ADD PRIMARY KEY (`config_id`);
+
+--
+-- Indizes für die Tabelle `gallery`
+--
+ALTER TABLE `gallery`
+  ADD PRIMARY KEY (`gallery_id`);
+
+--
 -- Indizes für die Tabelle `navigation`
 --
 ALTER TABLE `navigation`
@@ -186,6 +218,18 @@ ALTER TABLE `users`
 --
 ALTER TABLE `blocks`
   MODIFY `block_id` int(10) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT für Tabelle `config`
+--
+ALTER TABLE `config`
+  MODIFY `config_id` int(10) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT für Tabelle `gallery`
+--
+ALTER TABLE `gallery`
+  MODIFY `gallery_id` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT für Tabelle `navigation`
