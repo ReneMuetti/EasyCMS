@@ -24,7 +24,7 @@ class Config
     public function getConfigValue($path)
     {
         if ( array_key_exists($path, $this -> registry -> config) ) {
-            return $this -> registry -> config[$path]['value'];
+            return $this -> registry -> config[$path];
         }
         else {
             return $this -> registry -> user_lang['global']['config_error'];
@@ -58,12 +58,12 @@ class Config
                 $raw_config = $config['value'];
 
                 if ( $config['type'] == 'gridster' ) {
-                    // fetch blocks for gridster
-                    $layout   = $config['value'];
-                    $element  = ( ($path == 'default/layout/header') ? 'header' : 'footer' );
-                    $position = ( ($path == 'default/layout/header') ? 0        : 2 );
+                    // fetch blocks for gridster-default-config
+                    $element    = ( ($path == 'default/layout/header') ? 'header' : 'footer' );
+                    $position   = ( ($path == 'default/layout/header') ? 0        : 2 );
+                    $raw_config = html_entity_decode($raw_config);
 
-                    $config['value'] = $this -> _loadGridsterElement($layout, $element, $position);
+                    $config['value'] = $this -> _loadGridsterElement($raw_config, $element, $position);
                 }
 
                 $this -> renderer -> loadTemplate('admin' . DS . 'config' . DS . $template_name);
@@ -78,8 +78,6 @@ class Config
             // config-error!
         }
 
-        //$data[] = '<pre>' . print_r($this -> registry -> config, true) . '</pre>';
-
         $this -> renderer -> loadTemplate('admin' . DS . 'config' . DS . 'page.htm');
             $this -> renderer -> setVariable('config_blocks', implode("\n", $data));
 
@@ -88,11 +86,59 @@ class Config
         return $this -> renderer -> renderTemplate();
     }
 
+    public function updateCurrentConfig()
+    {
+        $this -> _getCurrentConfig(true);
+
+        $resultList = array();
+
+        foreach( $this -> config AS $path => $data ) {
+            $this -> registry -> input -> clean_array_gpc('p', array($path => TYPE_NOHTML));
+
+            if ( $data['value'] != $this -> registry -> GPC[$path] ) {
+                $sqlData = array(
+                               'config_value' => $this -> registry -> GPC[$path],
+                               'username'     => $this -> registry -> userinfo['username'],
+                           );
+
+                $resultList[$path] = $this -> registry -> db -> updateRow($sqlData, 'config', 'WHERE `config_id` = ' . $data['id'] . ' AND `config_path` = "' . $path . '"' );
+            }
+        }
+
+        if ( is_array($resultList) AND COUNT($resultList) ) {
+            $resultTmp = array();
+
+            foreach( $resultList AS $path => $result ) {
+                $state = ($result ? 'okay' : 'fail' );
+                $resultTmp[] = '<li class="status status-' . $state . '">' .
+                               $this -> registry -> user_lang['admin']['config_saved_' . $state] .
+                               $path . '</li>';
+            }
+
+            $result = implode("\n", $resultTmp);
+        }
+        else {
+            $result = '<li class="status status-okay">' . $this -> registry -> user_lang['admin']['config_no_save_data'] . '</li>';
+        }
+
+        $this -> renderer -> loadTemplate('admin' . DS . 'config' . DS . 'save_result.htm');
+            $this -> renderer -> setVariable('config_update_list', $result);
+            $this -> renderer -> setVariable('curr_form_script'  , 'admin_index.php?action=system_config');
+        return $this -> renderer -> renderTemplate();
+    }
+
     private function _loadGridsterElement($gridsterJSON, $element, $position)
     {
+        if ( strlen($gridsterJSON) ) {
+            $page = new Pages();
+            $gridsterBlocks[$element] = array();
+            $page -> getRenderBlocksFromGridsterJson($gridsterJSON, $gridsterBlocks);
+        }
+
         $this -> renderer -> loadTemplate('admin' . DS . 'config' . DS . 'config_block_gridster_layout.htm');
             $this -> renderer -> setVariable('gridster_element' , $element);
             $this -> renderer -> setVariable('gridster_position', $position);
+            $this -> renderer -> setVariable('gridster_blocks'  , implode("\n", $gridsterBlocks[$element]));
         return $this -> renderer -> renderTemplate();
     }
 

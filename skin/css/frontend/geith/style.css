@@ -1,0 +1,221 @@
+html {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body {
+    font-size: 16px;
+    letter-spacing: 1px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    font-family: 'Optima', Helvetica, sans-serif;
+    background-image: var(--default-page-background-light);
+    background-repeat: repeat;
+}
+header, footer {
+    background-image: var(--default-page-background-dark);
+    background-repeat: repeat;
+    color: var(--font-color-light);
+}
+header {
+    margin-bottom: 20px;
+}
+main {
+    flex: 1;
+    color: var(--font-color-dark);
+    display: flex;
+}
+footer {
+    margin-top: 20px;
+}
+
+.page-width {
+    max-width: var(--default-page-width);
+    width: 100%;
+    margin: 0 auto;
+}
+main > section {
+    padding: 0;
+    flex: 1;
+}
+
+#gridster-header p, #gridster-footer p {
+    margin: 0;
+    padding: 0;
+}
+#gridster-header > div.gs-w, #gridster-footer > div.gs-w {
+    height: auto;
+}
+.dot-spacer {
+    padding: 0 20px;
+}
+
+/**
+ * Header
+ */
+#gridster-header {
+    min-height: 150px;
+    display: flex;
+    align-items: center;
+}
+#gridster-header .gs-w {
+    position: initial;
+}
+#gridster-header img {
+    max-height: 100px;
+}
+#header-company {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto auto;
+    grid-gap: 0 20px;
+    align-items: center;
+}
+#header-company-name {
+    grid-row: span 2;
+    font-size: 5rem;
+    text-transform: uppercase;
+    line-height: 4.5rem;
+}
+#header-company-first,
+#header-company-secound {
+    grid-column: 2;
+}
+#header-company-first {
+    font-size: 1.8rem;
+}
+
+/**
+ * Content
+ */
+#gridster-content p {
+    margin: 0;
+}
+
+#gridster-content a {
+    color: var(--link-text-normal-color-font);
+    background: var(--link-text-normal-color-back);
+    padding: 0 5px 2px 5px;
+}
+#gridster-content a:hover,
+#gridster-content a:active {
+    color: var(--link-text-active-color-font);
+    background: var(--link-text-active-color-back)
+}
+
+#page-impressum div.gs-w,
+#page-datenschutz div.gs-w {
+    min-height: calc( var(--data-sizey) * var(--default-block-height) );
+    height: initial;
+}
+#page-impressum #disclaimer > p {
+    margin: 0 0 20px 0;
+}
+#page-impressum #disclaimer > p:last-child {
+    margin-bottom: 0;
+}
+#page-datenschutz div.gs-w,
+#page-datenschutz #gridster-content {
+    position: initial;
+    height: auto !important;
+}
+#page-kontakt {
+}
+
+/**
+ * Footer
+ */
+#gridster-footer {
+    height: 100px;
+    display: flex;
+    align-items: center;
+}
+#gridster-footer > div:last-child a {
+    text-decoration: none;
+    min-width: 120px;
+    text-align: center;
+    display: inline-block;
+    padding: 10px;
+    margin: 0 5px;
+    color: var(--link-normal-color-font);
+    background: var(--link-normal-color-back);
+}
+#gridster-footer > div:last-child a:hover,
+#gridster-footer > div:last-child a:active {
+    color: var(--link-active-color-font);
+    background: var(--link-active-color-back);
+    font-weight: bold;
+}
+#gridster-footer .dot-spacer {
+    padding: 0;
+}
+#gridster-footer img {
+    max-height: 80px;
+}
+
+/**
+ * under construction
+ */
+#construction-container:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 20px;
+    z-index: 10;
+    background-image: repeating-linear-gradient(-45deg,
+                          var(--construction-primary-color),
+                          var(--construction-primary-color) 50px,
+                          var(--construction-secondary-color) 50px,
+                          var(--construction-secondary-color) 100px
+                      );
+}
+#construction-container .board {
+    font-size: 3rem;
+    padding: 0.5em 1em;
+    background: var(--construction-secondary-color);
+    border-radius: 5px;
+    color: var(--font-color-light);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    text-align: center;
+    transform: translate(-50%, -50%) rotate(calc(-1 * var(--construction-deg)));
+}
+#construction-container .board:before {
+    content: "";
+    position: absolute;
+    top: -134px;
+    height: 134px;
+    display: block;
+    left: 30px;
+    right: 30px;
+    transform: skew(calc(-1 * var(--construction-deg)));
+    border: dotted var(--construction-primary-color);
+    border-width: 0 8px;
+    transform-origin: bottom left;
+    padding-bottom: 30px;
+}
+#construction-container .board h1 {
+    margin: 0;
+    font-size: inherit;
+}
+#construction-container .board h1:before,
+#construction-container .board h1:after {
+    content: "";
+    position: absolute;
+    top: 16px;
+    width: 20px;
+    height: 20px;
+    background-color: var(--background-color-light);
+    border-radius: 50%;
+    box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.4);
+    z-index: -1;
+}
+#construction-container .board h1:before {
+    left: 24px;
+}
+#construction-container .board h1:after {
+    right: 24px;
+}

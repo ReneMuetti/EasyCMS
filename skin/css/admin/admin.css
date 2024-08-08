@@ -180,7 +180,7 @@ table .status {
     font-weight: 600;
 }
 .login-box {
-    margin-top: 20px;
+    margin: 20px auto;
 }
 .login-square, .register-square {
     position: absolute;
@@ -239,12 +239,14 @@ td.cms-actions {
     padding: 18px 25px;
 }
 #cms-pages form > .glass-block-border:not(:last-child),
-#content-gallery form > .glass-block-border:not(:last-child) {
+#content-gallery form > .glass-block-border:not(:last-child),
+#system-configuration form > .glass-block-border:not(:last-child) {
     margin-bottom: 15px;
 }
 #cms-block-editor .elment-block,
 #cms-pages form > .glass-block-border,
-#content-gallery form > .glass-block-border {
+#content-gallery form > .glass-block-border,
+#system-configuration form > .glass-block-border {
     margin: 0;
     padding: 30px 10px 10px 10px;
 }
@@ -262,6 +264,31 @@ td.cms-actions {
     display: block;
 }
 /* End System-Information */
+
+/* Start Syste.-Configuration */
+.system-configuration-result {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    gap: 20px;
+    align-items: self-start;
+}
+.system-configuration-result:not(:last-child) {
+    margin-bottom: 20px;
+}
+.system-configuration-result ul {
+    flex: 1;
+    list-style: none;
+}
+.system-configuration-result ul li {
+    padding: 10px 10px 10px 20px;
+    text-align: left;
+}
+.system-configuration-result ul li:not(:last-child) {
+    margin-bottom: 10px;
+}
+/* End Syste.-Configuration */
 
 /* Start CMS-Blocks, CMS-Pages */
 .col-block-id, .col-page-id {width: 50px;}
@@ -291,6 +318,11 @@ td.cms-actions {
 #cms-block-popup div.fa-3x {
     margin: 30px auto;
     width: fit-content;
+}
+#cms-block-popup h2 {
+    grid-column: span 2;
+    margin: 20px 0 10px 0;
+    text-decoration: underline;
 }
 #cms-block-popup .popup-block {
     background: var(--gridster-block-background);
@@ -337,6 +369,14 @@ td.cms-actions {
     justify-content: space-between;
     align-items: center;
     padding: 3px;
+}
+.cms-page-layout-block[data-sizex="1"] .block-number-pre {
+    display: none;
+}
+.cms-page-layout-block .block-number {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 .cms-page-layout-block .block-navbar .button {
     background-color: #182227;

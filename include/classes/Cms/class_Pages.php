@@ -1,6 +1,8 @@
 <?php
 class Pages
 {
+    private $defaultHomeIdx = 'home';
+
     private $registry;
     private $renderer;
 
@@ -16,6 +18,59 @@ class Pages
     {
         unset($this -> registry);
         unset($this -> renderer);
+    }
+
+    public function getDefaltHomeCode()
+    {
+        return $this -> defaultHomeIdx;
+    }
+
+    /**
+     * Start Frontend-Funtions
+     */
+
+    public function getFrontendPageByCode($pageCode)
+    {
+        $pageData = $this -> registry -> db -> querySingleArray('SELECT * FROM `pages` WHERE `seo_code` = "' . $pageCode . '" AND `page_enable` = 1;');
+
+        if ( is_array($pageData) AND count($pageData) ) {
+            // found by SEO-Code
+            return $this -> _renderForntendPage($pageData);
+        }
+        else {
+            $pageData = $this -> registry -> db -> querySingleArray('SELECT * FROM `pages` WHERE `page_internal` = "' . $pageCode . '" AND `page_enable` = 1;');
+
+            if ( is_array($pageData) AND count($pageData) ) {
+                // found by internal
+                return $this -> _renderForntendPage($pageData);
+            }
+            else {
+                // load 404-Page
+                $pageData = $this -> _renderForntendPage(null);
+
+                $this -> renderer -> loadTemplate('frontend' . DS . '404.htm');
+                    $this -> renderer -> addCustonStyle(array('script' => 'skin/css/frontend/default/404.css'), THIS_SCRIPT);
+                $pageData['content'] = $this -> renderer -> renderTemplate();
+
+                $pageData['title'] = $this -> registry -> user_lang['page_titles']['not_found'];
+
+                return $pageData;
+            }
+        }
+    }
+
+    /**
+     * End Frontend-Funtions
+     */
+
+
+    /**
+     * Start Backtend-Funtions
+     */
+    public function getRenderBlocksFromGridsterJson($jsonData, &$returnArray)
+    {
+        $counter = 0;
+        $this -> _rederLayoutBlocksFromConfig($jsonData, $returnArray, $counter);
     }
 
     public function getCurrentPages()
@@ -53,16 +108,17 @@ class Pages
 
     public function loadPageForEdit($pageId = 0, $formAction = 'savepage')
     {
+        $layoutBlockCount = 0;
+        $layoutBlockData = array(
+                               'header'  => array(),
+                               'content' => array(),
+                               'footer'  => array(),
+                           );
+
+
         if ( ($formAction == 'updatepage') AND ($pageId >= 1) ) {
             // load page for edit
             $pageData = $this -> registry -> db -> querySingleArray('SELECT * FROM `pages` WHERE `page_id` = ' . $pageId);
-
-            $layoutBlockCount = 0;
-            $layoutBlockData = array(
-                                   'header'  => array(),
-                                   'content' => array(),
-                                   'footer'  => array(),
-                               );
 
             if ( is_array($pageData) AND count($pageData) ) {
                 if (strlen($pageData['page_layout'])) {
@@ -76,6 +132,7 @@ class Pages
                     $this -> renderer -> setVariable('cms_page_count'      , $layoutBlockCount);
                     $this -> renderer -> setVariable('cms_page_layout'     , $pageData['page_layout']);
                     $this -> renderer -> setVariable('cms_page_title'      , $pageData['page_title']);
+                    $this -> renderer -> setVariable('cms_page_internal'   , $pageData['page_internal']);
                     $this -> renderer -> setVariable('cms_page_description', $pageData['page_description']);
                     $this -> renderer -> setVariable('cms_page_keywords'   , $pageData['page_keywords']);
                     $this -> renderer -> setVariable('cms_page_seo'        , $pageData['seo_code']);
@@ -99,20 +156,26 @@ class Pages
             }
         }
         else {
+            // generate new JSON-string from default-layout
+            $gridsterJson = $this -> _getDefaultPageLayoutFromConfig();
+
+            $this -> _rederLayoutBlocksFromConfig($gridsterJson, $layoutBlockData, $layoutBlockCount);
+
             // create new page
             $this -> renderer -> loadTemplate('admin' . DS . 'cms' . DS . 'page_editor.htm');
                 $this -> renderer -> setVariable('cms_form_action'     , $formAction);
                 $this -> renderer -> setVariable('cms_page_id'         , $pageId);
-                $this -> renderer -> setVariable('cms_page_count'      , 0);
-                $this -> renderer -> setVariable('cms_page_layout'     , '');
+                $this -> renderer -> setVariable('cms_page_count'      , $layoutBlockCount);
+                $this -> renderer -> setVariable('cms_page_layout'     , $gridsterJson);
                 $this -> renderer -> setVariable('cms_page_title'      , '');
+                $this -> renderer -> setVariable('cms_page_internal'   , '');
                 $this -> renderer -> setVariable('cms_page_description', '');
                 $this -> renderer -> setVariable('cms_page_keywords'   , '');
                 $this -> renderer -> setVariable('cms_page_seo'        , '');
 
-                $this -> renderer -> setVariable('cms_page_layout_header' , '');
+                $this -> renderer -> setVariable('cms_page_layout_header' , implode("\n", $layoutBlockData['header']));
                 $this -> renderer -> setVariable('cms_page_layout_content', '');
-                $this -> renderer -> setVariable('cms_page_layout_footer' , '');
+                $this -> renderer -> setVariable('cms_page_layout_footer' , implode("\n", $layoutBlockData['footer']));
 
                 $this -> renderer -> setVariable('cms_page_enable', '');
                 $this -> renderer -> setVariable('cms_page_home'  , '');
@@ -123,10 +186,11 @@ class Pages
         }
     }
 
-    public function savePage($method, $pageId, $pageTitle, $pageDescription, $pageKeywords, $pageSeo, $pageEnable, $pageIsHome, $pageLayout, $pageBlockCount)
+    public function savePage($method, $pageId, $pageTitle, $pageInternal, $pageDescription, $pageKeywords, $pageSeo, $pageEnable, $pageIsHome, $pageLayout, $pageBlockCount)
     {
         $sqlData = array(
                        'page_title'       => $pageTitle,
+                       'page_internal'    => $pageInternal,
                        'page_enable'      => $pageEnable,
                        'page_layout'      => $pageLayout,
                        'page_description' => $pageDescription,
@@ -142,6 +206,9 @@ class Pages
                 $query = 'UPDATE `pages` SET `is_home` = 0;';
                 $this -> registry -> db -> execute($query);
             }
+
+            $sqlData['page_internal'] = $this -> defaultHomeIdx;
+            $sqlData['seo_code']      = $this -> defaultHomeIdx;
         }
 
         if ( ($method == 'new') AND ($pageId == 0) ) {
@@ -185,7 +252,132 @@ class Pages
             return $this -> renderer -> renderTemplate();
         }
     }
+    /**
+     * Start Backtend-Funtions
+     */
 
+
+    private function _renderForntendPage($pageData)
+    {
+        $pageLayout = null;
+        $rendered = array(
+                        'header'      => '',
+                        'content'     => '',
+                        'footer'      => '',
+                        'navbar'      => '',
+                        'description' => (isset($pageData['page_description']) ? $pageData['page_description'] : ''),
+                        'keywords'    => (isset($pageData['page_keywords'])    ? $pageData['page_keywords']    : ''),
+                        'title'       => (isset($pageData['page_title'])       ? $pageData['page_title']       : $this -> registry -> user_lang['page_titles']['error']),
+                    );
+
+        if ( isset($pageData['page_layout']) AND strlen($pageData['page_layout']) ) {
+            $pageLayout = json_decode(html_entity_decode($pageData['page_layout']), true);
+        }
+
+        if ( !is_array($pageLayout) OR !count($pageLayout) ) {
+            // Error => Load default-Blocks
+            $pageLayout = json_decode($this -> _getDefaultPageLayoutFromConfig(), true);
+        }
+
+        foreach( $pageLayout AS $id => $value ) {
+            if ( is_string($value) ) {
+                $rendered[$value] = $this -> _renderFrontendLayoutSection($pageLayout[$id + 1]);
+                $id++;
+            }
+        }
+
+        return $rendered;
+    }
+
+    private function _getDefaultPageLayoutFromConfig()
+    {
+        $config = new Config();
+
+        $defaultLayoutHeader = html_entity_decode($config -> getConfigValue('default/layout/header'));
+        $defaultLayoutFooter = html_entity_decode($config -> getConfigValue('default/layout/footer'));
+
+        // generate new JSON-string from default-layout
+        $gridsterJson = substr($defaultLayoutHeader, 0, -1) . ',"content",[],' . substr($defaultLayoutFooter, 1);
+
+        return $gridsterJson;
+    }
+
+    private function _renderFrontendLayoutSection($layout)
+    {
+        $blocks = array();
+
+        if ( is_array($layout) AND count($layout) ) {
+            foreach( $layout AS $id => $block ) {
+                if ( empty($block['c_type']) OR !strlen($block['c_type']) ) {
+                    $html = '';
+                    $blockName = 'page_block_blank.htm';
+                }
+                elseif ( $block['c_type'] == 'block' ) {
+                    $query = 'SELECT `block_content` FROM `blocks` WHERE `block_enable` = 1 AND `block_id` = ' . intval($block['c_id']);
+                    $blockContent = $this -> registry -> db -> querySingleItem($query);
+
+                    if ( is_string($blockContent) AND strlen($blockContent) ) {
+                        $html = str_replace("\\r", "", $blockContent);
+                        $html = stripslashes($html);
+                        $html = str_replace(
+                                    array('font-family: &quot;', '&quot;;'),
+                                    array('font-family: \''    , '\';'),
+                                    $html
+                                );
+
+                        $blockName = 'page_block.htm';
+                    }
+                    else {
+                        $html = '';
+                        $blockName = 'page_block_blank.htm';
+                    }
+                }
+                elseif ( $block['c_type'] == 'module' ) {
+                    $class  = $this -> _findClassFromModuleId(intval($block['c_id']));
+                    $module = new $class();
+                    $html   = $module -> getFrontendBlock();
+
+                    $blockName = 'page_block.htm';
+                }
+
+                $this -> renderer -> loadTemplate('frontend' . DS . $blockName);
+                    $this -> renderer -> setVariable('block_content_type', $block['c_type']);
+                    $this -> renderer -> setVariable('block_content_id'  , $block['c_id']);
+                    $this -> renderer -> setVariable('block_col'         , $block['col']);
+                    $this -> renderer -> setVariable('block_row'         , $block['row']);
+                    $this -> renderer -> setVariable('block_size_x'      , $block['size_x']);
+                    $this -> renderer -> setVariable('block_size_y'      , $block['size_y']);
+                    $this -> renderer -> setVariable('block_content'     , $html);
+                $blocks[] = $this -> renderer -> renderTemplate();
+            }
+        }
+        return implode("\n", $blocks);
+    }
+
+    private function _findClassFromModuleId($moduleId)
+    {
+        $modulePath = realpath('include/classes/Modules/');
+        $files = new FileDir($modulePath);
+        $modules = $files -> getFileList('Modules', false);
+
+        if ( is_array($modules) AND count($modules) ) {
+            foreach( $modules AS $classFile ) {
+                $fileName  = basename($classFile);
+                $className = substr($fileName, 6, -4);
+                $moduleClass = new $className();
+                $moduleIdent = $moduleClass -> getModuleId();
+
+                if ( $moduleIdent == $moduleId ) {
+                    return $className;
+                }
+            }
+
+            return false;
+        }
+        else {
+            return false;
+        }
+    }
 
     private function _rederLayoutBlocksFromConfig($config, &$blockOutput, &$blockCount)
     {

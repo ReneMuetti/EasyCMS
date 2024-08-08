@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title><var index_title /></title>
+
+        <meta http-equiv="Content-Type" content="text/html; charset=<var_user_config output_iso_charset />" />
+        <meta http-equiv="Content-Script-Type" content="text/javascript" />
+        <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+        <meta http-equiv="pragma" content="no-cache" />
+        <meta http-equiv="Expires" content="0" />
+
+        <meta name="description" content="<var index_description />" />
+        <meta name="keywords" content="<var index_keywords />" />
+
+        <meta charset="<var_user_config output_iso_charset />" />
+
+        <meta name="robots" content="noindex, nofollow, noarchive" />
+        <meta name="MSSmartTagsPreventParsing" content="true" />
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+
+        <link href="<var_config baseurl />favicon.gif" rel="icon" type="image/icon" />
+        <link href="<var_config baseurl />favicon.gif" rel="icon" type="image/x-icon" />
+        <link href="<var_config baseurl />favicon.gif" rel="shortcut icon" />
+        <link href="<var_config baseurl />favicon.gif" rel="apple-touch-icon" />
+
+        <link rel="stylesheet" type="text/css" href="<var_config baseurl />/skin/js/gridster/jquery.gridster.css" media="screen">
+
+        <link rel="stylesheet" type="text/css" href="<var_config baseurl />skin/css/frontend/<var current_page_skin />/var.css"  media="screen" />
+        <link rel="stylesheet" type="text/css" href="<var_config baseurl />skin/css/frontend/<var current_page_skin />/fonts.css"  media="screen" />
+        <link rel="stylesheet" type="text/css" href="<var_config baseurl />skin/css/frontend/<var current_page_skin />/style.css"  media="screen" />
+
+        <script src="<var_config baseurl />skin/js/jquery-<var global_jquery_version />.min.js"></script>
+        <script src="<var_config baseurl />skin/js/gridster/jquery.dsmorse-gridster.with-extras.min.js"></script>
+        <script src="<var_config baseurl />skin/js/frontend.js"></script>
+
+        <script>
+            let pageWidth = <var default_page_width />;
+            let defaultBlockHeight = <var default_block_height />;
+        </script>
+        <style>
+            :root {
+                --default-page-width: <var default_page_width />px;
+                --default-page-background-light: url("<var current_page_back_light />");
+                --default-page-background-dark: url("<var current_page_back_dark />");
+                --default-block-height: <var default_block_height />px;
+            }
+        </style>
+
+        <var header_js />
+        <var header_css />
+
+        <script type="text/javascript">
+            var baseurl = "<var_config baseurl />";
+            var protokoll = "<var_config protocol />";
+        </script>
+
+        <base href="<var_config baseurl />" />
+    </head>
+    <body>
+        <header>
+            <div class="page-width">
+                <div id="gridster-header" class="gridster">
+                    <var index_header />
+                </div>
+                <nav>
+                    <var index_navbar />
+                </nav>
+            </div>
+        </header>
+        <main id="page-<var current_page_code />">
+            <section id="gridster-content" class="page-width gridster">
+                <var index_content />
+            </section>
+        </main>
+        <footer>
+            <div id="gridster-footer" class="page-width">
+                <var index_footer />
+            </div>
+        </footer>
+
+        <var before_finished />
+    </body>
+</html>

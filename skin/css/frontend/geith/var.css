@@ -1,0 +1,21 @@
+:root {
+    --construction-deg: 5deg;
+
+    --construction-primary-color: #253753;
+    --construction-secondary-color: #A7CCE2;
+
+    --font-color-light: #fff;
+    --font-color-dark: #000;
+
+    --background-color-light: #fff;
+    --background-color-dark: #000;
+
+    --link-normal-color-font: #fff;
+    --link-normal-color-back: transparent;
+    --link-active-color-font: #352783;
+    --link-active-color-back: #8DC2DB;
+    --link-text-normal-color-font: #352783;
+    --link-text-normal-color-back: transparent;
+    --link-text-active-color-font: #352783;
+    --link-text-active-color-back: #8DC2DB;
+}

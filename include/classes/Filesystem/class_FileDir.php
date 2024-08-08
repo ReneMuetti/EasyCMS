@@ -46,7 +46,7 @@ class FileDir
             $f_array = array();
 
             foreach( $this -> file_list AS $file ) {
-                if ( strpos($file, $filter) ) {
+                if ( strpos($file, $filter) !== false ) {
                     if ( $fullInformation === false ) {
                         $f_array[] = $file;
                     }

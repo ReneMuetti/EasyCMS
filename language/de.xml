@@ -3,6 +3,8 @@
     <app_name>Easy CMS</app_name>
     <default_admin_title>Administration</default_admin_title>
     <page_titles>
+        <error>Fehler</error>
+        <not_found>404</not_found>
         <index>Startseite</index>
         <admin>Administration</admin>
         <login>Anmeldung</login>
@@ -25,7 +27,10 @@
         <status_delete>Gelöscht</status_delete>
 		<close>Schließen</close>
 		<abort>Abbrechen</abort>
+		<continue>Fortsetzen ...</continue>
+		<config_error>Konfiguration nicht vorhanden!</config_error>
 		<unkonwn_action>Fehler!! Unbekannte Aktion!</unkonwn_action>
+		<under_construction>im Aufbau</under_construction>
 		<error_loading_module>Fehler!! Das Modul kann nicht geladen werden!</error_loading_module>
 		<error_sending_data>Die Verarbeitung der Daten ist fehlgeschlagen!</error_sending_data>
 		<ajax_error>Ajax-Abfrage-Fehler: </ajax_error>
@@ -47,6 +52,10 @@
 		<file_error_1>Die Datei ist nicht beschreibbar!</file_error_1>
 		<file_error_2>Die Datei konnte nicht gelöscht werden!</file_error_2>
 	</global>
+	<frontend>
+	    <error_page_not_found>Die angegebene Seite wurde nicht gefunden.</error_page_not_found>
+	    <error_page_got_to_home>Bitte gehen Sie zur Startseite</error_page_got_to_home>
+	</frontend>
 	<database>
 	    <line> Zeile</line>
 	    <query> Abfrage</query>
@@ -151,6 +160,12 @@
 	    <user_enable>Aktiviert</user_enable>
 	    <user_admin>Admin</user_admin>
 
+	    <config_save>Konfiguration speichern</config_save>
+	    <config_return>Zurück zur Konfiguration</config_return>
+	    <config_no_save_data>Es wurden keine Änderungen vorgenommen</config_no_save_data>
+	    <config_saved_okay>Einstellunge gespeichert für: </config_saved_okay>
+	    <config_saved_fail>Fehler beim Speichenr für: </config_saved_fail>
+
 	    <navigation_structure>Navigations-Menü</navigation_structure>
 	    <navigation_new_entry>neuen Menüpunkt anlegen</navigation_new_entry>
 	    <navigation_new_edit_entry>Menüpunkt anlegen oder bearbeiten</navigation_new_edit_entry>
@@ -168,6 +183,10 @@
 	    <navigation_message_no_cms_page_selected>Es wurde keine CMS-Seite angegeben!</navigation_message_no_cms_page_selected>
 	    <navigation_message_no_external_link>Es wurde kein externer Link angegeben!</navigation_message_no_external_link>
 
+	    <cms_modules_section>Module</cms_modules_section>
+	    <cms_modules_contact_form>Kontakt-Formular</cms_modules_contact_form>
+
+	    <cms_block_section>CMS-Blöcke</cms_block_section>
 	    <cms_block_new>neuer CMS-Block</cms_block_new>
 	    <cms_block_options>CMS-Block Optionen</cms_block_options>
 	    <cms_block_title>CMS-Block Titel</cms_block_title>
@@ -187,6 +206,8 @@
 	    <cms_page_layout_content>Inhalts-Layout</cms_page_layout_content>
 	    <cms_page_layout_footer>Footer-Layout</cms_page_layout_footer>
 	    <cms_page_options>Seiten-Einstellungen</cms_page_options>
+	    <cms_page_internal>interner Bezeichner</cms_page_internal>
+	    <cms_page_internal_ph>aus dem internen Bezeichner wird der SEO-Link erzeugt</cms_page_internal_ph>
 	    <cms_page_title>CMS-Seiten Titel</cms_page_title>
 	    <cms_page_title_ph>Bitte einen Seiten-Bezeichner eingeben</cms_page_title_ph>
 	    <cms_page_keywords>Schlüsselwörter</cms_page_keywords>
@@ -194,14 +215,14 @@
 	    <cms_page_description>Beschreibung</cms_page_description>
 	    <cms_page_description_ph>kurze Beschreibung des Seiten-Inhaltes</cms_page_description_ph>
 	    <cms_page_seo>SEO-URL</cms_page_seo>
-	    <cms_page_seo_ph>SEO-URL angeben (leer lassen für automatische Verarbeitung)</cms_page_seo_ph>
+	    <cms_page_seo_ph>SEO-URL angeben (leer lassen für automatische Erstellung)</cms_page_seo_ph>
 	    <cms_page_home>als Startseite setzen</cms_page_home>
 	    <cms_page_status>CMS-Seite aktivieren</cms_page_status>
 	    <cms_page_editor>CMS-Seite bearbeiten</cms_page_editor>
 	    <cms_page_save>CMS-Seite speichern</cms_page_save>
 	    <cms_page_new_block>neuen Block einfügen</cms_page_new_block>
-	    <cms_page_new_block_title>Block Nr</cms_page_new_block_title>
-	    <cms_page_block_popup_title>Blockinhalt {{id}} zuordnen</cms_page_block_popup_title>
+	    <cms_page_new_block_title>Block </cms_page_new_block_title>
+	    <cms_page_block_popup_title>Blockinhalt zu Block {{id}} zuordnen</cms_page_block_popup_title>
 	    <cms_page_save_success>Die CMS-Seite wurde gespeichert.</cms_page_save_success>
 	    <cms_page_save_fail>Fehler beim Speichern der CMS-Seite!</cms_page_save_fail>
 	    <cms_page_load_fail>Die CMS-Seite konnte nicht geladen werden!</cms_page_load_fail>

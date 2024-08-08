@@ -2,8 +2,6 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Erstellungszeit: 14. Jul 2024 um 05:07
 -- Server-Version: 10.6.18-MariaDB-0ubuntu0.22.04.1
 -- PHP-Version: 8.3.6
 
@@ -109,6 +107,7 @@ CREATE TABLE `navigation` (
 CREATE TABLE `pages` (
   `page_id` int(10) PRIMARY KEY AUTO_INCREMENT NOT NULL,
   `page_title` varchar(100) NOT NULL DEFAULT '',
+  `page_internal` varchar(100) NOT NULL DEFAULT '',
   `page_enable` int(1) NOT NULL DEFAULT 1,
   `page_layout` text NOT NULL,
   `page_description` varchar(255) NOT NULL,
@@ -193,7 +192,8 @@ ALTER TABLE `navigation`
 -- Indizes für die Tabelle `pages`
 --
 ALTER TABLE `pages`
-  ADD PRIMARY KEY (`page_id`);
+  ADD PRIMARY KEY (`page_id`),
+  ADD KEY `idx_page_internal` (`page_internal`);
 
 --
 -- Indizes für die Tabelle `secure`

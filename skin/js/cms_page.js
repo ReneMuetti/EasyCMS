@@ -45,6 +45,19 @@ $(document).ready(function(){
                       })
                       .data("gridster");
     });
+
+    $("#cms-page-internal").on("input keydown keyup", function() {
+        let currInternalVal = $(this).val();
+        let newSeo;
+
+        if ( currInternalVal.length ) {
+            newSeo = currInternalVal.toLowerCase();
+            newSeo = newSeo.replace(/[^a-z0-9\s]/g, '');
+            newSeo = newSeo.replace(/\s+/g, '-');
+        }
+
+        $("#cms-page-seo").val(newSeo);
+    });
 });
 
 function loadPopupContent()
@@ -132,6 +145,15 @@ function getNextFreeNumberForNewBlock()
             break;
         }
     }
+}
+
+function clearBlockById(selectCmsBlockId)
+{
+    $('#' + prefix + selectCmsBlockId).attr("data-content-type", "")
+                                      .attr("data-content-id", "");
+    $('#' + prefix + "content-" + selectCmsBlockId).html("");
+
+    saveBlockPositions();
 }
 
 function selectCmsBlock(senderElement)
@@ -238,11 +260,19 @@ function saveBlockPositions()
         $("#blockcount").val(blockCounter);
     }
     else {
+        // this is only in config-page for Default-Page-Configuration
+
         if ( $("#default-layout-header").length ) {
-            $("#default-layout-header").val( JSON.stringify(layoutConfig[1]) );
+            let tmpArray = [];
+            tmpArray.push(layoutConfig[0], layoutConfig[1]);
+
+            $("#default-layout-header").val( JSON.stringify(tmpArray) );
         }
         if ( $("#default-layout-footer").length ) {
-            $("#default-layout-footer").val( JSON.stringify(layoutConfig[3]) );
+            let tmpArray = [];
+            tmpArray.push(layoutConfig[2], layoutConfig[3]);
+
+            $("#default-layout-footer").val( JSON.stringify(tmpArray) );
         }
     }
 }

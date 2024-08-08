@@ -3,7 +3,7 @@ $config = new Config();
 
 if ( isset($website -> GPC['do']) ) {
     switch($website -> GPC['do']) {
-        case 'update_config' : // Update
+        case 'update_config' : $pageContent = $config -> updateCurrentConfig();
                                break;
         default: $pageContent = $config -> getCurrentConfig();
                  break;

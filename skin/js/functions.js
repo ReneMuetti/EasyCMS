@@ -1,5 +1,5 @@
 /**
- * gobal functions for Translation-Tool
+ * gobal functions for EasyCMS
  */
 
 function nl2br (str, is_xhtml) {
