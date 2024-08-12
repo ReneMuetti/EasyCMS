@@ -104,7 +104,16 @@ main > section {
     color: var(--link-text-active-color-font);
     background: var(--link-text-active-color-back)
 }
-
+#page-impressum #gridster-content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+#page-impressum #gridster-content div.gs-w {
+    position: initial;
+}
+#page-impressum #gridster-content div.gs-w:last-child {
+    grid-column: span 2;
+}
 #page-impressum div.gs-w,
 #page-datenschutz div.gs-w {
     min-height: calc( var(--data-sizey) * var(--default-block-height) );
@@ -117,11 +126,15 @@ main > section {
     margin-bottom: 0;
 }
 #page-datenschutz div.gs-w,
-#page-datenschutz #gridster-content {
+#page-datenschutz #gridster-content,
+#page-impressum #gridster-content {
     position: initial;
     height: auto !important;
 }
 #page-kontakt {
+}
+.desktop-block {
+    display: block;
 }
 
 /**

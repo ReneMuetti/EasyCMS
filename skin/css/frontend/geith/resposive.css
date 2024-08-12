@@ -1,0 +1,164 @@
+@media screen and (max-width: 1250px ) {
+    .page-width {
+        padding: 0 15px;
+        width: 97vw;
+    }
+    #gridster-header, #gridster-content, #gridster-footer {
+        width: calc( 100vw - 30px ) !important;
+        gap: 15px;
+        margin: 0;
+    }
+    #gridster-header, #gridster-footer {
+        min-height: auto !important;
+        height: 100px;
+    }
+    #gridster-header img {
+        height: 95%;
+    }
+    #gridster-content img {
+        width: 100%;
+    }
+    #gridster-header > div.gs-w, #gridster-content > div.gs-w, #gridster-footer > div.gs-w {
+        width: calc((var(--data-sizex) / var(--data-col-count) * 100%) - 45px);
+        left: calc((var(--data-col) - 1) / var(--data-col-count) * 100% + 15px);
+        height: max-content;
+        position: absolute;
+    }
+    #gridster-header > div.gs-w:first-child {
+        min-width: max-content;
+    }
+    #gridster-footer div:last-child {
+        margin-top: 2%;
+    }
+    #gridster-footer > div:last-child a {
+        margin: 0;
+        min-width: max-content;
+    }
+    #header-company {
+        margin-top: 1%;
+    }
+}
+@media screen and (max-width: 1030px ) {
+    #gridster-header > div.gs-w:last-child {
+        margin-left: 15px;
+    }
+
+    #header-company-name {
+        font-size: 4rem;
+    }
+    #header-company-first {
+        font-size: 1.5rem;
+    }
+    #header-company-secound {
+        font-size: 0.8rem;
+    }
+    #header-company-secound .dot-spacer {
+        padding: 0 10px;
+    }
+    #header-company {
+        width: auto;
+    }
+
+    div.empty-block {
+        display: none;
+    }
+
+    #gridster-content {
+        display: grid;
+        grid-template-columns: 1fr;
+        height: fit-content !important;
+    }
+    #gridster-content > div.gs-w {
+        width: initial;
+        height: initial;
+        position: initial;
+    }
+    .desktop-block {
+        display: initial;
+    }
+}
+@media screen and (max-width: 865px ) {
+    #gridster-header > div.gs-w {
+        position: initial;
+        width: max-content;
+    }
+    #header-company-name {
+        font-size: 3rem;
+    }
+    #header-company-secound {
+        display: none;
+    }
+    .mobile-block {
+        display: block;
+    }
+    #gridster-content {
+        grid-template-rows: min-content;
+    }
+    #gridster-content > div.gs-w {
+        height: max-content;
+    }
+    #page-impressum #gridster-content {
+        grid-template-columns: 1fr;
+    }
+    #page-impressum #gridster-content div.gs-w:last-child {
+        grid-column: initial;
+    }
+}
+@media screen and (max-width: 780px ) {
+    #gridster-content {
+        gap: 0;
+    }
+    #gridster-footer {
+        justify-content: space-between;
+    }
+    #gridster-footer > div.gs-w {
+        position: initial;
+        width: initial;
+        margin: 0;
+    }
+     #gridster-footer div:last-child {
+        margin: 0;
+     }
+     .desktop-block {
+        display: block;
+    }
+}
+@media screen and (max-width: 610px ) {
+    #header-company-first {
+        font-size: 1.2rem;
+    }
+}
+@media screen and (max-width: 555px ) {
+    #header-company {
+        grid-template-columns: 1fr;
+        margin: 0;
+    }
+    #header-company-name {
+        line-height: initial;
+        grid-row: initial;
+        font-size: 2rem;
+    }
+    #header-company-first {
+        grid-column: initial;
+        font-size: 1rem;
+    }
+    #header-company-first .mobile-block {
+        display: initial;
+    }
+}
+@media screen and (max-width: 495px ) {
+    #header-company-first .mobile-block {
+        display: block;
+    }
+    #gridster-footer .dot-spacer {
+        display: none;
+    }
+}
+@media screen and (max-width: 360px ) {
+     #header-company-name {
+        font-size: 1.2rem;
+    }
+    #header-company-first {
+       font-size: 0.8rem;
+    }
+}

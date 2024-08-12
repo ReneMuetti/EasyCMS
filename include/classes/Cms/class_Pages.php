@@ -348,6 +348,7 @@ class Pages
                     $this -> renderer -> setVariable('block_size_x'      , $block['size_x']);
                     $this -> renderer -> setVariable('block_size_y'      , $block['size_y']);
                     $this -> renderer -> setVariable('block_content'     , $html);
+                    $this -> renderer -> setVariable('page_col_count'    , 8);               // see cms_page.js:21 (TODO: configurable)
                 $blocks[] = $this -> renderer -> renderTemplate();
             }
         }
