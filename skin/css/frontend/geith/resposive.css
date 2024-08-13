@@ -37,6 +37,10 @@
     #header-company {
         margin-top: 1%;
     }
+
+    #page-kontakt div.gs-w {
+        height: inherit;
+    }
 }
 @media screen and (max-width: 1030px ) {
     #gridster-header > div.gs-w:last-child {
@@ -75,6 +79,17 @@
     }
     .desktop-block {
         display: initial;
+    }
+
+    #page-kontakt #gridster-content {
+        height: initial !important;
+    }
+    #page-kontakt div.gs-w {
+        height: inherit;
+    }
+
+    #construction-container .board {
+        top: 150px;
     }
 }
 @media screen and (max-width: 865px ) {
@@ -123,9 +138,19 @@
         display: block;
     }
 }
+@media screen and (max-width: 690px ) {
+    #construction-container .board {
+        font-size: 2.5rem;
+    }
+}
 @media screen and (max-width: 610px ) {
     #header-company-first {
         font-size: 1.2rem;
+    }
+}
+@media screen and (max-width: 585px ) {
+    #construction-container .board {
+        font-size: 2rem;
     }
 }
 @media screen and (max-width: 555px ) {

@@ -171,6 +171,10 @@ main > section {
 /**
  * under construction
  */
+#construction-container {
+    height: inherit;
+    position: relative;
+ }
 #construction-container:before {
     content: "";
     position: absolute;
@@ -199,8 +203,8 @@ main > section {
 #construction-container .board:before {
     content: "";
     position: absolute;
-    top: -134px;
-    height: 134px;
+    top: -85px;
+    height: 85px;
     display: block;
     left: 30px;
     right: 30px;
