@@ -11,3 +11,5 @@ Simple and Easy CMS-System
 | Splide | 4.1.3 | https://github.com/Splidejs/splide |
 | Font Awesome | 6.5.2 | https://fontawesome.com/ |
 | DancingScript | 2.001 | https://github.com/googlefonts/DancingScript |
+| Inconsolata | 3.000 | https://github.com/googlefonts/Inconsolata |
+| Optima | -- | https://www.typewolf.com/optima |
