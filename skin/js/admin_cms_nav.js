@@ -117,6 +117,15 @@ function deleteItem(itemNumber)
     }
 }
 
+function secureString(text)
+{
+    return text.replace(/[^a-zA-Z0-9\s]/g, "")  // remove all non-alphanumeric characters
+               .replace(/<|>/g, "")             // remove single characters ("<" and ">")
+               .replace(/<!--|--!?>/g, "")      // remove all HTML comment start and end tags
+               .replace(/[<>"'&]/g, "")         // remove potentially dangerous characters
+               .replace(/\.\.\//g, "")          // remove path-elements
+               .replace(/<\/?[^>]+>/gi, "");    // remove HTML-Tags
+}
 
 function createNewNavigationElement(navData)
 {
@@ -146,12 +155,7 @@ function createNewNavigationElement(navData)
         elementDescription = navData.url;
     }
 
-    navData.title = navData.title.replace(/<\/?[^>]+>/gi, "")     // remove HTML-Tags
-                                 .replace(/[<>"'&]/g, "")         // remove potentially dangerous characters
-                                 .replace(/<!--|--!?>/g, "")      // remove all HTML comment start and end tags
-                                 .replace(/<|>/g, "")             // remove single characters ("<" and ">")
-                                 .replace(/\.\.\//g, "")          // remove path-elements
-                                 .replace(/[^a-zA-Z0-9\s]/g, ""); // remove all non-alphanumeric characters
+    navData.title = secureString(navData.title);
 
     if ( $("#" + navData.id).length ) {
         // update existing element
