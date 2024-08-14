@@ -119,6 +119,8 @@ function deleteItem(itemNumber)
 
 function secureString(text)
 {
+    return $("<div></div>").text(text).html();
+/*
     text = text.replace(/[^a-zA-Z0-9\s]/g, ""); // remove all non-alphanumeric characters
     text = text.replace(/<|>/g, "");            // remove single characters ("<" and ">")
     text = text.replace(/<!--|--!?>/g, "");     // remove all HTML comment start and end tags
@@ -127,6 +129,7 @@ function secureString(text)
     text = text.replace(/<\/?[^>]+>/gi, "");    // remove HTML-Tags
 
     return text
+*/
 }
 
 function createNewNavigationElement(navData)
