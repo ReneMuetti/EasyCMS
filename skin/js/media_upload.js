@@ -128,7 +128,11 @@ function uploadChunk(file, offset)
                 }
             }
             else {
-                progressStatus.html( message_upload_progress + ": " + index + " " + message_upload_progress_pice + " [" + filename + "]" );
+                progressStatus.html( escapeHTML(message_upload_progress) + ": " +
+                                     escapeHTML(index) + " " +
+                                     escapeHTML(message_upload_progress_pice) + " [" +
+                                     escapeHTML(filename) + "]"
+                                   );
             }
 
             if (offset + chunkSize < file.size) {
@@ -147,4 +151,8 @@ function uploadChunk(file, offset)
 
     let chunk = file.slice(offset, offset + chunkSize);
     fileReader.readAsDataURL(chunk);
+}
+
+function escapeHTML(text) {
+    return $('<div>').text(text).html();
 }
