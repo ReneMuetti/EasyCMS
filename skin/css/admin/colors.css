@@ -10,6 +10,10 @@
     --gridster-block-selected: #00AE00;
     --gridster-toolbar-background: #919ca2;
 
+    --navigatrion-editor-background: #efefef;
+    --navigatrion-editor-border-color: #333;
+    --navigatrion-editor-item-background: #ddd;
+
     --media-manager-grid-background: #f9f9f9;
 
     --rgb-color-bar-red: rgba(255,0,0,1);

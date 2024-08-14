@@ -1,5 +1,5 @@
 :root {
-    --admin-background-image: url("../../images/admin_page.jpg");
+    --admin-background-image: url("/skin/images/admin_page.jpg");
 }
 
 body {
@@ -265,7 +265,7 @@ td.cms-actions {
 }
 /* End System-Information */
 
-/* Start Syste.-Configuration */
+/* Start System-Configuration */
 .system-configuration-result {
     max-width: 1000px;
     margin: 0 auto;
@@ -288,7 +288,7 @@ td.cms-actions {
 .system-configuration-result ul li:not(:last-child) {
     margin-bottom: 10px;
 }
-/* End Syste.-Configuration */
+/* End System-Configuration */
 
 /* Start CMS-Blocks, CMS-Pages */
 .col-block-id, .col-page-id {width: 50px;}
@@ -395,8 +395,10 @@ td.cms-actions {
 
 /* Start Navigation */
 #nav-container {
-    width: 600px;
+    min-width: 1000px;
+    width: 90%;
     margin: 20px auto 0 auto;
+    padding: 20px;
 }
 #nav-container li {
     list-style-type: none;
@@ -432,6 +434,127 @@ td.cms-actions {
 #cms-nav-form-first-row .elment-block {
     padding: 0;
 }
+.cms-home {
+    font-weight: bold;
+}
+.cms-disable {
+    font-style: italic;
+}
+
+#nav-template, #nav-template li > ul {
+    background: var(--navigatrion-editor-background);
+    border: 2px solid var(--navigatrion-editor-border-color);
+    padding: 10px;
+    width: 100%;
+}
+#nav-template {
+    border-radius: 3px;
+}
+#nav-template li {
+    background: var(--navigatrion-editor-item-background);
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    line-height: 4rem;
+}
+#nav-template li:not(:last-child) {
+    margin-bottom: 5px;
+}
+#nav-template li:before {
+    background: var(--navigatrion-editor-item-background);
+    font-family: "Font Awesome 6 Free";
+    font-style: normal;
+    text-decoration: none;
+    content: "\f58e";
+    padding: 23px 15px;
+    cursor: pointer;
+    line-height: 1rem;
+}
+#nav-template li > span:nth-child(2) {
+    margin-left: auto;
+    text-align: left;
+    width: 500px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+#nav-template li > span:nth-child(3) {
+    width: 250px;
+    text-align: center;
+    line-height: 1rem;
+}
+#nav-template li[data-type="1"] > span:first-child:after {
+    font-family: "Font Awesome 6 Free";
+    font-style: normal;
+    text-decoration: none;
+    content: "\f08e";
+    margin-left: 10px;
+    color: var(--color-fail-font);
+}
+#nav-template li > ul {
+    margin: 10px 10px 10px 30px;
+    border-width: 1px;
+    min-height: 20px;
+}
+#nav-template > li.item-disable,
+#nav-template ul > li.item-disable {
+    font-style: italic;
+    text-decoration: line-through;
+}
+#nav-template li a {
+    font-family: "Font Awesome 6 Free";
+    font-size: 2rem;
+    font-style: normal;
+    line-height: 2rem;
+    text-decoration: none;
+    width: 55px;
+    height: 45px;
+    display: inline-block;
+    text-align: center;
+    margin: 10px 25px 10px 0;
+    border-radius: 3px;
+    border: 1px solid transparent;
+    padding: 5px;
+}
+#nav-template > li a.nav-item-change-state,
+#nav-template ul > li a.nav-item-change-state {
+    border-color: var(--color-okay-font);
+    color: var(--color-okay-font);
+    background: var(--color-okay-back);
+}
+#nav-template > li a.nav-item-change-state:before,
+#nav-template ul > li a.nav-item-change-state:before {
+    content: "\f205";
+}
+#nav-template > li.item-disable a.nav-item-change-state,
+#nav-template ul > li.item-disable a.nav-item-change-state {
+    border-color: var(--color-fail-font);
+    color: var(--color-fail-font);
+    background: var(--color-fail-back);
+}
+#nav-template > li.item-disable a.nav-item-change-state:before,
+#nav-template ul > li.item-disable a.nav-item-change-state:before {
+    content: "\f204";
+}
+#nav-template li a.nav-item-edit {
+    border-color: var(--color-okay-font);
+    color: var(--color-okay-font);
+    background: var(--color-okay-back);
+}
+#nav-template li a.nav-item-edit:before {
+    content: "\f044";
+}
+#nav-template li a.nav-item-delete {
+    border-color: var(--color-warn-font);
+    color: var(--color-warn-font);
+    background: var(--color-warn-back);
+    margin-right: 0;
+}
+#nav-template li a.nav-item-delete:before {
+    content: "\f2ed";
+}
+
 /* End Navigation */
 
 /* Start Media-Manager */

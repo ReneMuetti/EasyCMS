@@ -18,7 +18,7 @@ $(document).ready(function(){
                           "widget_base_dimensions": [140, 180],
                           "widget_margins"        : [5, 5],
                           "min_cols"              : 4,
-                          "max_cols"              : 8,
+                          "max_cols"              : 8,              // TODO: configurable
                           "resize": {
                               "enabled": true,
                               "stop"   : function() {

@@ -2,6 +2,7 @@
 <div id="nav-container" class="glass-block-border glass-border">
     <div class="glass-block">
         <h2><lang admin_navigation_structure /></h2>
+        <var cms_navigation_add_button />
         <ul id="nav-template">
 <var cms_navigation />
         </ul>
@@ -9,9 +10,10 @@
 </div>
 
 <div id="cms-nav-popup">
-    <input type="hidden" name="nav_id" name="nav-id" value="" />
-    <input type="hidden" name="nav_id" name="nav-parent-id" value="" />
-    <input type="hidden" name="nav_id" name="nav-position" value="" />
+    <input type="hidden" name="nav_id" id="nav-id" value="" />
+    <input type="hidden" name="nav_item_id" id="nav-item-id" value="0" />
+    <input type="hidden" name="nav_parent_id" id="nav-parent-id" value="" />
+    <input type="hidden" name="nav_position" id="nav-position" value="" />
     <div id="cms-nav-form" class="glass-block-border glass-border">
         <div class="glass-block">
             <h2><lang admin_navigation_new_edit_entry /></h2>
@@ -66,8 +68,12 @@
 
 <script type="text/javascript">
     let navigationEmpty = <var current_nav_empty />;
+    let navigationDefault = "<lang admin_navigation_default_entry />";
     let message_no_title_exits = "<lang admin_navigation_message_no_title_exits />";
     let message_no_cms_page_selected = "<lang admin_navigation_message_no_cms_page_selected />";
     let message_no_external_link = "<lang admin_navigation_message_no_external_link />"
+    let message_element_not_found = "<lang admin_navigation_message_element_not_found />"
 </script>
-<script type="text/javascript" src="<var_config baseurl />skin/js/admin_cms_nav.js"></script>
+
+<script src="<var_config baseurl />skin/js/jquery-ui/jquery-ui.min.js"></script>
+<script src="<var_config baseurl />skin/js/admin_cms_nav.js"></script>
