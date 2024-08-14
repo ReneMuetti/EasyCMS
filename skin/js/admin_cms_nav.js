@@ -146,7 +146,9 @@ function createNewNavigationElement(navData)
         elementDescription = navData.url;
     }
 
-    navData.title = navData.title.replace(/<\/?[^>]+>/gi, "").replace(/[<>]/g, "");
+    navData.title = navData.title.replace(/<\/?[^>]+>/gi, "")     // remove HTML-Tags
+                                 .replace(/[<>"'&]/g, "")         // Remove potentially dangerous characters
+                                 .replace(/[^a-zA-Z0-9\s]/g, ""); // Remove all non-alphanumeric characters
 
     if ( $("#" + navData.id).length ) {
         // update existing element
