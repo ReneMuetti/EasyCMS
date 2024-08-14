@@ -147,8 +147,11 @@ function createNewNavigationElement(navData)
     }
 
     navData.title = navData.title.replace(/<\/?[^>]+>/gi, "")     // remove HTML-Tags
-                                 .replace(/[<>"'&]/g, "")         // Remove potentially dangerous characters
-                                 .replace(/[^a-zA-Z0-9\s]/g, ""); // Remove all non-alphanumeric characters
+                                 .replace(/[<>"'&]/g, "")         // remove potentially dangerous characters
+                                 .replace(/<!--|--!?>/g, "")      // remove all HTML comment start and end tags
+                                 .replace(/<|>/g, "")             // remove single characters ("<" and ">")
+                                 .replace(/\.\.\//g, "")          // remove path-elements
+                                 .replace(/[^a-zA-Z0-9\s]/g, ""); // remove all non-alphanumeric characters
 
     if ( $("#" + navData.id).length ) {
         // update existing element
@@ -162,7 +165,7 @@ function createNewNavigationElement(navData)
         $("#" + navData.id + " span:nth-child(2)").html(elementDescription);
     }
     else {
-        // create new Element
+        // create new element
         let newEmptySubNav = $("<ul></ul>", {
                                  "id"                 : "sub-" + navData.id,
                                  "data-parent-element": navData.id,
