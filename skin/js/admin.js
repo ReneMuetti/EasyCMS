@@ -50,6 +50,10 @@ function _fixedSpecialCharacters(strToFixed)
                      .replace("&szlig;", "ß");
 }
 
+function escapeHTML(text) {
+    return $("<div></div>").text(text).html();
+}
+
 JSON.stringify = JSON.stringify || function (obj)
 {
     var t = typeof (obj);

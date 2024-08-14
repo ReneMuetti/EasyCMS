@@ -152,7 +152,3 @@ function uploadChunk(file, offset)
     let chunk = file.slice(offset, offset + chunkSize);
     fileReader.readAsDataURL(chunk);
 }
-
-function escapeHTML(text) {
-    return $('<div>').text(text).html();
-}

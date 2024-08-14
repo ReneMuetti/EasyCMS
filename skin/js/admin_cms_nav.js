@@ -117,21 +117,6 @@ function deleteItem(itemNumber)
     }
 }
 
-function secureString(text)
-{
-    return $("<div></div>").text(text).html();
-/*
-    text = text.replace(/[^a-zA-Z0-9\s]/g, ""); // remove all non-alphanumeric characters
-    text = text.replace(/<|>/g, "");            // remove single characters ("<" and ">")
-    text = text.replace(/<!--|--!?>/g, "");     // remove all HTML comment start and end tags
-    text = text.replace(/[<>"'&]/g, "");        // remove potentially dangerous characters
-    text = text.replace(/\.\.\//g, "");         // remove path-elements
-    text = text.replace(/<\/?[^>]+>/gi, "");    // remove HTML-Tags
-
-    return text
-*/
-}
-
 function createNewNavigationElement(navData)
 {
     let styleClass, elementDescription;
@@ -160,7 +145,7 @@ function createNewNavigationElement(navData)
         elementDescription = navData.url;
     }
 
-    navData.title = secureString(navData.title);
+    navData.title = escapeHTML(navData.title);
 
     if ( $("#" + navData.id).length ) {
         // update existing element
