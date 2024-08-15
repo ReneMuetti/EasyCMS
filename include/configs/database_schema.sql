@@ -22,7 +22,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `accounts`
+-- Table structure for table `accounts`
 --
 
 CREATE TABLE `accounts` (
@@ -37,7 +37,7 @@ CREATE TABLE `accounts` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `blocks`
+-- Table structure for table `blocks`
 --
 
 CREATE TABLE `blocks` (
@@ -52,7 +52,7 @@ CREATE TABLE `blocks` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `config`
+-- Table structure for table `config`
 --
 
 CREATE TABLE `config` (
@@ -67,7 +67,7 @@ CREATE TABLE `config` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `gallery`
+-- Table structure for table `gallery`
 --
 
 CREATE TABLE `gallery` (
@@ -84,24 +84,28 @@ CREATE TABLE `gallery` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `navigation`
+-- Table structure for table `navigation`
 --
 
 CREATE TABLE `navigation` (
   `nav_id` int(10) PRIMARY KEY AUTO_INCREMENT NOT NULL,
-  `title` varchar(100) NOT NULL DEFAULT '',
-  `parent` int(10) NOT NULL DEFAULT 0,
-  `type` int(1) NOT NULL DEFAULT 0,
-  `cms_page` int(10) NOT NULL,
-  `link` varchar(255) NOT NULL,
-  `enable` int(1) NOT NULL DEFAULT 1,
-  `position` int(5) NOT NULL
+  `item_id` int(10) NOT NULL DEFAULT 1,
+  `item_element` varchar(100) NOT NULL DEFAULT '',
+  `item_title` varchar(100) NOT NULL DEFAULT '',
+  `item_class` varchar(100) NOT NULL DEFAULT '',
+  `item_pos` int(5) NOT NULL DEFAULT 1,
+  `item_parent` varchar(100) NOT NULL DEFAULT '',
+  `item_enable` int(1) NOT NULL DEFAULT 1,
+  `item_home` int(1) NOT NULL DEFAULT 1,
+  `item_type` int(1) NOT NULL DEFAULT 0,
+  `item_cms` int(10) NOT NULL DEFAULT -1,
+  `item_url` varchar(1024) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `pages`
+-- Table structure for table `pages`
 --
 
 CREATE TABLE `pages` (
@@ -121,7 +125,7 @@ CREATE TABLE `pages` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `secure`
+-- Table structure for table `secure`
 --
 
 CREATE TABLE `secure` (
@@ -133,7 +137,7 @@ CREATE TABLE `secure` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -155,7 +159,7 @@ CREATE TABLE `users` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 --
--- Indizes der exportierten Tabellen
+-- Indexes of the exported tables
 --
 
 --
@@ -165,92 +169,92 @@ ALTER TABLE `accounts`
   ADD PRIMARY KEY (`userid`);
 
 --
--- Indizes für die Tabelle `blocks`
+-- Indexes for the table `blocks`
 --
 ALTER TABLE `blocks`
   ADD PRIMARY KEY (`block_id`);
 
 --
--- Indizes für die Tabelle `config`
+-- Indexes for the table `config`
 --
 ALTER TABLE `config`
   ADD PRIMARY KEY (`config_id`);
 
 --
--- Indizes für die Tabelle `gallery`
+-- Indexes for the table `gallery`
 --
 ALTER TABLE `gallery`
   ADD PRIMARY KEY (`gallery_id`);
 
 --
--- Indizes für die Tabelle `navigation`
+-- Indexes for the table `navigation`
 --
 ALTER TABLE `navigation`
   ADD PRIMARY KEY (`nav_id`);
 
 --
--- Indizes für die Tabelle `pages`
+-- Indexes for the table `pages`
 --
 ALTER TABLE `pages`
   ADD PRIMARY KEY (`page_id`),
   ADD KEY `idx_page_internal` (`page_internal`);
 
 --
--- Indizes für die Tabelle `secure`
+-- Indexes for the table `secure`
 --
 ALTER TABLE `secure`
   ADD PRIMARY KEY (`id`),
   ADD KEY `idx_secure_hash` (`secure`,`hash`);
 
 --
--- Indizes für die Tabelle `users`
+-- Indexes for the table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD KEY `idx_user_name` (`username`);
 
 --
--- AUTO_INCREMENT für exportierte Tabellen
+-- AUTO_INCREMENT for exported tables
 --
 
 --
--- AUTO_INCREMENT für Tabelle `blocks`
+-- AUTO_INCREMENT for the table `blocks`
 --
 ALTER TABLE `blocks`
   MODIFY `block_id` int(10) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT für Tabelle `config`
+-- AUTO_INCREMENT for the table `config`
 --
 ALTER TABLE `config`
   MODIFY `config_id` int(10) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT für Tabelle `gallery`
+-- AUTO_INCREMENT for the table `gallery`
 --
 ALTER TABLE `gallery`
   MODIFY `gallery_id` int(10) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT für Tabelle `navigation`
+-- AUTO_INCREMENT for the table `navigation`
 --
 ALTER TABLE `navigation`
   MODIFY `nav_id` int(10) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT für Tabelle `pages`
+-- AUTO_INCREMENT for the table `pages`
 --
 ALTER TABLE `pages`
   MODIFY `page_id` int(10) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT für Tabelle `secure`
+-- AUTO_INCREMENT for the table `secure`
 --
 ALTER TABLE `secure`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT für Tabelle `users`
+-- AUTO_INCREMENT for the table `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;

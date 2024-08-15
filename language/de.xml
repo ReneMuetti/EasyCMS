@@ -169,6 +169,7 @@
         <navigation_default_entry>Home</navigation_default_entry>
 	    <navigation_structure>Navigations-Menü</navigation_structure>
 	    <navigation_new_entry>neuen Menüpunkt anlegen</navigation_new_entry>
+	    <navigation_save>Navigation speichern</navigation_save>
 	    <navigation_new_edit_entry>Menüpunkt anlegen oder bearbeiten</navigation_new_edit_entry>
 	    <navigation_save_entry>Menüpunkt speichern</navigation_save_entry>
 	    <navigation_entry_titel>Titel</navigation_entry_titel>
@@ -184,6 +185,9 @@
 	    <navigation_message_no_cms_page_selected>Es wurde keine CMS-Seite angegeben!</navigation_message_no_cms_page_selected>
 	    <navigation_message_no_external_link>Es wurde kein externer Link angegeben!</navigation_message_no_external_link>
 	    <navigation_message_element_not_found>Das Element wurde nicht gefunden!</navigation_message_element_not_found>
+	    <navigation_message_successfuly_saved>Die Navigations wurde gescpeichert</navigation_message_successfuly_saved>
+	    <navigation_message_save_error>Beim Speichern der Navigation ist ein Fehler aufgetreten!</navigation_message_save_error>
+	    <navigation_message_json_error>Das Prüfen der Daten ist fehlgeschlagen!</navigation_message_json_error>
 
 	    <cms_modules_section>Module</cms_modules_section>
 	    <cms_modules_contact_form>Kontakt-Formular</cms_modules_contact_form>

@@ -2,13 +2,16 @@ let cmsNavPopup;
 let cmsNavContainer;
 let currentNavEntry;
 
+let navContainer = "nav-template";
 let prefix = "nav-item-";
+let prefixSub = "sub-";
+let defaultClass = "ui-sortable-handle";
 let disableClass = "item-disable";
 let maxElementCount = 2000;
 
 $(document).ready(function(){
     cmsNavPopup = $("#cms-nav-popup");
-    cmsNavContainer = $("#nav-template");
+    cmsNavContainer = $("#" + navContainer);
 
     applySortableToElement(cmsNavContainer);
 
@@ -18,21 +21,55 @@ $(document).ready(function(){
     if ( navigationEmpty == true ) {
         currentNavEntry = {};
         currentNavEntry.id          = prefix + "1";
-        currentNavEntry.itemId      = 0;
+        currentNavEntry.itemId      = "1";
         currentNavEntry.title       = navigationDefault;
-        currentNavEntry.position    = 1;
+        currentNavEntry.position    = "1";
         currentNavEntry.parent      = "";
-        currentNavEntry.enable      = false;
-        currentNavEntry.type        = 0;
-        currentNavEntry.cms         = -1;
+        currentNavEntry.enable      = "false";
+        currentNavEntry.isHome      = "true";
+        currentNavEntry.type        = "0";
+        currentNavEntry.cms         = "-1";
         currentNavEntry.cmsTitle    = "";
         currentNavEntry.url         = "";
         currentNavEntry.insertInto  = "";
-        currentNavEntry.isHome      = "true";
 
         createNewNavigationElement(currentNavEntry);
     }
+    else {
+        bindSortingToElements();
+        restoreParentOrder();
+        createNewJsonData();
+    }
 });
+
+function bindSortingToElements()
+{
+    if ( $("#" + navContainer + " li").length ) {
+        $("#" + navContainer + " li").each(function() {
+            if ( $(this).attr("data-home") == "true" ) {
+                $("#" + prefixSub + $(this).attr("id") ).remove();
+                return false;
+            }
+        });
+    }
+
+    if ( $("#" + navContainer + " ul").length ) {
+        $("#" + navContainer + " ul").each(function() {
+            applySortableToElement( $("#" + $(this).attr("id")) );
+        });
+    }
+}
+
+function restoreParentOrder()
+{
+    if ( $("#" + navContainer + " li").length ) {
+        $("#" + navContainer + " li").each(function() {
+            if ( $(this).attr("data-parent").length ) {
+                $(this).detach().appendTo( "#" + prefixSub + $(this).attr("data-parent") );
+            }
+        });
+    }
+}
 
 function applySortableToElement(newElement)
 {
@@ -43,9 +80,16 @@ function applySortableToElement(newElement)
                   "dropOnEmpty"     : true,
                   "revert"          : true,
 
+                  "sort" : function(event, ui) {
+                               // Dummy :: TODO :: better way?
+                               console.log( "sort elements..." );
+                           },
                   "start": function(event, ui) {
                                ui.placeholder.height( ui.item.height() );
-                           }
+                           },
+                  "stop" : function(event, ui) {
+                               setNewPositionAfterMoving(navContainer, 1);
+                           },
               })
               .disableSelection();
 }
@@ -53,6 +97,7 @@ function applySortableToElement(newElement)
 function resetPopupFormElements()
 {
     $("#nav-id").val("");
+    $("#nav-home").val("false");
     $("#nav-parent-id").val("");
     $("#nav-item-id").val("0");
     $("#nav-position").val("0");
@@ -90,6 +135,7 @@ function editItem(itemNumber)
         $("#nav-id").val( $(elementId).attr("id") );
         $("#nav-item-id").val( itemNumber );
 
+        $("#nav-home").val( $(elementId).attr("data-home") );
         $("#nav-title").val( $(elementId).attr("data-title") );
         $("#nav-position").val( $(elementId).attr("data-position") );
         $("#nav-parent-id").val( $(elementId).attr("data-parent") );
@@ -111,6 +157,7 @@ function deleteItem(itemNumber)
 
     if ( $(elementId).length ) {
         $(elementId).remove();
+        setNewPositionAfterMoving(navContainer, 1);
     }
     else {
         alert( message_element_not_found + " (" + elementId + ")" );
@@ -130,10 +177,10 @@ function createNewNavigationElement(navData)
     }
 
     if ( navData.enable == true ) {
-        styleClass = "";
+        styleClass = defaultClass;
     }
     else {
-        styleClass = disableClass;
+        styleClass = defaultClass + " " + disableClass;
     }
 
     if ( navData.type == 0 ) {
@@ -160,35 +207,20 @@ function createNewNavigationElement(navData)
     }
     else {
         // create new element
-        let newEmptySubNav = $("<ul></ul>", {
-                                 "id"                 : "sub-" + navData.id,
-                                 "data-parent-element": navData.id,
-                             });
+        let template = $("template").html();
 
-        let newItem = $("<li></li>", {
-                          "id"   : navData.id,
-                          "html" : "<span>" + navData.title + "</span>" +
-                                   "<span title=\"" + elementDescription + "\">" + elementDescription + "</span>" +
-                                   "<span>" +
-                                       "<a href=\"javascript:void(0)\" class=\"nav-item-change-state\" onclick=\"switchStatus(" + navData.itemId + ")\"></a>" +
-                                       "<a href=\"javascript:void(0)\" class=\"nav-item-edit\" onclick=\"editItem(" + navData.itemId + ")\"></a>" +
-                                       "<a href=\"javascript:void(0)\" class=\"nav-item-delete\" onclick=\"deleteItem(" + navData.itemId + ")\"></a>" +
-                                   "</span>",
-                          "class": styleClass,
-
-                          "data-item-id" : navData.itemId,
-                          "data-title"   : navData.title,
-                          "data-position": navData.position,
-                          "data-parent"  : navData.parent,
-                          "data-enable"  : navData.enable,
-                          "data-type"    : navData.type,
-                          "data-cms"     : navData.cms,
-                          "data-url"     : navData.url,
-                      });
-
-        if ( navData.isHome == false ) {
-            newItem.append(newEmptySubNav);
-        }
+        let newItem = template.replace(/{{item_element}}/g    , navData.id)
+                              .replace(/{{item_class}}/g      , styleClass)
+                              .replace(/{{item_title}}/g      , navData.title)
+                              .replace(/{{item_id}}/g         , navData.itemId)
+                              .replace(/{{item_pos}}/g        , navData.position)
+                              .replace(/{{item_parent}}/g     , navData.parent)
+                              .replace(/{{item_enable}}/g     , navData.enable)
+                              .replace(/{{item_home}}/g       , navData.home)
+                              .replace(/{{item_type}}/g       , navData.type)
+                              .replace(/{{item_cms}}/g        , navData.cms)
+                              .replace(/{{item_url}}/g        , navData.url)
+                              .replace(/{{item_decription}}/g , elementDescription);
 
         if ( navData.insertInto == "" ) {
             cmsNavContainer.append(newItem);
@@ -202,11 +234,19 @@ function createNewNavigationElement(navData)
             }
         }
 
-        applySortableToElement(newEmptySubNav);
+        if ( navData.isHome == true ) {
+             $("#" + prefixSub + navData.id).remove();
+        }
+        else {
+            applySortableToElement( $("#" + prefixSub + navData.id) );
+        }
     }
 
     // reset Pop-Element
     resetPopupFormElements();
+
+    // reset all item positions
+    setNewPositionAfterMoving(navContainer, 1);
 }
 
 function showPopup()
@@ -267,6 +307,7 @@ function saveNavEntry()
     currentNavEntry.position    = $("#nav-position").val();
     currentNavEntry.parent      = $("#nav-parent-id").val();
     currentNavEntry.enable      = $("#nav-status").prop("checked");
+    currentNavEntry.home        = $("#nav-home").val();
     currentNavEntry.type        = $("#nav-type").prop("selectedIndex");
     currentNavEntry.cms         = $("#nav-destination-cms").prop("selectedIndex");
     currentNavEntry.cmsTitle    = $("#nav-destination-cms option:selected").text();
@@ -276,42 +317,6 @@ function saveNavEntry()
 
     createNewNavigationElement(currentNavEntry);
     hidePopup();
-
-    /*
-
-    $.ajax({
-        "url"   : baseurl + "ajax_navigation.php",
-        "method": "POST",
-        "data"  : {
-                      "nav-id"      : $("#nav-id").val(),
-                      "nav-parent"  : $("#nav-parent-id").val(),
-                      "nav-position": $("#nav-position").val(),
-                      "nav-title"   : $("#nav-title").val(),
-                      "nav-enable"  : $("#nav-status").prop("checked"),
-                      "nav-type"    : $("#nav-type").prop("selectedIndex"),
-                      "nav-cms"     : $("#nav-destination-cms").prop("selectedIndex"),
-                      "nav-url"     : $("#nav-destination-external").val(),
-                  },
-        "beforeSend": function() {
-                      }
-    })
-    .done(function(result){
-        let ajaxReturn = $.parseJSON(result);
-
-        if ( ajaxReturn.error == true ) {
-            alert( ajaxReturn.message );
-        }
-        else {
-            // insert new Element
-
-            hidePopup();
-        }
-    })
-    .fail(function(jqXHR, textStatus){
-        alert( ajax_error + textStatus );
-    });
-
-    */
 }
 
 function getNextFreeNumberForNewNavElement()
@@ -329,4 +334,48 @@ function getNextFreeNumberForNewNavElement()
             break;
         }
     }
+}
+
+function setNewPositionAfterMoving(element, counter)
+{
+    if ( $("#" + element + " > li").length ) {
+        $("#" + element + " > li").each(function() {
+            $(this).attr("data-position", counter);
+            $(this).attr("data-parent"  , $("#" + element).attr("data-parent-element") );
+
+            let subId = prefixSub + $(this).attr("id");
+            if ( $("#" + subId + " > li").length ) {
+                setNewPositionAfterMoving(subId, 1);
+            }
+
+            counter++;
+        });
+    }
+
+    createNewJsonData();
+}
+
+function createNewJsonData()
+{
+    let navData = [];
+
+    if ( $("#" + navContainer + " li").length ) {
+        $("#" + navContainer + " li").each(function() {
+            navData.push({
+                        "item-id" : $(this).attr("data-item-id"),
+                        "id"      : $(this).attr("id"),
+                        "title"   : $(this).attr("data-title"),
+                        "class"   : $(this).attr("class"),
+                        "position": $(this).attr("data-position"),
+                        "parent"  : $(this).attr("data-parent"),
+                        "enable"  : $(this).attr("data-enable"),
+                        "home"    : $(this).attr("data-home"),
+                        "type"    : $(this).attr("data-type"),
+                        "cms-id"  : $(this).attr("data-cms"),
+                        "url"     : $(this).attr("data-url"),
+                    });
+        });
+    }
+
+    $("#nav-data").val( JSON.stringify(navData) );
 }

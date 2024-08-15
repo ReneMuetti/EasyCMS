@@ -400,6 +400,9 @@ td.cms-actions {
     margin: 20px auto 0 auto;
     padding: 20px;
 }
+#nav-container .button {
+    margin: 0;
+}
 #nav-container li {
     list-style-type: none;
 }

@@ -1,3 +1,9 @@
-<div class="elment-block">
+<div class="elment-block flex-2" style="justify-content:space-between;">
     <button class="button" onclick="showPopup()"><lang admin_navigation_new_entry /></button>
+    <form action="<var_config baseurl />admin_index.php" method="post">
+        <input type="hidden" name="action" value="cms_navigation" />
+        <input type="hidden" name="do" value="save_navigation" />
+        <input type="hidden" name="nav_data" id="nav-data" value='' />
+        <input type="submit" class="button" value="<lang admin_navigation_save />" />
+    </form>
 </div>
