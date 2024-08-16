@@ -3,6 +3,7 @@ Simple and Easy CMS-System
 
 | using | version | link |
 | --- | --- | --- |
+| PHPMailer | 6.9.1 | https://github.com/PHPMailer/PHPMailer |
 | Bootstrap | 3.4.1 | https://github.com/twbs/bootstrap |
 | jQuery | 3.7.1 | https://github.com/jquery/jquery |
 | jQuery UI | 1.14.0-beta.2 | https://github.com/jquery/jquery-ui |
