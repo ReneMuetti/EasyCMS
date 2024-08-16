@@ -128,7 +128,8 @@ main > section {
 #page-datenschutz div.gs-w,
 #page-datenschutz #gridster-content,
 #page-impressum #gridster-content,
-#page-kontakt div.gs-w {
+#page-kontakt div.gs-w,
+#page-kontakt #gridster-content {
     position: initial;
     height: auto !important;
 }

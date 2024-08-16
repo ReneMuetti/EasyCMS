@@ -144,6 +144,9 @@
     }
 }
 @media screen and (max-width: 610px ) {
+    .page-width {
+        width: 90vw;
+    }
     #header-company-first {
         font-size: 1.2rem;
     }
@@ -177,6 +180,46 @@
     }
     #gridster-footer .dot-spacer {
         display: none;
+    }
+
+    .message-success, .message-warning, .message-error {
+        padding: 5px 20px;
+    }
+
+    .input-field {
+        flex: auto;
+        min-width: initial;
+    }
+    .input-field input,
+    .input-field textarea {
+        height: 35px;
+        font-size: 0.9rem;
+        border-width: 1px
+    }
+    .input-field textarea {
+        height: 200px;
+    }
+    .input-field label {
+        font-size: 0.8rem;
+        top: 15px;
+    }
+    .input-field input[type="checkbox"] ~ label {
+        font-size: 0.8rem;
+    }
+    .input-field input:focus ~ label,
+    .input-field textarea:focus ~ label,
+    .input-field input:not(:placeholder-shown) ~ label,
+    .input-field textarea:not(:placeholder-shown) ~ label {
+        top: -4px;
+        font-size: 0.8rem;
+    }
+    .form-section:not(:last-child) {
+        margin-bottom: 15px;
+    }
+    .form-section .button {
+        max-width: initial;
+        padding: 15px;
+        font-size: 1rem;
     }
 }
 @media screen and (max-width: 360px ) {
