@@ -52,9 +52,27 @@
 		<file_error_1>Die Datei ist nicht beschreibbar!</file_error_1>
 		<file_error_2>Die Datei konnte nicht gelöscht werden!</file_error_2>
 	</global>
+	<mail>
+	    <sender_name>Kontaktanfrage Webseite</sender_name>
+	    <test_mail>Test-Mail :: Webseite</test_mail>
+	    <error_mail_not_send>Ihre Nachricht konnte nicht gesendet werden!</error_mail_not_send>
+	    <send_mail_success>Ihre Nachricht wurde erfolgreich versendet.</send_mail_success>
+	</mail>
 	<frontend>
 	    <error_page_not_found>Die angegebene Seite wurde nicht gefunden.</error_page_not_found>
 	    <error_page_got_to_home>Bitte gehen Sie zur Startseite</error_page_got_to_home>
+	    <contact_required_info>* Pflichtfelder</contact_required_info>
+	    <contact_label_name>Name / Firma</contact_label_name>
+	    <contact_label_name_ph>Bitte Name oder Firma angeben</contact_label_name_ph>
+	    <contact_label_phone>Telefon / Handy</contact_label_phone>
+	    <contact_label_phone_ph>Bitte Telefon- oder Handy-Nummer angeben</contact_label_phone_ph>
+	    <contact_label_email>E-Mail-Adresse</contact_label_email>
+	    <contact_label_email_ph>Bitte E-Mail-Adresse angeben</contact_label_email_ph>
+	    <contact_label_copy>Kopie der Anfrage an mein Postfach senden</contact_label_copy>
+	    <contact_label_message>Anfrage / Nachricht</contact_label_message>
+	    <contact_label_message_ph>Bitte geben Sie hier ihre Nachricht ein...</contact_label_message_ph>
+	    <contact_send_message>Anfrage absenden</contact_send_message>
+	    <contact_form_required_field_missing>Es wurde nicht alle Pflichtfelder ausgefüllt!</contact_form_required_field_missing>
 	</frontend>
 	<database>
 	    <line> Zeile</line>

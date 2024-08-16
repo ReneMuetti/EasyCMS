@@ -1,1 +1,39 @@
-123
+<div id="message-block" class="form-section">
+    <div class="message-error"><lang frontend_contact_required_info /></div>
+</div>
+<div class="form-section">
+    <div class="input-field">
+        <input type="text" id="contact-name" value="" placeholder="<lang frontend_contact_label_name_ph />" required="required" spellcheck="false" />
+        <label for="contact-name"><lang frontend_contact_label_name /></label>
+    </div>
+</div>
+<div class="form-section">
+    <div class="input-field">
+        <input type="tel" id="contact-phone" value="" placeholder="<lang frontend_contact_label_phone_ph />" spellcheck="false" pattern="^(\+49|0)[1-9]\d{1,4}(\s?\d{1,12}){1,3}$" />
+        <label for="contact-phone"><lang frontend_contact_label_phone /></label>
+    </div>
+    <div class="input-field">
+        <input type="email" id="contact-email" value="" placeholder="<lang frontend_contact_label_email_ph />" required="required" spellcheck="false" />
+        <label for="contact-email"><lang frontend_contact_label_email /></label>
+    </div>
+</div>
+<div class="form-section">
+    <div class="input-field">
+        <input type="checkbox" id="contact-copy" value="" />
+        <label for="contact-copy"><lang frontend_contact_label_copy /></label>
+    </div>
+</div>
+<div class="form-section">
+    <div class="input-field">
+        <textarea id="contact-message" placeholder="<lang frontend_contact_label_message_ph />" required="required" spellcheck="false"></textarea>
+        <label for="contact-message"><lang frontend_contact_label_message /></label>
+    </div>
+</div>
+<div class="form-section">
+    <button class="button" onclick="sendForm()"><lang frontend_contact_send_message /></button>
+</div>
+
+<script>
+    let contact_form_required_field_missing = "<lang frontend_contact_form_required_field_missing />";
+</script>
+<script src="<var_config baseurl />skin/js/contact_form.js"></script>

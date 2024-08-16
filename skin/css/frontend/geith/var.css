@@ -18,4 +18,30 @@
     --link-text-normal-color-back: transparent;
     --link-text-active-color-font: #352783;
     --link-text-active-color-back: #8DC2DB;
+
+    --form-element-input-border: #6B6B6B;
+    --form-element-input-border-active: #EC0000;
+    --form-element-input-background: #f8f8f8;
+    --form-element-input-font-color: #000;
+    --form-element-input-placeholder: #7D7D7D;
+    --form-element-input-placeholder-opacity: 0;
+    --form-element-input-label: #7D7D7D;
+    --form-element-input-label-focus-color: #fff;
+    --form-element-input-label-focus-background: #6B6B6B;
+    --form-element-input-label-fail-color: #ffcdd2;
+    --form-element-input-label-fail-background: #c62828;
+    --form-element-input-label-fail-border: #c62828;
+    --form-element-button-background: #fff;
+    --form-element-button-color: #000;
+    --form-element-button-shadow: rgba(0, 0, 0, 0.3);
+    --form-element-button-hover-background: rgba(0, 0, 0, 0.2);
+    --form-element-button-hover-color: #fff;
+    --form-element-button-hover-shadow: rgba(0, 0, 0, 0.7);
+
+    --form-element-error-color: #c62828;
+    --form-element-error-background: #ffcdd2;
+    --form-element-warning-color: #a68b00;
+    --form-element-warning-background: #fff0c2;
+    --form-element-success-color: #388e3c;
+    --form-element-success-background: #c8e6c9;
 }

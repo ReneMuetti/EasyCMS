@@ -127,7 +127,8 @@ main > section {
 }
 #page-datenschutz div.gs-w,
 #page-datenschutz #gridster-content,
-#page-impressum #gridster-content {
+#page-impressum #gridster-content,
+#page-kontakt div.gs-w {
     position: initial;
     height: auto !important;
 }
@@ -235,4 +236,165 @@ main > section {
 }
 #construction-container .board h1:after {
     right: 24px;
+}
+
+/**
+ * Message-Elemente
+ */
+#message-block {
+    gap: 0;
+}
+.message-success, .message-warning, .message-error {
+    padding: 10px 20px;
+    width: 100%;
+    font-size: 1.1rem;
+    font-weight: bold;
+    position: relative;
+    border-left: 5px solid transparent;
+}
+.message-success:before, .message-warning:before, .message-error:before {
+    content: '';
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 10px solid transparent;
+    position: absolute;
+    left: 0px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+}
+.message-success {
+    color: var(--form-element-success-color);
+    background: var(--form-element-success-background);
+    border-left-color: var(--form-element-success-color);
+}
+.message-success:before {
+    border-left-color: var(--form-element-success-color);
+}
+.message-warning {
+    color: var(--form-element-warning-color);
+    background: var(--form-element-warning-background);
+    border-left-color: var(--form-element-warning-color);
+}
+.message-warning:before {
+    border-left-color: var(--form-element-warning-color);
+}
+.message-error {
+    color: var(--form-element-error-color);
+    background: var(--form-element-error-background);
+    border-left-color: var(--form-element-error-color);
+}
+.message-error:before {
+    border-left-color: var(--form-element-error-color);
+}
+
+
+/**
+ * Form-Elements
+ */
+.form-section * {
+    box-sizing: border-box;
+}
+.form-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+.form-section:not(:last-child) {
+    margin-bottom: 30px;
+}
+.input-field {
+    flex: 1 1 calc(50% - 15px);
+    min-width: 400px;
+    position: relative;
+}
+.input-field input,
+.input-field textarea {
+    width: 100%;
+    height: 60px;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    padding: 3px 15px;
+    border: 2px solid var(--form-element-input-border);
+    background: var(--form-element-input-background);
+    color: var(--form-element-input-font-color);
+    outline: none;
+}
+.input-field textarea {
+    padding: 15px;
+    font-size: 1rem;
+    height: 400px;
+    resize: none;
+}
+.input-field input::placeholder,
+.input-field textarea::placeholder {
+    color: var(--form-element-input-placeholder);
+    opacity: var(--form-element-input-placeholder-opacity);
+}
+.input-field label {
+    font-size: 1.2rem;
+    font-weight: bold;
+    position: absolute;
+    top: 30px;
+    left: 15px;
+    transform: translateY(-50%);
+    color: var(--form-element-input-label);
+    pointer-events: none;
+    transition: .3s ease-in-out;
+    border-radius: 3px;
+    padding: 0 10px;
+}
+.input-field input[required] + label:after,
+.input-field textarea[required] + label:after {
+    content: "*";
+    color: var(--form-element-required-color);
+    margin-left: 5px;
+}
+.input-field input:focus,
+.input-field textarea:focus {
+    border-color: var(--form-element-input-border-active);
+}
+.input-field input:focus ~ label,
+.input-field textarea:focus ~ label,
+.input-field input:not(:placeholder-shown) ~ label,
+.input-field textarea:not(:placeholder-shown) ~ label {
+    top: 0;
+    font-size: 1rem;
+    background: var(--form-element-input-label-focus-background);
+    color: var(--form-element-input-label-focus-color);
+}
+.input-field input:focus:invalid,
+.input-field input:not(:placeholder-shown):invalid,
+.input-field textarea:focus:invalid,
+.input-field textarea:not(:placeholder-shown):invalid {
+    border-color: var(--form-element-input-label-fail-background);
+}
+.input-field input:focus:invalid ~ label,
+.input-field input:not(:placeholder-shown):invalid ~ label,
+.input-field textarea:focus:invalid ~ label,
+.input-field textarea:not(:placeholder-shown):invalid ~ label {
+    background: var(--form-element-input-label-fail-background);
+    color: var(--form-element-input-label-fail-color);
+}
+.form-section .button {
+    width: 100%;
+    background: var(--form-element-button-background);
+    outline: none;
+    padding: 20px 20px;
+    border-radius: 7px;
+    color: var(--form-element-button-color);
+    box-shadow: 0 5px 15px var(--form-element-button-shadow);
+    font-weight: bold;
+    font-size: 1.1rem;
+    max-width: 50%;
+    min-width: 240px;
+}
+.form-section .button:hover,
+.form-section .button:active {
+    background: var(--form-element-button-hover-background);
+    color: var(--form-element-button-hover-color);
+    box-shadow: 0 5px 15px var(--form-element-button-hover-shadow);
 }

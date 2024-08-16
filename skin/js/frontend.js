@@ -24,3 +24,14 @@ $(document).ready(function() {
                           .disable();
     });
 });
+
+function _fixedSpecialCharacters(strToFixed)
+{
+    return strToFixed.replace("&uuml;" , "ü")
+                     .replace("&Uuml;" , "Ü")
+                     .replace("&auml;" , "ä")
+                     .replace("&Auml;" , "A")
+                     .replace("&ouml;" , "ö")
+                     .replace("&Ouml;" , "Ö")
+                     .replace("&szlig;", "ß");
+}

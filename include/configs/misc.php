@@ -19,9 +19,14 @@ $config_data['Mail']['smtpauth'] = TRUE;
 $config_data['Mail']['username'] = '** email-username **';
 $config_data['Mail']['address']  = '** email-sender-address **';
 $config_data['Mail']['password'] = '** email-password **';
-$config_data['Mail']['port']     = '25';
+$config_data['Mail']['port']     = '** email-server-port **';
 $config_data['Mail']['secure']   = FALSE;
 $config_data['Mail']['protocol'] = '** encryption-method **';
+$config_data['Mail']['sender']   = '** Title for Recipient **';
+$config_data['Mail']['subject']  = '** Default Subject **';
+$config_data['Mail']['rec_mail'] = '** E-Mail fom Recipient **';
+$config_data['Mail']['rec_name'] = '** Name for Recipient **';
+$config_data['Mail']['dev_mail'] = '** E-Mail for Developer-BCC and for Debug-Mode **';
 
 $config_data['Misc']['path']              = APP_ROOT;
 $config_data['Misc']['media_directory']   = 'media';
