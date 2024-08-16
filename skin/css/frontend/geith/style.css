@@ -379,6 +379,16 @@ main > section {
     background: var(--form-element-input-label-fail-background);
     color: var(--form-element-input-label-fail-color);
 }
+.input-field input[type="checkbox"] {
+    width: 30px;
+    height: 30px;
+}
+.input-field input[type="checkbox"] ~ label {
+    left: initial;
+    top: 16px;
+    background: initial;
+    color: initial;
+}
 .form-section .button {
     width: 100%;
     background: var(--form-element-button-background);
