@@ -93,7 +93,7 @@ else {
         $renderer -> setVariable('global_header', $header);
         $renderer -> setVariable('global_footer', $footer);
 
-        $renderer -> addCustonStyle(array('script' => 'skin/css/login-register.css'), THIS_SCRIPT);
+        $renderer -> addCustonStyle(array('script' => 'skin/css/admin/login-register.css'), THIS_SCRIPT);
     }
 
     print_output($renderer -> renderTemplate());
