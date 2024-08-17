@@ -14,3 +14,4 @@ Simple and Easy CMS-System
 | DancingScript | 2.001 | https://github.com/googlefonts/DancingScript |
 | Inconsolata | 3.000 | https://github.com/googlefonts/Inconsolata |
 | Optima | -- | https://www.typewolf.com/optima |
+| FavIcon Admin | -- | https://www.pngegg.com/en/png-eeqmv |
