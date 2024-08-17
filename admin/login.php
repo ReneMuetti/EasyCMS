@@ -54,7 +54,7 @@ else {
 
         $renderer -> loadTemplate(THIS_TEMPLATE . '/dialog.htm');
             $renderer -> setVariable('language', $website -> GPC['lang']);
-            $renderer -> addCustonStyle(array('script' => 'skin/css/login-register.css'), THIS_SCRIPT);
+            $renderer -> addCustonStyle(array('script' => 'skin/css/admin/login-register.css'), THIS_SCRIPT);
         $output = $renderer -> renderTemplate();
         $renderer -> addContent(THIS_SCRIPT . '_content', $output);
     }
