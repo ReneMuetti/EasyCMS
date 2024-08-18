@@ -194,6 +194,8 @@
 	    <navigation_entry_titel_ph>Titel für neuen Eintrag</navigation_entry_titel_ph>
 	    <navigation_entry_type>Eintrag-Typ</navigation_entry_type>
 	    <navigation_entry_type_internal>interner Link (CMS-Seite)</navigation_entry_type_internal>
+	    <navigation_entry_type_dummy>unverlinkter Eintrag</navigation_entry_type_dummy>
+	    <navigation_entry_type_dummy_info>Dieser Menü-Typ benötigt keine weiteren Einstellungen.</navigation_entry_type_dummy_info>
 	    <navigation_entry_type_external>externer Link</navigation_entry_type_external>
 	    <navigation_entry_destination_cms>CMS-Seite auswählen</navigation_entry_destination_cms>
 	    <navigation_entry_destination_external>externer Link</navigation_entry_destination_external>

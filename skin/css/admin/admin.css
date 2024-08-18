@@ -407,8 +407,7 @@ td.cms-actions {
     list-style-type: none;
 }
 #cms-nav-popup:not(.active),
-#nav_type_0:not(.active),
-#nav_type_1:not(.active) {
+#cms-nav-popup div[id^="nav_type_"]:not(.active) {
     display: none;
 }
 #cms-nav-popup.active {
@@ -464,11 +463,16 @@ td.cms-actions {
 #nav-template li:not(:last-child) {
     margin-bottom: 5px;
 }
-#nav-template li:before {
-    background: var(--navigatrion-editor-item-background);
+#nav-template li:before,
+#nav-template li[data-type="1"] > span:first-child:after,
+#nav-template li[data-type="2"] > span:first-child:after {
     font-family: "Font Awesome 6 Free";
     font-style: normal;
     text-decoration: none;
+
+}
+#nav-template li:before {
+    background: var(--navigatrion-editor-item-background);
     content: "\f58e";
     padding: 23px 15px;
     cursor: pointer;
@@ -488,11 +492,13 @@ td.cms-actions {
     line-height: 1rem;
 }
 #nav-template li[data-type="1"] > span:first-child:after {
-    font-family: "Font Awesome 6 Free";
-    font-style: normal;
-    text-decoration: none;
-    content: "\f08e";
     margin-left: 10px;
+    content: "\f07c";
+    color: var(--color-warn-font);
+}
+#nav-template li[data-type="2"] > span:first-child:after {
+    margin-left: 10px;
+    content: "\f08e";
     color: var(--color-fail-font);
 }
 #nav-template li > ul {

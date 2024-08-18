@@ -259,11 +259,14 @@ function hidePopup()
     cmsNavPopup.removeClass("active");
 }
 
-function changeCmsNavType(element)
+function changeCmsNavType(element, maxCount)
 {
     let newSelect = $(element).val();
 
-    $("#nav_type_0, #nav_type_1").removeClass("active");
+    for ( let cnt = 0; cnt <= maxCount; cnt++ ) {
+        $("#nav_type_" + cnt).removeClass("active");
+    }
+
     $("#nav_type_" + newSelect).addClass("active");
 }
 
@@ -285,6 +288,15 @@ function saveNavEntry()
             alert( message_no_cms_page_selected );
             return false;
         }
+    }
+    else if ( $("#nav-type").prop("selectedIndex") == 1 ) {
+        // create empty-Item
+
+        // reset internal Page-Selector
+        $("#nav-destination-cms").prop("selectedIndex", 0).change();
+
+        // reset external URL
+        $("#nav-destination-external").val("");
     }
     else {
         // reset internal Page-Selector

@@ -35,9 +35,10 @@
                 <div class="elment-block">
                     <label for="nav_type"><lang admin_navigation_entry_type /></label>
                     <div class="select-box glass-block-border glass-border">
-                        <select name="nav_type" id="nav-type" onchange="changeCmsNavType(this)">
+                        <select name="nav_type" id="nav-type" onchange="changeCmsNavType(this, 3)">
                             <option value="0" selected><lang admin_navigation_entry_type_internal /></option>
-                            <option value="1"><lang admin_navigation_entry_type_external /></option>
+                            <option value="1"><lang admin_navigation_entry_type_dummy /></option>
+                            <option value="2"><lang admin_navigation_entry_type_external /></option>
                         </select>
                     </div>
                 </div>
@@ -50,6 +51,9 @@
                     </div>
                 </div>
                 <div class="elment-block" id="nav_type_1">
+                    <b><lang admin_navigation_entry_type_dummy_info /></b>
+                </div>
+                <div class="elment-block" id="nav_type_2">
                     <label for="nav_destination_external"><lang admin_navigation_entry_destination_external /></label>
                     <input type="text" class="glass-border" name="nav_destination_external" id="nav-destination-external" placeholder="<lang admin_navigation_destination_external_ph />" value="" />
                 </div>
