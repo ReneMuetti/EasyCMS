@@ -3,6 +3,7 @@
 //ini_set ('display_errors', 'On');
 
 date_default_timezone_set('Europe/Berlin');
+locale_set_default('de-DE');
 
 if ( !is_file( realpath('./include/configs/database.php') ) OR !is_file( realpath('./include/configs/misc.php') ) ) {
     die("<!DOCTYPE html><html><head><title>ERROR</title><link rel=\"shortcut icon\" href=\"favicon.ico\"></head><body><p>The website has not yet been configured.</p></body></html>");
@@ -25,23 +26,31 @@ require_once( realpath('./include/helper/xml.php') );   // XML-Functions
  */
 require_once( realpath('./include/functions/function_init.php') );
 
+// Current Session
+define ('SESSION', $website -> config['Session']['name']);
+session_name(SESSION);
+session_start();
 
 if ( !defined('LOCAL_CHARSET') ) {
     define('LOCAL_CHARSET', $website -> config['Misc']['charset']);
+}
+
+if ( !defined('CHARSET') ) {
+    define('CHARSET', $website -> config['Misc']['charset']);
 }
 
 if ( !defined('TIMENOW') ) {
     define('TIMENOW', time());
 }
 
+if ( !defined('DS') ) {
+    define('DS', DIRECTORY_SEPARATOR );
+}
+
 if ( !defined('DIR') ) {
-    define('DIR', $website -> config['Misc']['path'] . '/');
+    define('DIR', $website -> config['Misc']['path'] . DS);
 }
 
 if ( !defined('BASEDIR') ) {
-    define('BASEDIR', $website -> config['Misc']['path'] . '/');
-}
-
-if ( !defined('DS') ) {
-    define('DS', DIRECTORY_SEPARATOR );
+    define('BASEDIR', $website -> config['Misc']['path'] . DS);
 }

@@ -9,6 +9,8 @@ else {
     $config_data['Cms']['version'] = '!!ERROR!!';
 }
 
+$config_data['Session']['name'] = '** Default-Session-Name **';
+
 $config_data['Host']['protocol'] = 'https';
 $config_data['Host']['host']     = '** full-domain-name **';
 $config_data['Host']['script']   = THIS_SCRIPT . '.php';

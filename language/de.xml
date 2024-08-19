@@ -171,6 +171,8 @@
 	    <error_profile_cannot_deleted>Dieses Profil kann nicht gelöscht werden!</error_profile_cannot_deleted>
 	</profile>
 	<admin>
+	    <date_time_error>Datum-Zeit-Fehler!</date_time_error>
+
 	    <confirmed>Bestätigt</confirmed>
 	    <pending>Unbestätigt</pending>
 
@@ -183,6 +185,14 @@
 	    <config_no_save_data>Es wurden keine Änderungen vorgenommen</config_no_save_data>
 	    <config_saved_okay>Einstellunge gespeichert für: </config_saved_okay>
 	    <config_saved_fail>Fehler beim Speichenr für: </config_saved_fail>
+
+	    <dashboard_greeting_morning>Guten Morgen</dashboard_greeting_morning>
+	    <dashboard_greeting_day>Guten Tag</dashboard_greeting_day>
+	    <dashboard_greeting_evening>Guten Abend</dashboard_greeting_evening>
+	    <dashboard_greeting_night>Hallo, es ist definitiv zu spät</dashboard_greeting_night>
+	    <dashboard_welcome_time_date>Heute ist der</dashboard_welcome_time_date>
+	    <dashboard_welcome_time_start> und es ist</dashboard_welcome_time_start>
+	    <dashboard_welcome_last_login>Die letzte Anmeldung war</dashboard_welcome_last_login>
 
         <navigation_default_entry>Home</navigation_default_entry>
 	    <navigation_structure>Navigations-Menü</navigation_structure>
@@ -226,7 +236,11 @@
 	    <cms_block_delete_success>Der CMS-Block wurde gelöscht.</cms_block_delete_success>
 	    <cms_block_delete_fail>Der CMS-Block kann nicht gelöscht werden!</cms_block_delete_fail>
 	    <cms_block_popup_title>Bild einfügen</cms_block_popup_title>
+	    <cms_block_count>Anzahl aller CMS-Blöcke</cms_block_count>
+	    <cms_block_count_enable>aktivierte CMS-Blöcke</cms_block_count_enable>
+	    <cms_block_count_disable>deaktivierte CMS-Blöcke</cms_block_count_disable>
 
+        <cms_page_section>CMS-Seiten</cms_page_section>
 	    <cms_page_new>neue CMS-Seite</cms_page_new>
 	    <cms_page_layout_header>Header-Layout</cms_page_layout_header>
 	    <cms_page_layout_content>Inhalts-Layout</cms_page_layout_content>
@@ -255,7 +269,11 @@
 	    <cms_page_block_select_fail>Der CMS-Block konnte nicht zugeordnet werden!</cms_page_block_select_fail>
 	    <cms_page_delete_success>Die CMS-Seite wurde gelöscht.</cms_page_delete_success>
 	    <cms_page_delete_fail>Die CMS-Seite kann nicht gelöscht werden!</cms_page_delete_fail>
+	    <cms_page_count>Anzahl aller CMS-Seiten</cms_page_count>
+	    <cms_page_count_enable>aktivierte CMS-Seiten</cms_page_count_enable>
+	    <cms_page_count_disable>deaktivierte CMS-Seiten</cms_page_count_disable>
 
+	    <cms_gallery_section>Gallerien</cms_gallery_section>
 	    <cms_gallery_new>neue Gallerie erstellen</cms_gallery_new>
 	    <cms_gallery_block_popup_title>Bilder zur Gallerie hinzufügen</cms_gallery_block_popup_title>
 	    <cms_gallery_block_popup_append_close>Hinzufügen und Schließen</cms_gallery_block_popup_append_close>
@@ -279,6 +297,9 @@
 	    <cms_gallery_type_blocks_show_description_title>Zeige Element-Beschreibung</cms_gallery_type_blocks_show_description_title>
 	    <cms_gallery_save_success>Gallerie wurde gespeichert</cms_gallery_save_success>
 	    <cms_gallery_save_fail>Gallerie wurde nicht gespeichert!</cms_gallery_save_fail>
+	    <cms_gallery_count>Anzahl aller Gallerien</cms_gallery_count>
+	    <cms_gallery_count_enable>aktivierte Gallerien</cms_gallery_count_enable>
+	    <cms_gallery_count_disable>deaktivierte Gallerien</cms_gallery_count_disable>
 
 	    <media_manager>Verwaltung für Dateien und Verzeichnisse</media_manager>
 	    <media_manager_empty>kein Inhalt vorhanden</media_manager_empty>

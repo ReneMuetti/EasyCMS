@@ -12,13 +12,6 @@ define('SAPI_NAME', php_sapi_name());
 
 define('CHARSET', 'UTF-8');
 
-// Current Session
-define ('SESSION', "Geith-Steinrestaurierung");
-
-session_name(SESSION);
-session_start();
-
-
 $website  = new Registry();
 $website -> fetch_config();
 

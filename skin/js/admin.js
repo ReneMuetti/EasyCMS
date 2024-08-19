@@ -33,9 +33,9 @@ function openAdminNavigation()
 
 function runClock()
 {
-    if ( $("#clock").length ) {
+    if ( $(".clock").length ) {
         let newTime = new Date().toLocaleTimeString();
-        $("#clock").html(newTime);
+        $(".clock").html(newTime);
     }
 }
 

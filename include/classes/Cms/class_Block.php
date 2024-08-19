@@ -60,13 +60,13 @@ class Block
                 $blockData['block_content'] = $this -> _removeEscapeFromContent($blockData['block_content']);
 
                 $this -> renderer -> loadTemplate('admin' . DS . 'cms' . DS . 'block_editor.htm');
-                    $this -> renderer -> setVariable('cms_block_id'      , $blockId);
-                    $this -> renderer -> setVariable('cms_form_action'   , $formAction);
-                    $this -> renderer -> setVariable('cms_block_title'   , $blockData['block_title']);
-                    $this -> renderer -> setVariable('cms_block_content' , stripcslashes($blockData['block_content']));
-                    $this -> renderer -> setVariable('cms_block_enable'  , $blockData['block_enable'] ? 'checked' : '' );
-                    $this -> renderer -> setVariable('popup_current_path', $this -> registry -> config['Misc']['media_directory']);
-                    $this -> renderer -> setVariable('image_path_mask'   , $manager -> getPathMask());
+                    $this -> renderer -> setVariable('cms_block_id'       , $blockId);
+                    $this -> renderer -> setVariable('cms_form_action'    , $formAction);
+                    $this -> renderer -> setVariable('cms_block_title'    , $blockData['block_title']);
+                    $this -> renderer -> setVariable('cms_block_content'  , stripcslashes($blockData['block_content']));
+                    $this -> renderer -> setVariable('cms_block_enable'   , $blockData['block_enable'] ? 'checked' : '' );
+                    $this -> renderer -> setVariable('popup_current_path' , $this -> registry -> config['Misc']['media_directory']);
+                    $this -> renderer -> setVariable('image_path_mask'    , $manager -> getPathMask());
                     $this -> renderer -> setVariable('summernote_language', $this -> registry -> user_config['language_code']);
 
                     $this -> renderer -> addCustonStyle(array('script' => 'skin/css/bootstrap.min.css'), THIS_SCRIPT);
