@@ -61,6 +61,15 @@ class Dashboard
         return $this -> renderer -> renderTemplate();
     }
 
+    public function createVitaSection()
+    {
+        $this -> renderer -> loadTemplate('admin' . DS . 'dashboard' . DS . 'vita.htm');
+            $this -> renderer -> setVariable('count_cms_vita'        , $this -> registry -> db -> tableCount('vita') );
+            $this -> renderer -> setVariable('count_cms_vita_enable' , $this -> registry -> db -> tableCount('vita', 'WHERE `vita_enable` = 1') );
+            $this -> renderer -> setVariable('count_cms_vita_disable', $this -> registry -> db -> tableCount('vita', 'WHERE `vita_enable` = 0') );
+        return $this -> renderer -> renderTemplate();
+    }
+
 
 
 
