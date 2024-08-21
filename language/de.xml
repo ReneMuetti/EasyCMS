@@ -223,6 +223,7 @@
 
 	    <cms_modules_section>Module</cms_modules_section>
 	    <cms_modules_contact_form>Kontakt-Formular</cms_modules_contact_form>
+	    <cms_modules_vita_frontend>Referenzen</cms_modules_vita_frontend>
 
 	    <cms_block_section>CMS-Blöcke</cms_block_section>
 	    <cms_block_new>neuer CMS-Block</cms_block_new>

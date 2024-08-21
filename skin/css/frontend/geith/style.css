@@ -90,10 +90,29 @@ main > section {
 /**
  * Content
  */
+
+/* Full-Pages */
+#page-datenschutz div.gs-w,
+#page-impressum div.gs-w,
+#page-referenzen div.gs-w {
+    min-height: calc( var(--data-sizey) * var(--default-block-height) );
+    height: initial;
+    left: initial;
+    top: initial;
+    display: contents;
+}
+#page-datenschutz div.gs-w, #page-datenschutz #gridster-content,
+#page-impressum #gridster-content,
+#page-kontakt div.gs-w, #page-kontakt #gridster-content,
+#page-referenzen div.gs-w, #page-referenzen #gridster-content {
+    position: initial !important;
+    height: auto !important;
+}
+
+
 #gridster-content p {
     margin: 0;
 }
-
 #gridster-content a {
     color: var(--link-text-normal-color-font);
     background: var(--link-text-normal-color-back);
@@ -110,14 +129,10 @@ main > section {
 }
 #page-impressum #gridster-content div.gs-w {
     position: initial;
+    display: grid;
 }
 #page-impressum #gridster-content div.gs-w:last-child {
     grid-column: span 2;
-}
-#page-impressum div.gs-w,
-#page-datenschutz div.gs-w {
-    min-height: calc( var(--data-sizey) * var(--default-block-height) );
-    height: initial;
 }
 #page-impressum #disclaimer > p {
     margin: 0 0 20px 0;
@@ -125,15 +140,27 @@ main > section {
 #page-impressum #disclaimer > p:last-child {
     margin-bottom: 0;
 }
-#page-datenschutz div.gs-w,
-#page-datenschutz #gridster-content,
-#page-impressum #gridster-content,
-#page-kontakt div.gs-w,
-#page-kontakt #gridster-content {
-    position: initial;
-    height: auto !important;
-}
 #page-kontakt {
+}
+#vita-grid {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    justify-content: center;
+
+    article {
+        background: var(--vita-artice-background);
+        border: 1px solid var(--vita-artice-border-color)
+        color: var(--vita-artice-font-color);
+        padding: 10px;
+        border-radius: 5px;
+        box-shadow: 2px 2px 5px var(--vita-artice-shadow);
+
+        h2 {
+            font-weight: bold;
+            margin: 0 0 15px 0;
+        }
+    }
 }
 .desktop-block {
     display: block;
