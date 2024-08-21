@@ -35,6 +35,8 @@ if ( isset($website -> GPC['do']) AND ($website -> GPC['do'] == 'save_vita') ) {
             }
         }
 
+        ksort($vitaData);
+
         $pageContent = $vita -> saveVitaElements($vitaData);
     }
     else {
