@@ -15,10 +15,6 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
---
--- Datenbank: `steinmetz_geith_rebuild`
---
-
 -- --------------------------------------------------------
 
 --
@@ -158,6 +154,22 @@ CREATE TABLE `users` (
   `session` varchar(255) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `vita`
+--
+
+CREATE TABLE `vita` (
+  `vita_id` int(10) PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  `vita_title` varchar(100) NOT NULL DEFAULT '',
+  `vita_text` varchar(1024) NOT NULL DEFAULT '',
+  `vita_image` varchar(1024) NOT NULL DEFAULT '',
+  `vita_enable` int(1) NOT NULL DEFAULT 1,
+  `datetime` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `username` varchar(100) NOT NULL DEFAULT ''
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+
 --
 -- Indexes of the exported tables
 --
@@ -214,6 +226,12 @@ ALTER TABLE `users`
   ADD KEY `idx_user_name` (`username`);
 
 --
+-- Indexes for the table `vita`
+--
+ALTER TABLE `vita`
+  ADD PRIMARY KEY (`vita_id`);
+
+--
 -- AUTO_INCREMENT for exported tables
 --
 
@@ -258,6 +276,12 @@ ALTER TABLE `secure`
 --
 ALTER TABLE `users`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for the table `vita`
+--
+ALTER TABLE `vita`
+  MODIFY `vita_id` int(10) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

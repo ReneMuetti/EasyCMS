@@ -1,15 +1,15 @@
 
-<div id="nav-container" class="glass-block-border glass-border">
+<div id="nav-container" class="glass-block-border glass-border sortable-container">
     <div class="glass-block">
         <h2><lang admin_navigation_structure /></h2>
         <var cms_navigation_add_button />
-        <ul id="nav-template" data-parent-element="">
+        <ul id="nav-template" class="sortable-list" data-parent-element="">
 <var cms_navigation />
         </ul>
     </div>
 </div>
 
-<div id="cms-nav-popup">
+<div id="cms-nav-popup" class="edit-popup">
     <input type="hidden" id="nav-id" value="" />
     <input type="hidden" id="nav-home" value="" />
     <input type="hidden" id="nav-item-id" value="0" />
@@ -20,7 +20,7 @@
             <h2><lang admin_navigation_new_edit_entry /></h2>
 
             <div class="glass-block">
-                <div class="flex-2" id="cms-nav-form-first-row">
+                <div class="flex-2 edit-popup-first-row">
                     <div class="elment-block">
                         <label for="nav_title"><lang admin_navigation_entry_titel /></label>
                         <input type="text" class="glass-border" name="nav_title" id="nav-title" placeholder="<lang admin_navigation_entry_titel_ph />" value="" />

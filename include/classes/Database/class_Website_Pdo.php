@@ -747,12 +747,12 @@ class Website_Pdo
     {
         if ((trim($field) != "") &&  (trim($table) != ""))
         {
-            $this -> query( "SELECT MAX(" . $field . ") AS `foundMax` FROM `" . $table . '` ' . ((strlen($cond)) ? " " . trim($cond) : "") . ';' );
+            $this -> query( "SELECT MAX(`" . $field . "`) AS `foundMax` FROM `" . $table . '`' . ((strlen($cond)) ? " " . trim($cond) : "") . ';' );
             if ( $this -> executeQuery() ) {
                 $result = $this -> stmt -> fetch($this -> fetchMode);
                 $this -> rowcount++;
 
-                return $result['foundMax'];
+                return ( is_null($result['foundMax']) ? 0 : $result['foundMax'] );
             }
             else {
                 // no Result
@@ -777,12 +777,12 @@ class Website_Pdo
     {
         if ((trim($field) != "") &&  (trim($table) != ""))
         {
-            $this -> query( "SELECT MIN(" . $field . ") AS `foundMin` FROM `" . $table . "` " . ((strlen($cond)) ? " " . trim($cond) : "") . ';' );
+            $this -> query( "SELECT MIN(`" . $field . "`) AS `foundMin` FROM `" . $table . "`" . ((strlen($cond)) ? " " . trim($cond) : "") . ';' );
             if ( $this -> executeQuery() ) {
                 $result = $this -> stmt -> fetch($this -> fetchMode);
                 $this -> rowcount++;
 
-                return $result['foundMin'];
+                return ( is_null($result['foundMin']) ? 0 : $result['foundMin'] );
             }
             else {
                 // no Result

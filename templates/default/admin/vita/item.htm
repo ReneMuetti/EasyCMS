@@ -1,0 +1,16 @@
+<li class="ui-sortable-handle<var vita_class />" style="" data-element="<var vita_id />">
+    <span><var vita_title /></span>
+    <span title="<var vita_decription />"><var vita_decription /></span>
+    <span>
+        <a href="javascript:void(0)" class="sort-item-change-state" onclick="switchStatus(<var vita_id />)"></a>
+        <a href="javascript:void(0)" class="sort-item-edit" onclick="editItem(<var vita_id />)"></a>
+        <a href="javascript:void(0)" class="sort-item-delete" onclick="deleteItem(<var vita_id />)"></a>
+
+        <input type="hidden" name="vita_item_<var vita_id />" id="vita-item-<var vita_id />" value="<var vita_id />" />
+        <input type="hidden" name="vita_position_<var vita_id />" id="vita-position-<var vita_id />" value="<var vita_position />" />
+        <input type="hidden" name="vita_title_<var vita_id />" id="vita-title-<var vita_id />" value='<var vita_title />' />
+        <input type="hidden" name="vita_enable_<var vita_id />" id="vita-enable-<var vita_id />" value="<var vita_enable />" />
+        <input type="hidden" name="vita_decription_<var vita_id />" id="vita-decription-<var vita_id />" value='<var vita_decription />' />
+        <input type="hidden" name="vita_image_<var vita_id />" id="vita-image-<var vita_id />" value="<var vita_image />" />
+    </span>
+</li>

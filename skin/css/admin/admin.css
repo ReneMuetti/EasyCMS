@@ -426,92 +426,89 @@ td.cms-actions {
 }
 /* End Gridster */
 
-/* Start Navigation */
-#nav-container {
-    min-width: 1000px;
-    width: 90%;
-    margin: 20px auto 0 auto;
-    padding: 20px;
-}
-#nav-container .button {
-    margin: 0;
-}
-#nav-container li {
-    list-style-type: none;
-}
-#cms-nav-popup:not(.active),
-#cms-nav-popup div[id^="nav_type_"]:not(.active) {
+/* Start Popup */
+.edit-popup {
     display: none;
+
+    &.active {
+        display: initial;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: rgba(0,0,0,0.8);
+        z-index: 2;
+    }
 }
-#cms-nav-popup.active {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-color: rgba(0,0,0,0.8);
-    z-index: 2;
+.edit-popup-first-row .elment-block {
+    padding: 0 10px;
 }
-#cms-nav-form {
+.edit-popup > div {
     width: 1000px;
     margin: 10% auto 0 auto;
-}
-#cms-nav-form > div {
     background-image: var(--admin-background-image);
     padding: 20px;
     border-radius: 10px;
 }
-#cms-nav-form button {
+.edit-popup button {
     margin: 0;
 }
-#cms-nav-form-first-row .elment-block {
-    padding: 0;
-}
-.cms-home {
-    font-weight: bold;
-}
-.cms-disable {
-    font-style: italic;
-}
+/* End Popup */
 
-#nav-template, #nav-template li > ul {
-    background: var(--navigatrion-editor-background);
-    border: 2px solid var(--navigatrion-editor-border-color);
+/* Start Sortable List */
+.sortable-container {
+    width: max(90%, 1000px);
+    margin: 20px auto 0 auto;
+    padding: 20px;
+}
+.sortable-list {
+    width: max(90%, 1000px);
+    margin: 20px auto 0 auto;
+    padding: 20px;
+    border-radius: 3px;
+    min-height: 50px;
+}
+.sortable-list, .sortable-list li > ul {
+    background: var(--sortable-list-background);
+    border: 2px solid var(--sortable-list-border-color);
     padding: 10px;
     width: 100%;
 }
-#nav-template {
-    border-radius: 3px;
+.sortable-list .item-disable {
+    font-style: italic;
 }
-#nav-template li {
-    background: var(--navigatrion-editor-item-background);
+.sortable-list .button {
+    margin: 0;
+}
+.sortable-list li {
+    background: var(--sortable-list-item-background);
+    list-style-type: none;
     display: flex;
     justify-content: center;
     flex-direction: row;
     flex-wrap: wrap;
     line-height: 4rem;
 }
-#nav-template li:not(:last-child) {
+.sortable-list li:not(:last-child) {
     margin-bottom: 5px;
 }
-#nav-template li:before,
-#nav-template li[data-type="1"] > span:first-child:after,
-#nav-template li[data-type="2"] > span:first-child:after {
+.sortable-list li:before {
     font-family: "Font Awesome 6 Free";
     font-style: normal;
     text-decoration: none;
 
 }
-#nav-template li:before {
-    background: var(--navigatrion-editor-item-background);
+.sortable-list li:before {
+    background: var(--sortable-list-item-background);
     content: "\f58e";
     padding: 23px 15px;
     cursor: pointer;
     line-height: 1rem;
 }
-#nav-template li > span:nth-child(2) {
+.sortable-list li > span:nth-child(2) {
     margin-left: auto;
     text-align: left;
     width: 500px;
@@ -519,32 +516,22 @@ td.cms-actions {
     overflow: hidden;
     text-overflow: ellipsis;
 }
-#nav-template li > span:nth-child(3) {
+.sortable-list li > span:nth-child(3) {
     width: 250px;
     text-align: center;
     line-height: 1rem;
 }
-#nav-template li[data-type="1"] > span:first-child:after {
-    margin-left: 10px;
-    content: "\f07c";
-    color: var(--color-warn-font);
-}
-#nav-template li[data-type="2"] > span:first-child:after {
-    margin-left: 10px;
-    content: "\f08e";
-    color: var(--color-fail-font);
-}
-#nav-template li > ul {
+.sortable-list li > ul {
     margin: 10px 10px 10px 30px;
     border-width: 1px;
     min-height: 20px;
 }
-#nav-template > li.item-disable,
-#nav-template ul > li.item-disable {
+.sortable-list > li.item-disable,
+.sortable-list ul > li.item-disable {
     font-style: italic;
     text-decoration: line-through;
 }
-#nav-template li a {
+.sortable-list li a {
     font-family: "Font Awesome 6 Free";
     font-size: 2rem;
     font-style: normal;
@@ -559,45 +546,76 @@ td.cms-actions {
     border: 1px solid transparent;
     padding: 5px;
 }
-#nav-template > li a.nav-item-change-state,
-#nav-template ul > li a.nav-item-change-state {
+.sortable-list > li a.sort-item-change-state,
+.sortable-list ul > li a.sort-item-change-state {
     border-color: var(--color-okay-font);
     color: var(--color-okay-font);
     background: var(--color-okay-back);
 }
-#nav-template > li a.nav-item-change-state:before,
-#nav-template ul > li a.nav-item-change-state:before {
+.sortable-list > li a.sort-item-change-state:before,
+.sortable-list ul > li a.sort-item-change-state:before {
     content: "\f205";
 }
-#nav-template > li.item-disable a.nav-item-change-state,
-#nav-template ul > li.item-disable a.nav-item-change-state {
+.sortable-list > li.item-disable a.sort-item-change-state,
+.sortable-list ul > li.item-disable a.sort-item-change-state {
     border-color: var(--color-fail-font);
     color: var(--color-fail-font);
     background: var(--color-fail-back);
 }
-#nav-template > li.item-disable a.nav-item-change-state:before,
-#nav-template ul > li.item-disable a.nav-item-change-state:before {
+.sortable-list > li.item-disable a.sort-item-change-state:before,
+.sortable-list ul > li.item-disable a.sort-item-change-state:before {
     content: "\f204";
 }
-#nav-template li a.nav-item-edit {
+.sortable-list li a.sort-item-edit {
     border-color: var(--color-okay-font);
     color: var(--color-okay-font);
     background: var(--color-okay-back);
 }
-#nav-template li a.nav-item-edit:before {
+.sortable-list li a.sort-item-edit:before {
     content: "\f044";
 }
-#nav-template li a.nav-item-delete {
+.sortable-list li a.sort-item-delete {
     border-color: var(--color-warn-font);
     color: var(--color-warn-font);
     background: var(--color-warn-back);
     margin-right: 0;
 }
-#nav-template li a.nav-item-delete:before {
+.sortable-list li a.sort-item-delete:before {
     content: "\f2ed";
 }
+/* End Sortable List */
 
+/* Start Navigation */
+.cms-home {
+    font-weight: bold;
+}
+#cms-nav-popup div[id^="nav_type_"]:not(.active) {
+    display: none;
+}
+#nav-template li[data-type="1"] > span:first-child:after {
+    margin-left: 10px;
+    content: "\f07c";
+    color: var(--color-warn-font);
+}
+#nav-template li[data-type="2"] > span:first-child:after {
+    margin-left: 10px;
+    content: "\f08e";
+    color: var(--color-fail-font);
+}
+#nav-template li[data-type="1"] > span:first-child:after,
+#nav-template li[data-type="2"] > span:first-child:after {
+    font-family: "Font Awesome 6 Free";
+    font-style: normal;
+    text-decoration: none;
+
+}
 /* End Navigation */
+
+/* Start Vita */
+#vita-list li > span:nth-child(2) {
+    width: 800px;
+}
+/* End Vita */
 
 /* Start Media-Manager */
 #media-manager-content {

@@ -15,6 +15,7 @@
         <admin_cms_navigation>Navigation bearbeiten</admin_cms_navigation>
         <admin_cms_pages>CMS-Seiten verwalten</admin_cms_pages>
         <admin_cms_blocks>CMS-Blöcke verwalten</admin_cms_blocks>
+        <admin_cms_vita>Referenzen verwalten</admin_cms_vita>
         <admin_content_files><![CDATA[Inhalte &rArr; Dateien]]></admin_content_files>
         <admin_content_gallery><![CDATA[Inhalte &rArr; Gallerien]]></admin_content_gallery>
         <admin_system_config><![CDATA[System &rArr; Konfiguration]]></admin_system_config>
@@ -96,6 +97,7 @@
 	    <cms_navigation>Navigation</cms_navigation>
 	    <cms_pages>Seiten</cms_pages>
 	    <cms_blocks>Blöcke</cms_blocks>
+	    <cms_vita>Referenzen</cms_vita>
 	    <content>Inhalt</content>
 	    <content_files>Dateien</content_files>
 	    <content_gallery>Gallerien</content_gallery>
@@ -272,6 +274,25 @@
 	    <cms_page_count>Anzahl aller CMS-Seiten</cms_page_count>
 	    <cms_page_count_enable>aktivierte CMS-Seiten</cms_page_count_enable>
 	    <cms_page_count_disable>deaktivierte CMS-Seiten</cms_page_count_disable>
+
+	    <cms_vita_section>Referenzen</cms_vita_section>
+	    <cms_vita_new>neue Referenz</cms_vita_new>
+	    <cms_vita_save>Referenzen speichern</cms_vita_save>
+	    <cms_vita_new_edit_entry>Referenz anlegen oder bearbeiten</cms_vita_new_edit_entry>
+	    <cms_vita_titel>Referenz-Titel</cms_vita_titel>
+	    <cms_vita_titel_ph>Titel oder Bezeichnung für die Referenz</cms_vita_titel_ph>
+	    <cms_vita_description>Beschreibung</cms_vita_description>
+	    <cms_vita_description_ph>Beschreibung für die Referenz</cms_vita_description_ph>
+	    <cms_vita_status>Referenz aktiviert</cms_vita_status>
+	    <cms_vita_item_id_error>Fehler!! Es konnte keine ID ermittelt werden!</cms_vita_item_id_error>
+	    <cms_vita_item_not_found>Die gewählte Refferenz konnte nicht gefunden werden!</cms_vita_item_not_found>
+	    <cms_vita_save_entry>Eintrag speichern</cms_vita_save_entry>
+	    <cms_vita_message_successfuly_saved>Referenzen wurden gespeichert</cms_vita_message_successfuly_saved>
+	    <cms_vita_message_save_error>Fehler beim Speichern der Referenzen!</cms_vita_message_save_error>
+	    <cms_vita_message_data_empty>Es wurden keine Referenzen übermittelt!</cms_vita_message_data_empty>
+	    <cms_vita_count>Anzahl aller Referenzen</cms_vita_count>
+	    <cms_vita_count_enable>aktivierte Referenzen</cms_vita_count_enable>
+	    <cms_vita_count_disable>deaktivierte Referenzen</cms_vita_count_disable>
 
 	    <cms_gallery_section>Gallerien</cms_gallery_section>
 	    <cms_gallery_new>neue Gallerie erstellen</cms_gallery_new>

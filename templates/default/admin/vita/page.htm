@@ -1,0 +1,71 @@
+
+<div id="vita-container" class="glass-block-border glass-border sortable-container">
+    <div class="glass-block">
+        <h2><lang admin_cms_vita_section /></h2>
+        <form action="<var_config baseurl />admin_index.php" method="post">
+            <input type="hidden" name="action" value="cms_vita" />
+            <input type="hidden" name="do" value="save_vita" />
+            <input type="hidden" name="vita_count" id="vita-count" value="<var vita_count />" />
+            <input type="hidden" name="vita_last" id="vita-last" value="<var vita_last />" />
+
+            <div class="elment-block flex-2" style="justify-content:space-between;">
+                <button class="button" onclick="showNewVitaPopup(event)"><lang admin_cms_vita_new /></button>
+                <input type="submit" class="button" value="<lang admin_cms_vita_save />">
+            </div>
+
+            <ul id="vita-list" class="sortable-list">
+                <var vita_list />
+            </ul>
+        </form>
+    </div>
+</div>
+
+<div id="vita-image-popup" style="display:none" data-curr-vita-id="">
+    <div class="fa-3x">
+        <i class="fas fa-spinner fa-spin"></i>
+    </div>
+</div>
+
+<div id="vita-edit-popup" class="edit-popup" data-curr-vita-id="">
+    <div class="glass-block-border glass-border">
+        <div class="glass-block">
+            <h2><lang admin_cms_vita_new_edit_entry /></h2>
+            <div class="glass-block">
+                <div class="flex-2 edit-popup-first-row">
+                    <div class="elment-block">
+                        <label for="vita-title"><lang admin_cms_vita_titel /></label>
+                        <input type="text" class="glass-border" id="vita-title" placeholder="<lang admin_cms_vita_titel_ph />" value="" />
+                    </div>
+                    <div class="elment-block">
+                        <label for="vita-status"><lang admin_cms_vita_status /></label>
+                        <input type="checkbox" id="vita-status" value="1" />
+                    </div>
+                </div>
+
+                <div class="elment-block">
+                    <label for="vita-descr"><lang admin_cms_vita_description /></label>
+                    <input type="text" class="glass-border" id="vita-descr" placeholder="<lang admin_cms_vita_description_ph />" value="" />
+                </div>
+            </div>
+
+            <div class="glass-block-border glass-border">
+                <div class="glass-block">
+                    <div class="elment-block center-content button-flex">
+                        <button class="button glass-border" onclick="saveVitaEntry()"><lang admin_cms_vita_save_entry /></button>
+                        <button class="button glass-border" onclick="hideVitaPopup()"><lang global_abort /></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<template style="display:none !important;"><var vita_template /></template>
+
+<script>
+    let new_vita_item_id_error = "<lang admin_cms_vita_item_id_error />";
+    let message_element_not_found = "<lang admin_cms_vita_item_not_found />";
+</script>
+
+<script src="<var_config baseurl />skin/js/jquery-ui/jquery-ui.min.js"></script>
+<script src="<var_config baseurl />skin/js/admin_vita.js"></script>
