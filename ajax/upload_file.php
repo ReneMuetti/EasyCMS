@@ -18,6 +18,8 @@ $return = array(
 
 $uploadTempDir = $website -> config['Misc']['path'] . DS . $website -> config['Misc']['upload_directory'];
 
+$imageTypes = array('gif', 'jpg', 'png');
+
 // ########################### IDENTIFY USER #############################
 loggedInOrReturn();
 checkIfUserIsAdmin();
@@ -27,12 +29,13 @@ setDefaultForLoggedinUser();
 // ######################## START MAIN SCRIPT ############################
 // #######################################################################
 $website -> input -> clean_array_gpc('p', array(
-                                              'filename' => TYPE_NOHTML,
-                                              'index'    => TYPE_UINT,
-                                              'data'     => TYPE_NOCLEAN,
-                                              'eof'      => TYPE_BOOL,
-                                              'dest'     => TYPE_NOHTML,
-                                              'filter'   => TYPE_NOHTML,
+                                              'filename'  => TYPE_NOHTML,
+                                              'index'     => TYPE_UINT,
+                                              'data'      => TYPE_NOCLEAN,
+                                              'eof'       => TYPE_BOOL,
+                                              'dest'      => TYPE_NOHTML,
+                                              'filter'    => TYPE_NOHTML,
+                                              'thumbnail' => TYPE_UINT,
                                           )
                                     );
 
@@ -59,13 +62,65 @@ if ( strlen($website -> GPC['data']) ) {
         // move restored file to new location
         $mediaManager = new MediaManager();
         $destPath = $mediaManager -> getDestinationMediaPath($website -> GPC['dest']);
+        $destFile = $destPath . DS . $website -> GPC['filename'];
+        $fileExt  = substr($destFile, -3);
 
         if ( $mediaManager -> canCurrentFileUploaded($website -> GPC['filename'], $website -> GPC['filter']) ) {
-            if ( !is_file($destPath . DS . $website -> GPC['filename']) ) {
+            if ( !is_file($destFile) ) {
                 // save correct file
-                $result = rename($outputName, $destPath . DS . $website -> GPC['filename']);
+                $result = rename($outputName, $destFile);
 
                 if ( $result == true ) {
+                    // get new content from destination folder
+                    //$return['content'] = $mediaManager -> getContentFromPath($website -> GPC['dest']);
+                }
+                else {
+                    // return error-messages
+                    $return['error']   = true;
+                    $return['content'] = $website -> user_lang['admin']['media_manager_processing_file_error'];
+                }
+
+                // check whether a preview image should be created and whether the uploaded file could be an image
+                if ( ($return['error'] == false) AND ($website -> GPC['thumbnail'] >= 1) AND in_array($fileExt, $imageTypes) ) {
+                    $config = new Config();
+                    $thumb  = new ImageProcessor();
+
+                    $thumb -> setQuality( $config -> getConfigValue('image/thumbnail/quality') );
+                    $thumb -> setThumbnailSizeX( $config -> getConfigValue('image/thumbnail/size') );
+
+                    $thumbPrefix  = $config -> getConfigValue('image/thumbnail/prefix_small');
+                    $thumnailFile = $destPath . DS . $thumbPrefix . $website -> GPC['filename'];
+
+                    $thumb -> setSourceFile($destFile);
+                    $thumb -> setDestinationFile($thumnailFile);
+                    $thumb -> resizeJpgImage();
+
+                    $thumbStatus = $thumb -> getErrorStatus();
+
+                    if ( $thumbStatus['error'] == true ) {
+                        $return['error']    = true;
+                        $return['content'] .= (strlen($return['content']) ? '<br />' : '' ) . $thumbStatus['message'];
+                    }
+
+                    if ( $website -> GPC['thumbnail'] >= 2 ) {
+                        // low-res image
+                        $thumb -> setQuality( 10 );
+                        $thumbPrefix = $config -> getConfigValue('image/thumbnail/prefix_low');
+                        $lowResFile  = $destPath . DS . $thumbPrefix . $website -> GPC['filename'];
+
+                        $thumb -> setDestinationFile($lowResFile);
+                        $thumb -> resizeJpgImage();
+
+                        $lowResStatus = $thumb -> getErrorStatus();
+
+                        if ( $lowResStatus['error'] == true ) {
+                            $return['error']    = true;
+                            $return['content'] .= (strlen($return['content']) ? '<br />' : '' ) . $lowResStatus['message'];
+                        }
+                    }
+                }
+
+                if ( $return['error'] == false ) {
                     // get new content from destination folder
                     $return['content'] = $mediaManager -> getContentFromPath($website -> GPC['dest']);
                 }

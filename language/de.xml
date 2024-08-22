@@ -172,6 +172,19 @@
 	    <success_profile_deleted>Das Profil wurde erfolgreich gelöscht.</success_profile_deleted>
 	    <error_profile_cannot_deleted>Dieses Profil kann nicht gelöscht werden!</error_profile_cannot_deleted>
 	</profile>
+	<image>
+	    <success_recode_new_file_from_original><![CDATA[Die Originalversion des Bildes &quot;%s&quot; wurde erfolgreich gespeichert.]]></success_recode_new_file_from_original>
+	    <success_create_thumbnail><![CDATA[Das Vorschaubild &quot;%s&quot; wurde erzeugt.]]></success_create_thumbnail>
+	    <success_image_original_saved><![CDATA[%s :: Die Originalversion des Bildes &quot;%s&quot; wurde erfolgreich gespeichert.]]></success_image_original_saved>
+	    <failed_image_source_found><![CDATA[Die Quell-Datei des Bildes &quot;%s&quot; wurde nicht gefunden!]]></failed_image_source_found>
+	    <failed_image_destination_found><![CDATA[Die Ziel-Datei des Bildes &quot;%s&quot; ist bereits vorhanden!]]></failed_image_destination_found>
+	    <failed_check_image_format><![CDATA[Die Prüfung des Datei-Inhaltes für &quot;%s&quot; ist fehlgeschlagen!]]></failed_check_image_format>
+	    <failed_image_thumb_resorce_loaded>Die Bildresource für das Vorschaubild konnte nicht erzeugt werden!</failed_image_thumb_resorce_loaded>
+	    <failed_create_small_image_size><![CDATA[Das Vorschaubild &quot;%s&quot; verkleinert werden!]]></failed_create_small_image_size>
+	    <failed_create_thumbnail><![CDATA[Das Vorschaubild &quot;%s&quot; konnte nicht erzeugt werden!]]></failed_create_thumbnail>
+	    <failed_create_temporary_image><![CDATA[%s :: Temp-Image &quot;%s&quot; konnte nicht erzeugt werden!]]></failed_create_temporary_image>
+	    <failed_create_new_image><![CDATA[%s :: neue Bild-Datei &quot;%s&quot; konnte nicht erzeugt werden!]]></failed_create_new_image>
+	</image>
 	<admin>
 	    <date_time_error>Datum-Zeit-Fehler!</date_time_error>
 
@@ -331,6 +344,10 @@
 	    <media_manager_new_directory_button_caption>Verzeichnis anlegen</media_manager_new_directory_button_caption>
 	    <media_manager_chancel_directory_button_caption>Abbrechen</media_manager_chancel_directory_button_caption>
 	    <media_manager_select_file_types>Datei-Typ zum Hochladen auswählen</media_manager_select_file_types>
+	    <media_manager_select_thumbnail_types>Art der Vorschaubild-Erstellung beim Upload (nur GIF, JPG, PNG)</media_manager_select_thumbnail_types>
+	    <media_manager_select_no_thumbnail>keine Vorschaubilder erstellen</media_manager_select_no_thumbnail>
+	    <media_manager_select_small_thumbnail>verkleinertes Vorschaubild erstellen</media_manager_select_small_thumbnail>
+	    <media_manager_select_small_and_lowres_thumbnail>verkleinertes Vorschaubild und Bild mit niedriger Auflösung erstellen</media_manager_select_small_and_lowres_thumbnail>
 	    <media_manager_select_file_for_upload>Datei zum hochladen auswählen</media_manager_select_file_for_upload>
 	    <media_manager_start_upload>Upload starten</media_manager_start_upload>
 	    <media_manager_message_import_start>Import wird gestartet</media_manager_message_import_start>
@@ -342,6 +359,7 @@
 	    <media_manager_message_update_filelist>Dateiliste wird aktualisiert...</media_manager_message_update_filelist>
 	    <media_manager_wrong_file_to_be_upload>Der Hochgeladene Datei-Typ kann nicht gespeichert werden!</media_manager_wrong_file_to_be_upload>
 	    <media_manager_destination_file_exists>Eine Datei mit dem gleichen Namen existiert bereits!</media_manager_destination_file_exists>
+	    <media_manager_processing_file_error>Beim Verarbeiten der Datei ist ein Fehler aufgetreten!</media_manager_processing_file_error>
 	    <media_manager_filter_image>Bilder</media_manager_filter_image>
 	    <media_manager_filter_archive>Archive</media_manager_filter_archive>
 	    <media_manager_filter_documents>Dokumente</media_manager_filter_documents>

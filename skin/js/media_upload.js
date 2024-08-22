@@ -37,6 +37,11 @@ function changeUploadFilter(sender)
     $("#filter").val(acceptTypes);
 }
 
+function changeThumbnailType(sender)
+{
+    $("#thumbnail").val( $(sender).val() );
+}
+
 function startFileUpload()
 {
     if ( uploadForm.length ) {
@@ -93,12 +98,13 @@ function uploadChunk(file, offset)
             "url"     : baseurl + "ajax_upload_file.php",
             "dataType": "json",
             "data"    : {
-                "filename": filename,
-                "index"   : index,
-                "data"    : data,
-                "eof"     : offset + chunkSize >= file.size,
-                "dest"    : $("#media-manager-content").attr("data-current-path"),
-                "filter"  : $("#filter").val(),
+                "filename" : filename,
+                "index"    : index,
+                "data"     : data,
+                "eof"      : offset + chunkSize >= file.size,
+                "dest"     : $("#media-manager-content").attr("data-current-path"),
+                "filter"   : $("#filter").val(),
+                "thumbnail": $("#thumbnail").val(),
             },
             "beforeSend": function() {
             }

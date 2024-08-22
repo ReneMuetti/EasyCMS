@@ -33,6 +33,14 @@
                         <var current_select_types />
                     </select>
                 </div>
+                <div id="media-manager-thumbnail" class="elment-block">
+                    <label for="thumbnail-type"><lang admin_media_manager_select_thumbnail_types /></label>
+                    <select id="thumbnail-type" onchange="changeThumbnailType(this)">
+                        <option value="0" selected="select"><lang admin_media_manager_select_no_thumbnail /></option>
+                        <option value="1"><lang admin_media_manager_select_small_thumbnail /></option>
+                        <option value="2"><lang admin_media_manager_select_small_and_lowres_thumbnail /></option>
+                    </select>
+                </div>
                 <form action="<var_config baseurl />admin_index.php" enctype="multipart/form-data" method="post" id="file-upload" style="width:100%;">
                     <div id="media-manager-uploader" class="elment-block">
                         <label for="uploadfile"><lang admin_media_manager_select_file_for_upload /></label>
@@ -47,6 +55,7 @@
                     <div class="elment-block center-content">
                         <input type="hidden" name="action" id="action" value="upload_file" />
                         <input type="hidden" name="filter" id="filter" value="" />
+                        <input type="hidden" name="thumbnail" id="thumbnail" value="0" />
                         <input type="submit" value="<lang admin_media_manager_start_upload />" class="glass-border" />
                     </div>
                 </form>
