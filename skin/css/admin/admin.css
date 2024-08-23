@@ -80,6 +80,20 @@ section#register {
 }
 /* End RGB-Progress-Bar */
 
+.block-watermark {
+    font-family: "Font Awesome 6 Free";
+    font-size: 12rem;
+    font-style: normal;
+    color: var(--rgba-color-dark-02);
+    position: absolute;
+    right: 20px;
+    bottom: 10px;
+}
+.block-watermark:before {
+    width: 100%;
+    height: 100%;
+}
+
 /* Start Dashboard */
 #user-welcome {
     padding: 20px;
@@ -110,6 +124,21 @@ section#register {
 }
 #user-greeting {
     font-size: 1.2rem;
+}
+#dashboard .glass-block-border {
+    position: relative;
+}
+#dashboard-cms-blocks:before {
+    content: "\f15c";
+}
+#dashboard-cms-pages:before {
+    content: "\f815";
+}
+#dashboard-cms-gallery:before {
+    content: "\f87c";
+}
+#dashboard-cms-vita:before {
+    content: "\e509";
 }
 /* End Dashboard */
 
