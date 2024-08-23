@@ -78,7 +78,8 @@
 	<database>
 	    <line> Zeile</line>
 	    <query> Abfrage</query>
-	    <secound> Sekunden</secound>
+	    <total>Gesamt:</total>
+	    <secound> s</secound>
 	    <query_error>Abfrage-Fehler</query_error>
 	    <error_create_statement>Fehler beim Erstellen des Statement:</error_create_statement>
 	    <error_assign_statement>Fehler beim Zuweisen innerhalb des Statement</error_assign_statement>

@@ -483,11 +483,11 @@ class Website_Pdo
     {
         $totalTime = $this -> microtime_float() - $this -> starttime;
 
-        return $this -> rowcount    . $this -> registry -> user_lang['database']['line']    . ( ($this -> rowcount > 1)   ? 'n' : '' ) . " / " .
-               $this -> sqlcounter  . $this -> registry -> user_lang['database']['query']   . ( ($this -> sqlcounter > 1) ? 'n' : '' ) . " - " .
-               round($totalTime, 4) . $this -> registry -> user_lang['database']['secound'] . " (" .
-               round(($totalTime - $this -> dbtime), 4) . " " . $this -> registry -> user_lang['database']['secound'] . " PHP / " .
-               round($this -> dbtime, 4)                . " " . $this -> registry -> user_lang['database']['secound'] . " SQL)";
+        return $this -> rowcount    . $this -> registry -> user_lang['database']['line']    . ( ($this -> rowcount > 1)   ? 'n' : '' ) . ' / ' .
+               $this -> sqlcounter  . $this -> registry -> user_lang['database']['query']   . ( ($this -> sqlcounter > 1) ? 'n' : '' ) . ' - ' .
+               $this -> registry -> user_lang['database']['total'] . ' ' . round($totalTime, 4) . $this -> registry -> user_lang['database']['secound'] . ' (' .
+               'PHP: ' . round(($totalTime - $this -> dbtime), 4) . $this -> registry -> user_lang['database']['secound'] . ' / ' .
+               'SQL: ' . round($this -> dbtime, 4)                . $this -> registry -> user_lang['database']['secound'] . ')';
     }
 
     /**
