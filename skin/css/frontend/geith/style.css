@@ -59,12 +59,13 @@ main > section {
     min-height: 150px;
     display: flex;
     align-items: center;
+    gap: 185px;
 }
 #gridster-header .gs-w {
     position: initial;
 }
 #gridster-header img {
-    max-height: 100px;
+    max-height: 120px;
 }
 #header-company {
     display: grid;
@@ -194,7 +195,7 @@ main > section {
     padding: 0;
 }
 #gridster-footer img {
-    max-height: 80px;
+    max-height: 100px;
 }
 
 /**

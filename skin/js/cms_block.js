@@ -6,51 +6,52 @@ let summernoteContext;
 
 $(document).ready(function(){
     $("#block-editor").summernote({
-        "width"  : "98%",
-        "height" : "500px",
-        "tabsize": 2,
-        "lang"   : editor_lang,
-        "focus"  : true,
-        "toolbar": [
-                       ['style',    ['style']],
-                       ['fontname', ['fontname']],
-                       ['fontsize', ['fontsize']],
-                       ['font',     ['bold', 'italic', 'underline', 'clear']],
-                       ['color',    ['color']],
-                       ['height',   ['height']],
-                       ['para',     ['ul', 'ol', 'paragraph']],
-                       ['table',    ['table']],
-                       ['insert',   ['link']],
-                       ['image',    ['customImage']],
-                       ['view',     ['fullscreen', 'codeview', 'help']],
-                   ],
-        "popover": [
-                       'link', ['linkDialogShow', 'unlink'],
-                   ],
-        "buttons": {
-                       "customImage": function(context) {
-                                          summernoteContext = context;
+        "width"    : "98%",
+        "height"   : "500px",
+        "tabsize"  : 2,
+        "lang"     : editor_lang,
+        "focus"    : true,
+        "toolbar"  : [
+                         ['style',    ['style']],
+                         ['fontname', ['fontname']],
+                         ['fontsize', ['fontsize']],
+                         ['font',     ['bold', 'italic', 'underline', 'clear']],
+                         ['color',    ['color']],
+                         ['height',   ['height']],
+                         ['para',     ['ul', 'ol', 'paragraph']],
+                         ['table',    ['table']],
+                         ['insert',   ['link']],
+                         ['image',    ['customImage']],
+                         ['view',     ['fullscreen', 'codeview', 'help']],
+                     ],
+        "fontSizes": ["7", "8", "9", "10", "11", "12", "13", "14", "16", "18", "20", "22", "24", "26", "28", "30", "32", "34", "36", "40", "48" , "64"],
+        "popover"  : [
+                         'link', ['linkDialogShow', 'unlink'],
+                     ],
+        "buttons"  : {
+                         "customImage": function(context) {
+                                            summernoteContext = context;
 
-                                          var ui = $.summernote.ui;
-                                          var options = $.summernote.options;
-                                          var lang = $.summernote.lang[editor_lang];
-                                          var button = ui.button({
-                                                  "contents": ui.icon(context.options.icons.picture),
-                                                  "title"   : context.options.langInfo.image.image,
-                                                  "click"   : function() {
-                                                                  showImagePopup();
-                                                              }
-                                              });
-                                          var $button = button.render();
+                                            var ui = $.summernote.ui;
+                                            var options = $.summernote.options;
+                                            var lang = $.summernote.lang[editor_lang];
+                                            var button = ui.button({
+                                                    "contents": ui.icon(context.options.icons.picture),
+                                                    "title"   : context.options.langInfo.image.image,
+                                                    "click"   : function() {
+                                                                    showImagePopup();
+                                                                }
+                                                });
+                                            var $button = button.render();
 
-                                          $button.attr("data-toggle", "tooltip").attr("title", context.options.langInfo.image.image);
-                                          $button.tooltip({
-                                              "container": "body"
-                                          });
+                                            $button.attr("data-toggle", "tooltip").attr("title", context.options.langInfo.image.image);
+                                            $button.tooltip({
+                                                "container": "body"
+                                            });
 
-                                          return $button;
-                                      }
-                   },
+                                            return $button;
+                                        }
+                     },
     });
 });
 

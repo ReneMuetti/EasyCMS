@@ -91,6 +91,10 @@
     #construction-container .board {
         top: 150px;
     }
+
+    .mobile-break {
+        display: none;
+    }
 }
 @media screen and (max-width: 865px ) {
     #gridster-header > div.gs-w {
