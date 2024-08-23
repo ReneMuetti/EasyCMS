@@ -177,44 +177,14 @@ class Block
     {
         $html = array();
 
-        // load all Modules
-        $modulePath = realpath('include/classes/Modules/');
-        $files = new FileDir($modulePath);
-        $modules = $files -> getFileList('Modules', false);
-
-        if ( is_array($modules) AND count($modules) ) {
-            $html[] = '<h2>' . $this -> registry -> user_lang['admin']['cms_modules_section'] . '</h2>';
-
-            foreach( $modules AS $classFile ) {
-                $fileName  = basename($classFile);
-                $className = substr($fileName, 6, -4);
-                $moduleClass = new $className();
-                $moduleIdent = $moduleClass -> getModuleName();
-
-                $this -> renderer -> loadTemplate('admin' . DS . 'cms' . DS . 'block_template_popup.htm');
-                    $this -> renderer -> setVariable('cms_block_number', $moduleClass -> getModuleId());
-                    $this -> renderer -> setVariable('cms_block_title' , $this -> registry -> user_lang['admin']['cms_modules_' . $moduleIdent]);
-                    $this -> renderer -> setVariable('cms_block_type'  , 'module');
-                $html[] = $this -> renderer -> renderTemplate();
-            }
-        }
-
-
         // load all enabled CMS-Blocks
-        $query = 'SELECT `block_id`, `block_title` FROM `blocks` WHERE `block_enable` = 1 ORDER BY `block_title` ASC;';
-        $data  = $this -> registry -> db -> queryObjectArray($query);
+        $this -> _getAllActiveCmsBlocksForPopup($html);
 
-        if ( is_array($data) AND count($data[0]) ) {
-            $html[] = '<h2>' . $this -> registry -> user_lang['admin']['cms_block_section'] . '</h2>';
+        // load all enabled Gallerys
+        $this -> _getAllActiveGallerysBlocksForPopup($html);
 
-            foreach( $data AS $block ) {
-                $this -> renderer -> loadTemplate('admin' . DS . 'cms' . DS . 'block_template_popup.htm');
-                    $this -> renderer -> setVariable('cms_block_number', $block['block_id']);
-                    $this -> renderer -> setVariable('cms_block_title' , $block['block_title']);
-                    $this -> renderer -> setVariable('cms_block_type'  , 'block');
-                $html[] = $this -> renderer -> renderTemplate();
-            }
-        }
+        // load all Modules
+        $this -> _getAllActiveModulesForPopup($html);
 
         if ( count($html) ) {
             return array(
@@ -234,6 +204,68 @@ class Block
     }
 
 
+    private function _getAllActiveCmsBlocksForPopup(&$html)
+    {
+        $query = 'SELECT `block_id`, `block_title` FROM `blocks` WHERE `block_enable` = 1 ORDER BY `block_title` ASC;';
+        $data  = $this -> registry -> db -> queryObjectArray($query);
+
+        if ( is_array($data) AND count($data[0]) ) {
+            $html[] = '<h2>' . $this -> registry -> user_lang['admin']['cms_block_section'] . '</h2>';
+            $prefix = $this -> registry -> user_lang['admin']['cms_block_popup_prefix'];
+
+            foreach( $data AS $block ) {
+                $this -> renderer -> loadTemplate('admin' . DS . 'cms' . DS . 'block_template_popup.htm');
+                    $this -> renderer -> setVariable('cms_block_number', $block['block_id']);
+                    $this -> renderer -> setVariable('cms_block_title' , $prefix . ' :: ' . $block['block_title']);
+                    $this -> renderer -> setVariable('cms_block_type'  , 'block');
+                $html[] = $this -> renderer -> renderTemplate();
+            }
+        }
+    }
+
+    private function _getAllActiveGallerysBlocksForPopup(&$html)
+    {
+        $query = 'SELECT `gallery_id`, `gallery_title` FROM `gallery` WHERE `gallery_enable` = 1 ORDER BY `gallery_title` ASC;';
+        $data  = $this -> registry -> db -> queryObjectArray($query);
+
+        if ( is_array($data) AND count($data[0]) ) {
+            $html[] = '<h2>' . $this -> registry -> user_lang['admin']['cms_gallery_section'] . '</h2>';
+            $prefix = $this -> registry -> user_lang['admin']['cms_gallery_popup_prefix'];
+
+            foreach( $data AS $gallery ) {
+                $this -> renderer -> loadTemplate('admin' . DS . 'cms' . DS . 'block_template_popup.htm');
+                    $this -> renderer -> setVariable('cms_block_number', $gallery['gallery_id']);
+                    $this -> renderer -> setVariable('cms_block_title' , $prefix . ' :: ' . $gallery['gallery_title']);
+                    $this -> renderer -> setVariable('cms_block_type'  , 'gallery');
+                $html[] = $this -> renderer -> renderTemplate();
+            }
+        }
+    }
+
+    private function _getAllActiveModulesForPopup(&$html)
+    {
+        $modulePath = realpath('include/classes/Modules/');
+        $files = new FileDir($modulePath);
+        $modules = $files -> getFileList('Modules', false);
+
+        if ( is_array($modules) AND count($modules) ) {
+            $html[] = '<h2>' . $this -> registry -> user_lang['admin']['cms_modules_section'] . '</h2>';
+            $prefix = $this -> registry -> user_lang['admin']['cms_modules_popup_prefix'];
+
+            foreach( $modules AS $classFile ) {
+                $fileName  = basename($classFile);
+                $className = substr($fileName, 6, -4);
+                $moduleClass = new $className();
+                $moduleIdent = $moduleClass -> getModuleName();
+
+                $this -> renderer -> loadTemplate('admin' . DS . 'cms' . DS . 'block_template_popup.htm');
+                    $this -> renderer -> setVariable('cms_block_number', $moduleClass -> getModuleId());
+                    $this -> renderer -> setVariable('cms_block_title' , $prefix . ' :: ' . $this -> registry -> user_lang['admin']['cms_modules_' . $moduleIdent]);
+                    $this -> renderer -> setVariable('cms_block_type'  , 'module');
+                $html[] = $this -> renderer -> renderTemplate();
+            }
+        }
+    }
 
     private function _removeEscapeFromContent($string)
     {

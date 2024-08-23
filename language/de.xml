@@ -235,10 +235,14 @@
 	    <navigation_message_json_error>Das Prüfen der Daten ist fehlgeschlagen!</navigation_message_json_error>
 
 	    <cms_modules_section>Module</cms_modules_section>
+	    <cms_modules_popup_prefix>Modul</cms_modules_popup_prefix>
 	    <cms_modules_contact_form>Kontakt-Formular</cms_modules_contact_form>
+	    <cms_modules_10001>Kontakt-Formular</cms_modules_10001>
 	    <cms_modules_vita_frontend>Referenzen</cms_modules_vita_frontend>
+	    <cms_modules_10010>Referenzen</cms_modules_10010>
 
 	    <cms_block_section>CMS-Blöcke</cms_block_section>
+	    <cms_block_popup_prefix>CMS-Block</cms_block_popup_prefix>
 	    <cms_block_new>neuer CMS-Block</cms_block_new>
 	    <cms_block_options>CMS-Block Optionen</cms_block_options>
 	    <cms_block_title>CMS-Block Titel</cms_block_title>
@@ -309,6 +313,7 @@
 	    <cms_vita_count_disable>deaktivierte Referenzen</cms_vita_count_disable>
 
 	    <cms_gallery_section>Gallerien</cms_gallery_section>
+	    <cms_gallery_popup_prefix>Gallerie</cms_gallery_popup_prefix>
 	    <cms_gallery_new>neue Gallerie erstellen</cms_gallery_new>
 	    <cms_gallery_block_popup_title>Bilder zur Gallerie hinzufügen</cms_gallery_block_popup_title>
 	    <cms_gallery_block_popup_append_close>Hinzufügen und Schließen</cms_gallery_block_popup_append_close>

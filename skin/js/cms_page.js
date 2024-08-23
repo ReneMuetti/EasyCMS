@@ -7,7 +7,7 @@ let pageElements = [ ["header", pageHeader], ["content", pageContent], ["footer"
 
 let popup  = "#cms-block-popup";
 let prefix = "block-";
-let popupPrefix  = "cms-popup-block-";
+let popupPrefix  = "cms-popup-";
 let popupLoading = "popup-content-loaded";
 let maxBlockCount = 50;
 
@@ -156,10 +156,11 @@ function clearBlockById(selectCmsBlockId)
     saveBlockPositions();
 }
 
-function selectCmsBlock(senderElement)
+function selectCmsBlock(senderElement, senderType)
 {
     let element;
     let elementId;
+    let elementFullId;
     let layoutId;
     let layoutType;
     let layoutNum;
@@ -171,7 +172,13 @@ function selectCmsBlock(senderElement)
         openPopup = true;
     }
     else {
-        element = $("#" + prefix + senderElement);
+        if ( senderType.length ) {
+            element = $("#" + popupPrefix + senderType + "-" + senderElement);
+        }
+        else {
+            element = $("#" + prefix + senderElement);
+        }
+
     }
 
     elementId = element.id;
@@ -212,10 +219,10 @@ function selectCmsBlock(senderElement)
                 // highlight selected Item in Popup
                 $(popup + " .popup-block").removeClass("block-selected");
 
-                let selectPopupCmsBlockId = $("#" + prefix + layoutId).attr("data-content-id");
+                let selectPopupCmsBlockId = $(elementFullId).attr("data-content-id");
                 if ( selectPopupCmsBlockId != "" ) {
                     // if Block selected => highlight
-                    $("#" + popupPrefix + selectPopupCmsBlockId).addClass("block-selected");
+                    $(elementFullId).addClass("block-selected");
                 }
             }
         });
@@ -224,11 +231,13 @@ function selectCmsBlock(senderElement)
     }
 
     if ( $(popup).attr("data-curr-cms-block-id") != "" ) {
+        elementFullId = "#" + popupPrefix + senderType + "-" + senderElement;
+
         let currBlockName = "#" + prefix + $(popup).attr("data-curr-cms-block-id");
-        let selBlockTitle = $("#" + popupPrefix + senderElement).html();
+        let selBlockTitle = $(elementFullId).html();
 
         $(currBlockName).attr("data-content-id"  , senderElement);
-        $(currBlockName).attr("data-content-type", $("#" + popupPrefix + senderElement).attr("data-type"));
+        $(currBlockName).attr("data-content-type", $(elementFullId).attr("data-type"));
         $(currBlockName + " .block-content").html( selBlockTitle );
 
         saveBlockPositions();

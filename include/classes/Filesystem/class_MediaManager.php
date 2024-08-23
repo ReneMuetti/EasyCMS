@@ -110,6 +110,7 @@ class MediaManager
 
                     if ( $specialType == '-image' ) {
                         $relativePath = str_replace(APP_ROOT, '', $path);
+                        $relativePath = str_replace($this -> pathMask, DS, $relativePath);
 
                         $addImage = '<img src="' . $relativePath . DS . $item['name'] . '" />';
                     }

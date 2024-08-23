@@ -456,6 +456,11 @@ td.cms-actions {
 .edit-popup button {
     margin: 0;
 }
+#cms-block-popup,
+#cms-gallery-popup-items {
+    overflow-y: auto;
+    max-height: 70vh !important;
+}
 /* End Popup */
 
 /* Start Sortable List */
@@ -619,8 +624,9 @@ td.cms-actions {
 
 /* Start Media-Manager */
 #media-manager-content {
-    height: 100%;
+    min-height: 100%;
     margin: 0;
+    align-items: baseline;
 }
 #media-manager-content > div {
     padding: 20px;
@@ -703,6 +709,12 @@ td.cms-actions {
     border-top: 20px solid transparent;
     border-bottom: 20px solid transparent;
     border-left: 20px solid var(--rgba-color-dark-04);
+}
+#media-manager-functions {
+    flex-direction: column;
+    display: flex;
+    align-self: baseline;
+    padding: 15px;
 }
 .media-delete {
     background: var(--rgba-color-dark-04);

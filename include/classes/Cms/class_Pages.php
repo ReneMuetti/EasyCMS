@@ -396,8 +396,21 @@ class Pages
                 // section-elements
                 foreach( $value AS $idx => $block ) {
                     if ( $block['c_id'] != '' ) {
-                        $query = 'SELECT `block_title` FROM `blocks` WHERE `block_id` = ' . intval($block['c_id']);
-                        $block['c_title'] = $this -> registry -> db -> querySingleItem($query);
+                        switch( $block['c_type'] ) {
+                            case 'block'  : $query = 'SELECT `block_title` FROM `blocks` WHERE `block_id` = ' . intval($block['c_id']);
+                                            $block['c_title'] = $this -> registry -> user_lang['admin']['cms_block_popup_prefix'] . ' :: ' .
+                                                                $this -> registry -> db -> querySingleItem($query);
+                                            break;
+
+                            case 'gallery': $query = 'SELECT `gallery_title` FROM `gallery` WHERE `gallery_id` = ' . intval($block['c_id']);
+                                            $block['c_title'] = $this -> registry -> user_lang['admin']['cms_gallery_popup_prefix'] . ' :: ' .
+                                                                $this -> registry -> db -> querySingleItem($query);
+                                            break;
+
+                            case 'module' : $block['c_title'] = $this -> registry -> user_lang['admin']['cms_modules_popup_prefix'] . ' :: ' .
+                                                                $this -> registry -> user_lang['admin']['cms_modules_' . intval($block['c_id'])];
+                                            break;
+                        }
                     }
                     else {
                         $block['c_title'] = '';
