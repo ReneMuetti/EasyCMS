@@ -1,3 +1,69 @@
+/* only for Navigation */
+@media screen and (max-width: 750px ) {
+    nav {
+        justify-content: flex-end;
+    }
+    .links-container {
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        z-index: 100;
+        width: 300px;
+        background-image: var(--default-page-background-dark);
+        background-repeat: repeat;
+        box-shadow: -5px 0 5px var(--navbar-mobile-shadow);
+        transition: .5s ease-out;
+
+        label {
+            height: initial;
+        }
+
+        > ul {
+            flex-direction: column;
+            width: 100%;
+            padding: 10px 0 30px 5px;
+
+            li.sub-items {
+                min-width: initial;
+                width: auto;
+
+                span {
+                     width: calc( 99% - var(--navbar-item-symbol-width) );
+                }
+            }
+        }
+    }
+    #home-link {
+        margin-right: initial;
+    }
+    #btn-sidebar-open, #btn-sidebar-close {
+        display: flex;
+        width: var(--navbar-item-symbol-width);
+        height: var(--navbar-height);
+        text-align: center;
+    }
+    #btn-sidebar-open {
+    }
+    #btn-sidebar-close {
+        margin: 30px auto 0 3px;
+    }
+    #sidebar-active:checked ~ .links-container {
+        right: 9px;
+    }
+    #sidebar-active:checked ~ #sidebar-overlay {
+        background: var(--navbar-mobile-overlay);
+        height: 100%;
+        width: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 99;
+        transition: .5s ease-out;
+    }
+}
+
+/* Page-Elements */
 @media screen and (max-width: 1250px ) {
     .page-width {
         padding: 0 15px;
@@ -97,9 +163,15 @@
     }
 }
 @media screen and (max-width: 865px ) {
+    #gridster-header {
+        justify-content: initial;
+    }
     #gridster-header > div.gs-w {
         position: initial;
         width: max-content;
+    }
+    #gridster-header .gs-w:first-child {
+        margin-right: initial;
     }
     #header-company-name {
         font-size: 3rem;

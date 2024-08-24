@@ -14,8 +14,8 @@
     --link-normal-color-back: transparent;
     --link-active-color-font: #352783;
     --link-active-color-back: #8DC2DB;
-    --link-text-normal-color-font: #352783;
-    --link-text-normal-color-back: transparent;
+    --link-text-normal-color-font: #fff;
+    --link-text-normal-color-back: rgba(141, 194, 219, 0.2);
     --link-text-active-color-font: #352783;
     --link-text-active-color-back: #8DC2DB;
 
@@ -49,4 +49,12 @@
     --vita-artice-border-color: #000;
     --vita-artice-font-color: #000;
     --vita-artice-shadow: rgba(0, 0, 0, 0.3);
+
+    --navbar-height: 60px;
+    --navbar-font-size: 1.2rem;
+    --navbar-item-min-width: 150px;
+    --navbar-item-symbol-width: 60px;
+    --navbar-mobile-shadow: rgba(0, 0, 0, 0.2);
+    --navbar-mobile-overlay: rgba(0, 0, 0, 0.4);
+    --navbar-item-radius: 3px;
 }

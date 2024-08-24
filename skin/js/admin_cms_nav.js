@@ -325,7 +325,7 @@ function saveNavEntry()
     currentNavEntry.cmsTitle    = $("#nav-destination-cms option:selected").text();
     currentNavEntry.url         = $("#nav-destination-external").val();
     currentNavEntry.insertInto  = "";
-    currentNavEntry.isHome      = false;
+    currentNavEntry.home        = false;
 
     createNewNavigationElement(currentNavEntry);
     hidePopup();

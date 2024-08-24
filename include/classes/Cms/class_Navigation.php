@@ -73,8 +73,8 @@ class Navigation
                                'item_class'   => $navElement['class'],
                                'item_pos'     => $navElement['position'],
                                'item_parent'  => $navElement['parent'],
-                               'item_enable'  => ( ($navElement['enable'] == true) ? 1 : 0 ),
-                               'item_home'    => ( ($navElement['home'] == true) ? 1 : 0 ),
+                               'item_enable'  => ( ($navElement['enable'] == "true") ? 1 : 0 ),
+                               'item_home'    => ( ($navElement['home']   == "true") ? 1 : 0 ),
                                'item_type'    => $navElement['type'],
                                'item_cms'     => $navElement['cms-id'],
                                'item_url'     => $navElement['url'],
@@ -111,9 +111,120 @@ class Navigation
         }
     }
 
+    public function getFrontendNavigation()
+    {
+        $html = array();
+
+        $data = $this -> _getNavigationData();
+        $this -> _renderFrontendNavigation($data, $html, 1);
+
+        return implode("\n", $html);
+    }
 
 
+    private function _renderFrontendNavigation($data, &$html, $level)
+    {
+        $spacer   = str_repeat(' ', 4);
+        $spacerUL = str_repeat(' ', ($level * 4) );
+        $spacerLI = $spacerUL . $spacer;
 
+        if ( $level == 1 ) {
+            $html[] = $spacerLI . '<input type="checkbox" id="sidebar-active" />';
+            $html[] = $spacerLI . '<label for="sidebar-active" id="btn-sidebar-open"><span id="icon-sidebar-open" class="icons"></span></label>';
+            $html[] = $spacerLI . '<label for="sidebar-active" id="sidebar-overlay"></label>';
+            $html[] = $spacerLI . '<div class="links-container">';
+            $html[] = $spacerLI . '    <label for="sidebar-active" id="btn-sidebar-close"><span id="icon-sidebar-close" class="icons"></span></label>';
+        }
+
+        $html[] = $spacerUL . '<ul>';
+
+        foreach( $data AS $navItem ) {
+            $subItems = ( array_key_exists('sub', $navItem) AND is_array($navItem['sub']) );
+
+            $html[] = $spacerLI . '<li' . ($navItem['home'] ? ' id="home-link"' : '') . ($subItems ? ' class="sub-items"' : '' ) . '>';
+
+            if ( !strlen($navItem['url']) ) {
+                $html[] = $spacerLI . $spacer . '<span>' . $navItem['title'] . '</span>';
+            }
+            else {
+                if ( strpos($navItem['url'], $this -> registry -> baseurl) === false ) {
+                    $external = ' target="_blank"';
+                }
+                else {
+                    $external = '';
+                }
+
+                $html[] = $spacerLI . $spacer . '<a href="' . $navItem['url'] . '"' . $external . '>' . $navItem['title'] . '</a>';
+            }
+
+            if ( $subItems ) {
+                $html[] = $spacerLI . $spacer . '<input type="checkbox" id="' . $navItem['id'] . '" />';
+                $html[] = $spacerLI . $spacer . '<label for="' . $navItem['id'] . '"><span class="icons"></span></label>';
+                $this -> _renderFrontendNavigation($navItem['sub'], $html, $level + 2);
+            }
+
+            $html[] = $spacerLI . '</li>';
+        }
+
+        $html[] = $spacerUL . '</ul>';
+
+        if ( $level == 1 ) {
+            $html[] = $spacerLI . '</div>';
+        }
+    }
+
+    private function _getNavigationData()
+    {
+        $query = 'SELECT `navigation`.*, `pages`.`seo_code` FROM `navigation` ' .
+                     'LEFT JOIN `pages` ON (`navigation`.`item_cms` = `pages`.`page_id` AND `navigation`.`item_type` = 0) ' .
+                 'WHERE `navigation`.`item_enable` = 1;';
+        $data  = $this -> registry -> db -> queryObjectArray($query);
+
+        if ( is_array($data) AND count($data[0]) ) {
+            return $this -> _moveResultToMultiLevelArray($data);
+        }
+        else {
+            return false;
+        }
+    }
+
+    private function _moveResultToMultiLevelArray($data)
+    {
+        $return = array();
+
+        foreach($data AS $navItem) {
+            $isHome = ( ($navItem['item_home'] === 1) ? true : false );
+
+            switch ($navItem['item_type']) {
+                case 0 : $link =  $this -> registry -> baseurl . $navItem['seo_code'];
+                         break;
+                case 1 : $link = '';
+                         break;
+                default: $link = $navItem['item_url'];
+                         break;
+            }
+
+            $insert = array(
+                          'title' => $navItem['item_title'],
+                          'id'    => 'sub-nav-' . $navItem['item_id'],
+                          'home'  => $isHome,
+                          'url'   => $link,
+                      );
+
+            if ( strlen($navItem['item_parent']) ) {
+                if ( !array_key_exists($navItem['item_parent'], $return) ) {
+                    $return[$navItem['item_parent']]['sub'] = array();
+                }
+
+                $return[$navItem['item_parent']]['sub'][$navItem['item_element']] = $insert;
+            }
+            else {
+                $return[$navItem['item_element']] = $insert;
+            }
+        }
+
+        return $return;
+    }
 
     private function _loadNavigationFromDataBase()
     {
