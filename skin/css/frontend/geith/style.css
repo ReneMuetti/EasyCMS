@@ -103,7 +103,6 @@ footer {
  * Navigation
  */
 nav {
-    height: var(--navbar-height);
     display: flex;
     align-items: center;
 
@@ -112,6 +111,7 @@ nav {
     }
 
     ul {
+        height: var(--navbar-height);
         margin: 0;
         padding: 0;
         list-style: none;
