@@ -191,6 +191,9 @@ nav {
                 &:checked ~ ul {
                     display: flex;
                 }
+                &:checked ~ label > span:before {
+                    content: "\f068";
+                }
             }
 
             ul {
@@ -222,8 +225,14 @@ nav {
     font-size: 1.5rem;
     font-style: normal;
 }
-.sub-items label:before {
-    content: "\2b";
+.sub-items {
+    label > span {
+        background: transparent;
+
+        &:before {
+            content: "\2b";
+        }
+    }
 }
 #icon-sidebar-open:before {
     content: "\f0c9";
