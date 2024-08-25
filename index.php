@@ -15,6 +15,7 @@ $pageElements = array(
                     'description' => '',
                     'keywords'    => '',
                     'title'       => '',
+                    'cms_class'   => '',
                 );
 
 // #######################################################################
@@ -29,7 +30,7 @@ if ( isset($website -> GPC['page']) ) {
     if ( empty($website -> GPC['page']) ) {
         $website -> GPC['page'] = $cmsPage -> getDefaltHomeCode();
     }
-    $pageElements = $cmsPage -> getFrontendPageByCode($website -> GPC['page']);
+    $cmsPage -> getFrontendPageByCode($website -> GPC['page'], $pageElements);
 }
 else {
     $pageElements['title']   = $website -> user_lang['page_titles']['error'];
@@ -40,6 +41,9 @@ if ( empty($pageElements['content']) OR !strlen($pageElements['content']) ) {
     $pageElements['title']   = $website -> user_lang['page_titles']['error'];
     $pageElements['content'] = $website -> user_lang['global']['unkonwn_action'];
 }
+
+$navigation = new Navigation();
+$pageElements['navbar'] = $navigation -> getFrontendNavigation();
 
 $renderer -> loadTemplate(THIS_TEMPLATE . '.htm');
     $renderer -> setVariable('current_page_skin'      , 'geith');
