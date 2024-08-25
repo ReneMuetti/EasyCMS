@@ -57,4 +57,12 @@
     --navbar-mobile-shadow: rgba(0, 0, 0, 0.2);
     --navbar-mobile-overlay: rgba(0, 0, 0, 0.4);
     --navbar-item-radius: 3px;
+
+    --services-first-image-shadow: rgba(0, 0, 0, 0.4);
+    --services-first-image-radius: 4px;
+
+    --gallery-grid-background: rgba(0, 0, 0, 0.1);
+    --gallery-grid-shadow: rgba(0, 0, 0, 0.4);
+    --gallery-slider-css-background: rgba(0, 0, 0, 0.1);
+    --gallery-slider-css-shadow: rgba(0, 0, 0, 0.6);
 }

@@ -277,6 +277,8 @@
 	    <cms_page_description_ph>kurze Beschreibung des Seiten-Inhaltes</cms_page_description_ph>
 	    <cms_page_seo>SEO-URL</cms_page_seo>
 	    <cms_page_seo_ph>SEO-URL angeben (leer lassen für automatische Erstellung)</cms_page_seo_ph>
+	    <cms_page_classes>eigene CSS-Klassen</cms_page_classes>
+	    <cms_page_classes_ph>selbst definierte CSS-Klassen für die aktuelle CMS-Seite</cms_page_classes_ph>
 	    <cms_page_home>als Startseite setzen</cms_page_home>
 	    <cms_page_status>CMS-Seite aktivieren</cms_page_status>
 	    <cms_page_editor>CMS-Seite bearbeiten</cms_page_editor>
@@ -328,19 +330,28 @@
 	    <cms_gallery_type>Gallerie-Typ</cms_gallery_type>
 	    <cms_gallery_type_not_present>Der gewählte Gallerie-Typ ist nicht vorhanden!</cms_gallery_type_not_present>
 	    <cms_gallery_type_blocks>Bilder-Blöcke</cms_gallery_type_blocks>
+	    <cms_gallery_type_simple_slider>einfacher CSS-Slider (Laufband)</cms_gallery_type_simple_slider>
+	    <cms_gallery_type_simple_slider_select_title>Animations-Richtung</cms_gallery_type_simple_slider_select_title>
+	    <cms_gallery_type_simple_slider_select_left>von links nach rechts</cms_gallery_type_simple_slider_select_left>
+	    <cms_gallery_type_simple_slider_select_right>von rechts nach links</cms_gallery_type_simple_slider_select_right>
+	    <cms_gallery_option_simple_slider_speed_title>Animations-Geschwindigkeit</cms_gallery_option_simple_slider_speed_title>
+	    <cms_gallery_option_simple_slider_height_title>Höhe des Laufbandes in Pixel</cms_gallery_option_simple_slider_height_title>
+
 	    <cms_gallery_type_splide>Splide (leichter, flexibler und zugänglicher Slider/Karusell)</cms_gallery_type_splide>
 	    <cms_gallery_status>Aktiviert</cms_gallery_status>
 	    <cms_gallery_item_title_ph>Geben sie einen Bild-Titel an</cms_gallery_item_title_ph>
 	    <cms_gallery_item_description_ph>Geben Sie eine Bild-Beschreibung an</cms_gallery_item_description_ph>
 	    <cms_gallery_type_blocks_select_title>max. Anzahl der Elements pro Zeile</cms_gallery_type_blocks_select_title>
 	    <cms_gallery_type_blocks_select>Elements pro Zeile</cms_gallery_type_blocks_select>
-	    <cms_gallery_type_blocks_show_title_title>zeige Element-Titel</cms_gallery_type_blocks_show_title_title>
-	    <cms_gallery_type_blocks_show_description_title>Zeige Element-Beschreibung</cms_gallery_type_blocks_show_description_title>
 	    <cms_gallery_save_success>Gallerie wurde gespeichert</cms_gallery_save_success>
 	    <cms_gallery_save_fail>Gallerie wurde nicht gespeichert!</cms_gallery_save_fail>
 	    <cms_gallery_count>Anzahl aller Gallerien</cms_gallery_count>
 	    <cms_gallery_count_enable>aktivierte Gallerien</cms_gallery_count_enable>
 	    <cms_gallery_count_disable>deaktivierte Gallerien</cms_gallery_count_disable>
+
+	    <cms_gallery_image_show_title_title>Bild-Titel</cms_gallery_image_show_title_title>
+	    <cms_gallery_image_show_description_title>Bild-Beschreibung</cms_gallery_image_show_description_title>
+
 
 	    <media_manager>Verwaltung für Dateien und Verzeichnisse</media_manager>
 	    <media_manager_empty>kein Inhalt vorhanden</media_manager_empty>

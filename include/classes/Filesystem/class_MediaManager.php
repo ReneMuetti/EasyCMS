@@ -41,6 +41,11 @@ class MediaManager
         return $this -> pathMask;
     }
 
+    public function getMadiaPath()
+    {
+        return $this -> basePath;
+    }
+
     public function showMediaManager()
     {
         $pathClick   = $this -> _getcurrentLinkedMediaPath();

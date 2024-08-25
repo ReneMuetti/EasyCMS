@@ -29,24 +29,24 @@ class Pages
      * Start Frontend-Funtions
      */
 
-    public function getFrontendPageByCode($pageCode)
+    public function getFrontendPageByCode($pageCode, &$pageElements)
     {
         $pageData = $this -> registry -> db -> querySingleArray('SELECT * FROM `pages` WHERE `seo_code` = "' . $pageCode . '" AND `page_enable` = 1;');
 
         if ( is_array($pageData) AND count($pageData) ) {
             // found by SEO-Code
-            return $this -> _renderForntendPage($pageData);
+            return $this -> _renderForntendPage($pageData, $pageElements);
         }
         else {
             $pageData = $this -> registry -> db -> querySingleArray('SELECT * FROM `pages` WHERE `page_internal` = "' . $pageCode . '" AND `page_enable` = 1;');
 
             if ( is_array($pageData) AND count($pageData) ) {
                 // found by internal
-                return $this -> _renderForntendPage($pageData);
+                return $this -> _renderForntendPage($pageData, $pageElements);
             }
             else {
                 // load 404-Page
-                $pageData = $this -> _renderForntendPage(null);
+                $pageData = $this -> _renderForntendPage(null, $pageElements);
 
                 $this -> renderer -> loadTemplate('frontend' . DS . '404.htm');
                     $this -> renderer -> addCustonStyle(array('script' => 'skin/css/frontend/default/404.css'), THIS_SCRIPT);
@@ -131,6 +131,7 @@ class Pages
                     $this -> renderer -> setVariable('cms_page_id'         , $pageId);
                     $this -> renderer -> setVariable('cms_page_count'      , $layoutBlockCount);
                     $this -> renderer -> setVariable('cms_page_layout'     , $pageData['page_layout']);
+                    $this -> renderer -> setVariable('cms_page_classes'    , $pageData['page_class']);
                     $this -> renderer -> setVariable('cms_page_title'      , $pageData['page_title']);
                     $this -> renderer -> setVariable('cms_page_internal'   , $pageData['page_internal']);
                     $this -> renderer -> setVariable('cms_page_description', $pageData['page_description']);
@@ -167,6 +168,7 @@ class Pages
                 $this -> renderer -> setVariable('cms_page_id'         , $pageId);
                 $this -> renderer -> setVariable('cms_page_count'      , $layoutBlockCount);
                 $this -> renderer -> setVariable('cms_page_layout'     , $gridsterJson);
+                $this -> renderer -> setVariable('cms_page_classes'    , '');
                 $this -> renderer -> setVariable('cms_page_title'      , '');
                 $this -> renderer -> setVariable('cms_page_internal'   , '');
                 $this -> renderer -> setVariable('cms_page_description', '');
@@ -186,13 +188,14 @@ class Pages
         }
     }
 
-    public function savePage($method, $pageId, $pageTitle, $pageInternal, $pageDescription, $pageKeywords, $pageSeo, $pageEnable, $pageIsHome, $pageLayout, $pageBlockCount)
+    public function savePage($method, $pageId, $pageTitle, $pageInternal, $pageDescription, $pageKeywords, $pageSeo, $pageEnable, $pageIsHome, $pageLayout, $pageClass, $pageBlockCount)
     {
         $sqlData = array(
                        'page_title'       => $pageTitle,
                        'page_internal'    => $pageInternal,
                        'page_enable'      => $pageEnable,
                        'page_layout'      => $pageLayout,
+                       'page_class'       => $pageClass,
                        'page_description' => $pageDescription,
                        'page_keywords'    => $pageKeywords,
                        'is_home'          => $pageIsHome,
@@ -257,18 +260,14 @@ class Pages
      */
 
 
-    private function _renderForntendPage($pageData)
+    private function _renderForntendPage($pageData, &$pageElements)
     {
         $pageLayout = null;
-        $rendered = array(
-                        'header'      => '',
-                        'content'     => '',
-                        'footer'      => '',
-                        'navbar'      => '',
-                        'description' => (isset($pageData['page_description']) ? $pageData['page_description'] : ''),
-                        'keywords'    => (isset($pageData['page_keywords'])    ? $pageData['page_keywords']    : ''),
-                        'title'       => (isset($pageData['page_title'])       ? $pageData['page_title']       : $this -> registry -> user_lang['page_titles']['error']),
-                    );
+
+        $pageElements['description'] = (isset($pageData['page_description']) ? $pageData['page_description'] : '');
+        $pageElements['keywords']    = (isset($pageData['page_keywords'])    ? $pageData['page_keywords']    : '');
+        $pageElements['title']       = (isset($pageData['page_title'])       ? $pageData['page_title']       : $this -> registry -> user_lang['page_titles']['error']);
+        $pageElements['cms_class']   = (isset($pageData['page_class'])       ? $pageData['page_class']       : '');
 
         if ( isset($pageData['page_layout']) AND strlen($pageData['page_layout']) ) {
             $pageLayout = json_decode(html_entity_decode($pageData['page_layout']), true);
@@ -281,12 +280,10 @@ class Pages
 
         foreach( $pageLayout AS $id => $value ) {
             if ( is_string($value) ) {
-                $rendered[$value] = $this -> _renderFrontendLayoutSection($pageLayout[$id + 1]);
+                $pageElements[$value] = $this -> _renderFrontendLayoutSection($pageLayout[$id + 1]);
                 $id++;
             }
         }
-
-        return $rendered;
     }
 
     private function _getDefaultPageLayoutFromConfig()
@@ -302,42 +299,59 @@ class Pages
         return $gridsterJson;
     }
 
+    private function _reoderBlocksForRendering($layout)
+    {
+        $tmp = array();
+        $new = array();
+
+        foreach( $layout AS $block ) {
+            $tmp[$block['row']][$block['col']] = $block;
+        }
+        ksort($tmp);
+
+        foreach( $tmp AS $row ) {
+            foreach( $row AS $col ) {
+                $new[] = $col;
+            }
+        }
+
+        unset($tmp);
+
+        return $new;
+    }
+
     private function _renderFrontendLayoutSection($layout)
     {
         $blocks = array();
 
         if ( is_array($layout) AND count($layout) ) {
+            if ( count($layout) >= 2 ) {
+                // reorder blocks by row
+                $layout = $this -> _reoderBlocksForRendering($layout);
+            }
+
+            // render all Blocks
             foreach( $layout AS $id => $block ) {
-                if ( empty($block['c_type']) OR !strlen($block['c_type']) ) {
-                    $html = '';
-                    $blockName = 'page_block_blank.htm';
-                }
-                elseif ( $block['c_type'] == 'block' ) {
-                    $query = 'SELECT `block_content` FROM `blocks` WHERE `block_enable` = 1 AND `block_id` = ' . intval($block['c_id']);
-                    $blockContent = $this -> registry -> db -> querySingleItem($query);
+                switch($block['c_type']) {
+                    case 'block'  : $data = $this -> _renderPageBlock($block);
+                                    $html = $data['html'];
+                                    $blockName = $data['name'];
+                                    break;
 
-                    if ( is_string($blockContent) AND strlen($blockContent) ) {
-                        $html = str_replace("\\r", "", $blockContent);
-                        $html = stripslashes($html);
-                        $html = str_replace(
-                                    array('font-family: &quot;', '&quot;;'),
-                                    array('font-family: \''    , '\';'),
-                                    $html
-                                );
+                    case 'gallery': $data = $this -> _renderGalleryBlock($block);
+                                    $html = $data['html'];
+                                    $blockName = $data['name'];
+                                    break;
 
-                        $blockName = 'page_block.htm';
-                    }
-                    else {
-                        $html = '';
-                        $blockName = 'page_block_blank.htm';
-                    }
-                }
-                elseif ( $block['c_type'] == 'module' ) {
-                    $class  = $this -> _findClassFromModuleId(intval($block['c_id']));
-                    $module = new $class();
-                    $html   = $module -> getFrontendBlock();
+                    case 'module' : $class  = $this -> _findClassFromModuleId(intval($block['c_id']));
+                                    $module = new $class();
+                                    $html   = $module -> getFrontendBlock();
+                                    $blockName = 'page_block.htm';
+                                    break;
 
-                    $blockName = 'page_block.htm';
+                    default: $html = '';
+                             $blockName = 'page_block_blank.htm';
+                             break;
                 }
 
                 $this -> renderer -> loadTemplate('frontend' . DS . $blockName);
@@ -353,6 +367,76 @@ class Pages
             }
         }
         return implode("\n", $blocks);
+    }
+
+    private function _renderPageBlock($block)
+    {
+        $html = '';
+        $blockName = 'page_block_blank.htm';
+
+        $query = 'SELECT `block_content` FROM `blocks` WHERE `block_enable` = 1 AND `block_id` = ' . intval($block['c_id']);
+        $blockContent = $this -> registry -> db -> querySingleItem($query);
+
+        if ( is_string($blockContent) AND strlen($blockContent) ) {
+            $html = str_replace("\\r", "", $blockContent);
+            $html = stripslashes($html);
+            $html = str_replace(
+                        array('font-family: &quot;', '&quot;;'),
+                        array('font-family: \''    , '\';'),
+                        $html
+                    );
+
+            $blockName = 'page_block.htm';
+        }
+
+        return array(
+                   'html' => $html,
+                   'name' => $blockName,
+               );
+    }
+
+    private function _renderGalleryBlock($block)
+    {
+        $html = '';
+        $blockName = 'page_block_blank.htm';
+
+        $query = 'SELECT `gallery_type`, `gallery_options`, `gallery_images` FROM `gallery` WHERE `gallery_enable` = 1 AND `gallery_id` = ' . intval($block['c_id']);
+        $galleryData = $this -> registry -> db -> querySingleArray($query);
+
+        if ( is_array($galleryData) AND count($galleryData) ) {
+            $gallery = new Gallery();
+
+            $galleryTyp = $gallery -> getGalleryType($galleryData['gallery_type']);
+            $options    = json_decode(html_entity_decode($galleryData['gallery_options']), true);
+            $imageList  = json_decode(html_entity_decode($galleryData['gallery_images']) , true);
+
+            switch( $galleryTyp ) {
+                case 'blocks': $html = $gallery -> getSimpleGalleryImageBlocks(
+                                                       $imageList,
+                                                       $options['showTitle'],
+                                                       $options['showDescr'],
+                                                       $options['perLine']
+                                                   );
+                               break;
+
+                case 'simple_slider': $html = $gallery -> getSimpleCssSlider(
+                                                              $imageList,
+                                                              $options['showTitle'],
+                                                              $options['showDescr'],
+                                                              $options['direction'],
+                                                              $options['height'],
+                                                              $options['speed']
+                                                          );
+                                      break;
+            }
+
+            $blockName  = 'page_gallery_' . $galleryTyp . '.htm';
+        }
+
+        return array(
+                   'html' => $html,
+                   'name' => $blockName,
+               );
     }
 
     private function _findClassFromModuleId($moduleId)

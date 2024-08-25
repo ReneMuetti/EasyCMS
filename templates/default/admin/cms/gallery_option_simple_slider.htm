@@ -1,0 +1,36 @@
+
+<div class="glass-block-border glass-border" data-gallery-type="<var gallery_option_type />">
+    <div class="glass-block">
+        <h2><lang admin_cms_gallery_type_simple_slider /></h2>
+        <div class="flex-2">
+            <div class="elment-block">
+                <label for="gallery-option-direction"><lang admin_cms_gallery_type_simple_slider_select_title /></label>
+                <select id="gallery-option-direction"<var simple_slider_direction />>
+                    <option value="0"><lang admin_cms_gallery_type_simple_slider_select_left /></option>
+                    <option value="1"><lang admin_cms_gallery_type_simple_slider_select_right /></option>
+                </select>
+            </div>
+            <div>&nbsp;</div>
+        </div>
+        <div class="flex-2">
+            <div class="elment-block">
+                <label for="gallery-option-speed"><lang admin_cms_gallery_option_simple_slider_speed_title /></label>
+                <input type="number" pattern="\d*" inputmode="numeric" id="gallery-option-speed" value="<var simple_slider_speed />" />
+            </div>
+            <div class="elment-block">
+                <label for="gallery-option-height"><lang admin_cms_gallery_option_simple_slider_height_title /></label>
+                <input type="number" pattern="\d*" inputmode="numeric" id="gallery-option-height" value="<var simple_slider_height />" />
+            </div>
+        </div>
+        <div class="flex-2">
+            <div class="elment-block">
+                <label for="gallery-option-elements-show-title"><lang admin_cms_gallery_image_show_title_title /></label>
+                <input type="checkbox" id="gallery-option-elements-show-title" value="1" <var gallery_image_show_title /> />
+            </div>
+            <div class="elment-block">
+                <label for="gallery-option-elements-show-description"><lang admin_cms_gallery_image_show_description_title /></label>
+                <input type="checkbox" id="gallery-option-elements-show-description" value="1" <var gallery_image_show_descr /> />
+            </div>
+        </div>
+    </div>
+</div>

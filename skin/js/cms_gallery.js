@@ -25,6 +25,10 @@ function finishGalleryConfig()
             let perLineIdx = $("#gallery-option-elements-per-line").attr("data-items-per-line");
             $("#gallery-option-elements-per-line").val(perLineIdx).change();
         }
+        else if ( galleryType == "simple_slider" ) {
+            let directionIdx = $("#gallery-option-direction").attr("data-direction");
+            $("#gallery-option-direction").val(directionIdx).change();
+        }
     }
 }
 
@@ -145,6 +149,17 @@ function createGalleryConfiguration()
                                                "perLine"  : $("#gallery-option-elements-per-line").val(),
                                            };
                            break;
+
+            case "simple_slider": galleryConfig = {
+                                                      "type"     : galleryType,
+                                                      "showTitle": $("#gallery-option-elements-show-title").prop("checked"),
+                                                      "showDescr": $("#gallery-option-elements-show-description").prop("checked"),
+                                                      "direction": $("#gallery-option-direction").val(),
+                                                      "speed"    : parseInt( $("#gallery-option-speed").val() ) ,
+                                                      "height"   : parseInt( $("#gallery-option-height").val() ),
+                                                  };
+                                  break;
+
             case "splide": galleryConfig = {
                                                "type": galleryType,
                                            };

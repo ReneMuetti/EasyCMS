@@ -14,11 +14,15 @@ class Gallery
         $this -> renderer = $renderer;
 
         $this -> types = array(
-                             1 => array(
-                                      'name' => $this -> registry -> user_lang['admin']['cms_gallery_type_blocks'],
-                                      'type' => 'blocks'
-                                  ),
-                             2 => array(
+                             1  => array(
+                                       'name' => $this -> registry -> user_lang['admin']['cms_gallery_type_blocks'],
+                                       'type' => 'blocks'
+                                   ),
+                             2  => array(
+                                       'name' => $this -> registry -> user_lang['admin']['cms_gallery_type_simple_slider'],
+                                       'type' => 'simple_slider'
+                                   ),
+                             10 => array(
                                       'name' => $this -> registry -> user_lang['admin']['cms_gallery_type_splide'],
                                       'type' => 'splide'
                                   ),
@@ -31,6 +35,48 @@ class Gallery
         unset($this -> renderer);
     }
 
+    public function getGalleryType($typeId)
+    {
+        return $this -> types[$typeId]['type'];
+    }
+
+    public function getSimpleGalleryImageBlocks($imageData, $showTitel, $shwoDescr, $perLine)
+    {
+        $images = array();
+        $templateName = $this -> _getTemplateNameForFrontend('grid', $showTitel, $shwoDescr);
+
+        $this -> _renderGalleryImageElementsForFrontend($images, $imageData, $templateName);
+
+        if ( count($images) ) {
+            $this -> renderer -> loadTemplate('frontend' . DS . 'gallery' . DS . 'grid.htm');
+                $this -> renderer -> setVariable('images'  , implode("\n", $images));
+                $this -> renderer -> setVariable('per_line', $perLine);
+            return $this -> renderer -> renderTemplate();
+        }
+
+        return '';
+    }
+
+    public function getSimpleCssSlider($imageData, $showTitel, $shwoDescr, $direction, $height, $speed)
+    {
+        $images = array();
+        $templateName = $this -> _getTemplateNameForFrontend('css_slider', $showTitel, $shwoDescr);
+
+        $this -> _renderGalleryImageElementsForFrontend($images, $imageData, $templateName);
+
+        if ( count($images) ) {
+            $this -> renderer -> loadTemplate('frontend' . DS . 'gallery' . DS . 'css_slider.htm');
+                $this -> renderer -> setVariable('images'   , implode("\n", $images));
+                $this -> renderer -> setVariable('height'   , $height );
+                $this -> renderer -> setVariable('speed'    , $speed );
+                $this -> renderer -> setVariable('direction', ($direction == 0 ? 'left' : 'right') );
+            return $this -> renderer -> renderTemplate();
+        }
+
+        return '';
+    }
+
+
     public function getGalleryOptionTemplate($selectIndex, $configData = null)
     {
         $return = array(
@@ -42,27 +88,36 @@ class Gallery
         if ( array_key_exists($selectIndex, $this -> types) ) {
             if ( is_null($configData) OR !strlen($configData) ) {
                 $this -> renderer -> loadTemplate('admin' . DS . 'cms' . DS . 'gallery_option_' . $this -> types[$selectIndex]['type'] . '.htm');
-                    $this -> renderer -> setVariable('gallery_blocks_show_title'    , '');
-                    $this -> renderer -> setVariable('gallery_blocks_show_descr'    , '');
+                    $this -> renderer -> setVariable('gallery_image_show_title'     , '');
+                    $this -> renderer -> setVariable('gallery_image_show_descr'     , '');
                     $this -> renderer -> setVariable('gallery_option_type'          , $this -> types[$selectIndex]['type']);
                     $this -> renderer -> setVariable('gallery_blocks_items_per_line', '');
+                    $this -> renderer -> setVariable('simple_slider_direction'      , '');
+                    $this -> renderer -> setVariable('simple_slider_height'         , '200' );
+                    $this -> renderer -> setVariable('simple_slider_speed'          , '10' );
                 $return['data'] = $this -> renderer -> renderTemplate();
             }
             else {
                 $jsonData = json_decode( html_entity_decode($configData), true );
 
                 $this -> renderer -> loadTemplate('admin' . DS . 'cms' . DS . 'gallery_option_' . $this -> types[$selectIndex]['type'] . '.htm');
-                    $this -> renderer -> setVariable('gallery_option_type', $this -> types[$selectIndex]['type']);
+                    $this -> renderer -> setVariable('gallery_option_type'     , $this -> types[$selectIndex]['type']);
+                    $this -> renderer -> setVariable('gallery_image_show_title', $jsonData['showTitle'] ? 'checked' : '' );
+                    $this -> renderer -> setVariable('gallery_image_show_descr', $jsonData['showDescr'] ? 'checked' : '' );
 
-                if ( $selectIndex == 1 ) {
-                    // blocks
-                    $this -> renderer -> setVariable('gallery_blocks_show_title'    , $jsonData['showTitle'] ? 'checked' : '' );
-                    $this -> renderer -> setVariable('gallery_blocks_show_descr'    , $jsonData['showDescr'] ? 'checked' : '' );
-                    $this -> renderer -> setVariable('gallery_option_type'          , $this -> types[$selectIndex]['type']);
-                    $this -> renderer -> setVariable('gallery_blocks_items_per_line', ' data-items-per-line="' . $jsonData['perLine'] . '"');
-                }
-                elseif( $selectIndex == 2 ) {
-                    //splide
+                switch($selectIndex) {
+                    case 1  : // blocks
+                              $this -> renderer -> setVariable('gallery_option_type'          , $this -> types[$selectIndex]['type']);
+                              $this -> renderer -> setVariable('gallery_blocks_items_per_line', ' data-items-per-line="' . $jsonData['perLine'] . '"');
+                              break;
+                    case 2  : // simple css-slider
+                              $this -> renderer -> setVariable('gallery_option_type'     , $this -> types[$selectIndex]['type']);
+                              $this -> renderer -> setVariable('simple_slider_height'    , intval($jsonData['height']) );
+                              $this -> renderer -> setVariable('simple_slider_speed'     , intval($jsonData['speed']) );
+                              $this -> renderer -> setVariable('simple_slider_direction' , ' data-direction="' . $jsonData['direction'] . '"');
+                              break;
+                    case 10 : //splide
+                              break;
                 }
 
                 return $this -> renderer -> renderTemplate();
@@ -158,7 +213,6 @@ class Gallery
                     $this -> renderer -> setVariable('error_message', $this -> registry -> user_lang['admin']['cms_gallery_load_fail']);
                 return $this -> renderer -> renderTemplate();
             }
-;
         }
         else {
             // new gallery
@@ -250,4 +304,33 @@ class Gallery
 
         return implode("\n", $options);
     }
+
+    private function _getTemplateNameForFrontend($galeryType, $showTitel, $shwoDescr)
+    {
+        return 'image_' . $galeryType .
+               ( $showTitel ? '_title' : '' ) .
+               ( $shwoDescr ? '_descr' : '' );
+    }
+
+    private function _renderGalleryImageElementsForFrontend(&$returnImages, $imageData, $imageTemplate)
+    {
+        if ( is_array($imageData) AND count($imageData) ) {
+            $manager = new MediaManager();
+            $pathMask = $manager -> getPathMask();
+
+            foreach( $imageData AS $currImage ) {
+                $imageRelativePath = str_replace($pathMask, DS, $currImage['imagePath']);
+                $imageAbsolutePath = $this -> registry -> config['Misc']['path'] . DS . $imageRelativePath;
+
+                if ( is_file($imageAbsolutePath) ) {
+                    $this -> renderer -> loadTemplate('frontend' . DS . 'gallery' . DS . $imageTemplate . '.htm');
+                        $this -> renderer -> setVariable('image_path' , $imageRelativePath);
+                        $this -> renderer -> setVariable('image_title', $currImage['imageTitle']);
+                        $this -> renderer -> setVariable('image_descr', $currImage['imageDescr']);
+                    $returnImages[] = $this -> renderer -> renderTemplate();
+                }
+            }
+        }
+    }
+
 }

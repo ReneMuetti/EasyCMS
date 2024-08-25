@@ -5,6 +5,7 @@ $website -> input -> clean_array_gpc('r', array(
                                               'pageid'      => TYPE_UINT,
                                               'layout'      => TYPE_NOHTML,   // JSON from Page-Layout
                                               'blockcount'  => TYPE_UINT,     // count of blocks
+                                              'classes'     => TYPE_NOHTML,
                                               'title'       => TYPE_NOHTML,
                                               'internal'    => TYPE_NOHTML,
                                               'description' => TYPE_NOHTML,
@@ -31,6 +32,7 @@ if ( isset($website -> GPC['do']) ) {
                                                            $website -> GPC['enable'],
                                                            $website -> GPC['home'],
                                                            $website -> GPC['layout'],
+                                                           $website -> GPC['classes'],
                                                            $website -> GPC['blockcount']
                                                        );
                             break;
@@ -47,6 +49,7 @@ if ( isset($website -> GPC['do']) ) {
                                                            $website -> GPC['enable'],
                                                            $website -> GPC['home'],
                                                            $website -> GPC['layout'],
+                                                           $website -> GPC['classes'],
                                                            $website -> GPC['blockcount']
                                                        );
                             break;

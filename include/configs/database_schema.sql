@@ -110,6 +110,7 @@ CREATE TABLE `pages` (
   `page_internal` varchar(100) NOT NULL DEFAULT '',
   `page_enable` int(1) NOT NULL DEFAULT 1,
   `page_layout` text NOT NULL,
+  `page_class` varchar(255) NOT NULL,
   `page_description` varchar(255) NOT NULL,
   `page_keywords` varchar(255) NOT NULL,
   `is_home` int(1) NOT NULL DEFAULT 0,
