@@ -74,6 +74,7 @@ class ChronikFrontend
                         $this -> renderer -> setVariable('element_active'  , $checked);
                     $tabs[] = $this -> renderer -> renderTemplate();
 
+                    $element['chronik_text'] = htmlspecialchars_decode($element['chronik_text']);
                     $element['chronik_text'] = str_replace('<br />\r', '<br />', $element['chronik_text']);
 
                     $this -> renderer -> loadTemplate('frontend' . DS . 'module' . DS . 'chronik_item_content.htm');
