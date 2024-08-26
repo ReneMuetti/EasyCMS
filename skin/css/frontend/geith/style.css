@@ -352,6 +352,11 @@ nav {
         }
     }
 }
+
+#page-partner .gs-w img{
+    max-width: 90%;
+}
+
 .desktop-block {
     display: block;
 }
