@@ -334,6 +334,9 @@
 	    <cms_chronik_message_data_empty>Es wurden keine Chronik-Daten übermittelt!</cms_chronik_message_data_empty>
 	    <cms_chronik_item_id_error>Fehler!! Es konnte keine ID ermittelt werden!</cms_chronik_item_id_error>
 	    <cms_chronik_item_not_found>Die gewählte Chronik-Eintrag konnte nicht gefunden werden!</cms_chronik_item_not_found>
+	    <cms_chronik_count>Anzahl aller Chronik-Einträge</cms_chronik_count>
+	    <cms_chronik_count_enable>aktivierte Chronik-Einträge</cms_chronik_count_enable>
+	    <cms_chronik_count_disable>deaktivierte Chronik-Einträge</cms_chronik_count_disable>
 
 	    <cms_gallery_section>Gallerien</cms_gallery_section>
 	    <cms_gallery_popup_prefix>Gallerie</cms_gallery_popup_prefix>

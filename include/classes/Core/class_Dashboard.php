@@ -70,6 +70,15 @@ class Dashboard
         return $this -> renderer -> renderTemplate();
     }
 
+    public function createChronikSection()
+    {
+        $this -> renderer -> loadTemplate('admin' . DS . 'dashboard' . DS . 'chronik.htm');
+            $this -> renderer -> setVariable('count_cms_chronik'        , $this -> registry -> db -> tableCount('chronik') );
+            $this -> renderer -> setVariable('count_cms_chronik_enable' , $this -> registry -> db -> tableCount('chronik', 'WHERE `chronik_enable` = 1') );
+            $this -> renderer -> setVariable('count_cms_chronik_disable', $this -> registry -> db -> tableCount('chronik', 'WHERE `chronik_enable` = 0') );
+        return $this -> renderer -> renderTemplate();
+    }
+
 
 
 

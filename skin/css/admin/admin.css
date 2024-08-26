@@ -140,6 +140,9 @@ section#register {
 #dashboard-cms-vita:before {
     content: "\e509";
 }
+#dashboard-cms-chronik:before {
+    content: "\f66f";
+}
 /* End Dashboard */
 
 /* Start Accout-Table */
