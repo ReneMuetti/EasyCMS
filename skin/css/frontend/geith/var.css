@@ -15,7 +15,7 @@
     --link-active-color-font: #352783;
     --link-active-color-back: #8DC2DB;
     --link-text-normal-color-font: #fff;
-    --link-text-normal-color-back: rgba(141, 194, 219, 0.2);
+    --link-text-normal-color-back: rgba(141, 194, 219, 0.1);
     --link-text-active-color-font: #352783;
     --link-text-active-color-back: #8DC2DB;
 
@@ -53,7 +53,7 @@
     --navbar-height: 45px;
     --navbar-font-size: 1.2rem;
     --navbar-item-min-width: 150px;
-    --navbar-item-symbol-width: 60px;
+    --navbar-item-symbol-width: 45px;
     --navbar-mobile-shadow: rgba(0, 0, 0, 0.2);
     --navbar-mobile-overlay: rgba(0, 0, 0, 0.4);
     --navbar-item-radius: 3px;
