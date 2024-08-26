@@ -1,0 +1,15 @@
+<li class="ui-sortable-handle<var chronik_class />" style="" data-element="<var chronik_id />">
+    <span><var chronik_title /></span>
+    <span title="<var chronik_hint />"><var chronik_content /></span>
+    <span>
+        <a href="javascript:void(0)" class="sort-item-change-state" onclick="switchStatus(<var chronik_id />)"></a>
+        <a href="javascript:void(0)" class="sort-item-edit" onclick="editItem(<var chronik_id />)"></a>
+        <a href="javascript:void(0)" class="sort-item-delete" onclick="deleteItem(<var chronik_id />)"></a>
+
+        <input type="hidden" name="chronik_item_<var chronik_id />" id="chronik-item-<var chronik_id />" value="<var chronik_id />" />
+        <input type="hidden" name="chronik_position_<var chronik_id />" id="chronik-position-<var chronik_id />" value="<var chronik_position />" />
+        <input type="hidden" name="chronik_title_<var chronik_id />" id="chronik-title-<var chronik_id />" value='<var chronik_title />' />
+        <input type="hidden" name="chronik_enable_<var chronik_id />" id="chronik-enable-<var chronik_id />" value="<var chronik_enable />" />
+        <input type="hidden" name="chronik_content_<var chronik_id />" id="chronik-content-<var chronik_id />" value='<var chronik_hint />' />
+    </span>
+</li>

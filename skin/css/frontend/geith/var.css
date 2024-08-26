@@ -65,4 +65,12 @@
     --gallery-grid-shadow: rgba(0, 0, 0, 0.4);
     --gallery-slider-css-background: rgba(0, 0, 0, 0.1);
     --gallery-slider-css-shadow: rgba(0, 0, 0, 0.6);
+
+    --tab-widget-background-color: #fff;
+    --tab-widget-shadow: rgba(0, 0, 0, 0.025);
+    --tab-widget-tab-border: #8DC2DB;
+    --tab-widget-tab-font-color: #000;
+    --tab-widget-tab-active-font-color: #101010;
+    --tab-widget-tab-active-gradient-start: #8DC2DB;
+    --tab-widget-tab-active-gradient-end: #fff;
 }

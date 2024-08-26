@@ -651,6 +651,15 @@ td.cms-actions {
 }
 /* End Vita */
 
+/* Start Chronik */
+#chronik-list li > span:nth-child(2) {
+    width: 65%;
+}
+#chronik-content {
+    height: 400px;
+}
+/* End Chronik */
+
 /* Start Media-Manager */
 #media-manager-content {
     min-height: 100%;

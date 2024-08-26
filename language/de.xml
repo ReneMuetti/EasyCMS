@@ -16,6 +16,7 @@
         <admin_cms_pages>CMS-Seiten verwalten</admin_cms_pages>
         <admin_cms_blocks>CMS-Blöcke verwalten</admin_cms_blocks>
         <admin_cms_vita>Referenzen verwalten</admin_cms_vita>
+        <admin_cms_chronik>Chronik verwalten</admin_cms_chronik>
         <admin_content_files><![CDATA[Inhalte &rArr; Dateien]]></admin_content_files>
         <admin_content_gallery><![CDATA[Inhalte &rArr; Gallerien]]></admin_content_gallery>
         <admin_system_config><![CDATA[System &rArr; Konfiguration]]></admin_system_config>
@@ -99,6 +100,7 @@
 	    <cms_pages>Seiten</cms_pages>
 	    <cms_blocks>Blöcke</cms_blocks>
 	    <cms_vita>Referenzen</cms_vita>
+	    <cms_chronik>Chronik</cms_chronik>
 	    <content>Inhalt</content>
 	    <content_files>Dateien</content_files>
 	    <content_gallery>Gallerien</content_gallery>
@@ -114,7 +116,7 @@
 	    <label_login_button>Anmelden</label_login_button>
 	    <label_register_button>Registrieren</label_register_button>
 
-	    <default_login_error>Benutzername oder Passwort ist falsch!</default_login_error>
+	    <default_login_error>Benutzername oder Passwort falsch!</default_login_error>
 
 	    <login_register_string>Du hast noch kein Konto?</login_register_string>
 	    <login_error_title>Login-Fehlermeldung</login_error_title>
@@ -241,6 +243,8 @@
 	    <cms_modules_10001>Kontakt-Formular</cms_modules_10001>
 	    <cms_modules_vita_frontend>Referenzen</cms_modules_vita_frontend>
 	    <cms_modules_10010>Referenzen</cms_modules_10010>
+	    <cms_modules_chronik_frontend>Chronik</cms_modules_chronik_frontend>
+	    <cms_module_10020>Chronik</cms_module_10020>
 
 	    <cms_block_section>CMS-Blöcke</cms_block_section>
 	    <cms_block_popup_prefix>CMS-Block</cms_block_popup_prefix>
@@ -307,13 +311,29 @@
 	    <cms_vita_status>Referenz aktiviert</cms_vita_status>
 	    <cms_vita_item_id_error>Fehler!! Es konnte keine ID ermittelt werden!</cms_vita_item_id_error>
 	    <cms_vita_item_not_found>Die gewählte Refferenz konnte nicht gefunden werden!</cms_vita_item_not_found>
-	    <cms_vita_save_entry>Eintrag speichern</cms_vita_save_entry>
+	    <cms_vita_save_entry>Eintrag hinzufügen</cms_vita_save_entry>
 	    <cms_vita_message_successfuly_saved>Referenzen wurden gespeichert</cms_vita_message_successfuly_saved>
 	    <cms_vita_message_save_error>Fehler beim Speichern der Referenzen!</cms_vita_message_save_error>
 	    <cms_vita_message_data_empty>Es wurden keine Referenzen übermittelt!</cms_vita_message_data_empty>
 	    <cms_vita_count>Anzahl aller Referenzen</cms_vita_count>
 	    <cms_vita_count_enable>aktivierte Referenzen</cms_vita_count_enable>
 	    <cms_vita_count_disable>deaktivierte Referenzen</cms_vita_count_disable>
+
+	    <cms_chronik_section>Chroniken</cms_chronik_section>
+	    <cms_chronik_new>neuer Chronik-Eintrag</cms_chronik_new>
+	    <cms_chronik_save>Chroniken speichern</cms_chronik_save>
+	    <cms_chronik_new_edit_entry>Chronik anlegen oder bearbeiten</cms_chronik_new_edit_entry>
+	    <cms_chronik_title>Chronik-Titel</cms_chronik_title>
+	    <cms_chronik_title_ph>Titel oder Bezeichnung für den Chronik-Eintrag</cms_chronik_title_ph>
+	    <cms_chronik_content>Chronik-Text</cms_chronik_content>
+	    <cms_chronik_content_ph>Hier den Chronik-Text hinterlegen</cms_chronik_content_ph>
+	    <cms_chronik_status>Chronik aktiviert</cms_chronik_status>
+	    <cms_chronik_save_entry>Eintrag hinzufügen</cms_chronik_save_entry>
+	    <cms_chronik_message_successfuly_saved>Die Chronik wurde gespeichert</cms_chronik_message_successfuly_saved>
+	    <cms_chronik_message_save_error>Fehler beim Speichern der Chronik!</cms_chronik_message_save_error>
+	    <cms_chronik_message_data_empty>Es wurden keine Chronik-Daten übermittelt!</cms_chronik_message_data_empty>
+	    <cms_chronik_item_id_error>Fehler!! Es konnte keine ID ermittelt werden!</cms_chronik_item_id_error>
+	    <cms_chronik_item_not_found>Die gewählte Chronik-Eintrag konnte nicht gefunden werden!</cms_chronik_item_not_found>
 
 	    <cms_gallery_section>Gallerien</cms_gallery_section>
 	    <cms_gallery_popup_prefix>Gallerie</cms_gallery_popup_prefix>

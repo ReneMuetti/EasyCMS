@@ -23,6 +23,16 @@ $(document).ready(function() {
                           .data("gridster")
                           .disable();
     });
+
+    if ( $(".tab-widget").length ) {
+        $('.tabs input[type="radio"]').on('change', function() {
+            var selectedIndex = $(this).index('.tabs input[type="radio"]');
+            $(".tabs").css("--active", selectedIndex);
+
+            $(".tab-content > *").hide();
+            $("#tab-content-" + (selectedIndex + 1) ).show();
+        });
+    }
 });
 
 function _fixedSpecialCharacters(strToFixed)

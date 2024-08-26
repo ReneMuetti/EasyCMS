@@ -248,7 +248,6 @@ nav {
     margin-right: auto;
 }
 
-
 /**
  * Content
  */
@@ -296,7 +295,8 @@ nav {
     }
 }
 
-#page-kontakt, #page-datenschutz, #page-impressum, #page-referenzen {
+#page-kontakt, #page-datenschutz, #page-impressum,
+#page-referenzen, #page-chronik {
     div.gs-w {
         min-height: calc( var(--data-sizey) * var(--default-block-height) );
         height: initial;
@@ -439,6 +439,74 @@ nav {
     }
     100% {
         transform: translateX(calc(-100%));
+    }
+}
+
+/**
+ * CSS-Tabs
+ */
+.tab-widget {
+    width: 90%;
+    padding: 20px;
+    margin: 2rem auto;
+    background-color: var(--tab-widget-background-color);
+    box-shadow: 0 10px 20px 0 var(--tab-widget-shadow);
+    border-radius: 3px;
+
+    .tabs {
+        --active: 0;
+
+        display: flex;
+        gap: 5px;
+        height: 3.5rem;
+        border-block-end: 1px solid var(--tab-widget-tab-border);
+        position: relative;
+        isolation: isolate;
+
+        input {
+            display: none;
+
+            &:checked + label {
+                color: var(--tab-widget-tab-active-font-color);
+            }
+        }
+        label {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--tab-widget-tab-font-color);
+            cursor: pointer;
+            transition: color 0.5s ease-in-out;
+        }
+
+        &:after {
+            pointer-events: none;
+            position: absolute;
+            content: "";
+            z-index: -1;
+            inset: 0 0 -1px;
+            width: calc( 100% / var(--tab-counter) - 2px ) ;
+            border-radius: 5px 5px 0 0;
+            border-block-end: none;
+            background-image: linear-gradient( var(--tab-widget-tab-active-gradient-start), var(--tab-widget-tab-active-gradient-end) );
+            translate: calc( var(--active) * 100% );
+            transition: translate 0.5s ease-in-out;
+        }
+    }
+    .tab-content {
+        padding: 15px;
+        border-width: 0 1px 1px 1px;
+        border-style: solid;
+        border-color: var(--tab-widget-tab-border);
+    }
+    [class^="tab-content-"] {
+        display: none;
+    }
+    [class="tab-content-1"] {
+        display: initial;
     }
 }
 

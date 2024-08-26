@@ -48,6 +48,22 @@ CREATE TABLE `blocks` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `chronik`
+--
+
+CREATE TABLE `chronik` (
+  `chronik_id` int(10) PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  `chronik_position` int(5) NOT NULL DEFAULT 1,
+  `chronik_title` varchar(100) NOT NULL DEFAULT '',
+  `chronik_text` text NOT NULL DEFAULT '',
+  `chronik_enable` int(1) NOT NULL DEFAULT 1,
+  `datetime` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `username` varchar(100) NOT NULL DEFAULT ''
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `config`
 --
 

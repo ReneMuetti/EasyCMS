@@ -1,0 +1,65 @@
+
+<div id="chronik-container" class="glass-block-border glass-border sortable-container">
+    <div class="glass-block">
+        <h2><lang admin_cms_chronik_section /></h2>
+        <form action="<var_config baseurl />admin_index.php" method="post">
+            <input type="hidden" name="action" value="cms_chronik" />
+            <input type="hidden" name="do" value="save_chronik" />
+            <input type="hidden" name="chronik_count" id="chronik-count" value="<var chronik_count />" />
+            <input type="hidden" name="chronik_last" id="chronik-last" value="<var chronik_last />" />
+
+            <div class="elment-block flex-2" style="justify-content:space-between;">
+                <button class="button" onclick="showNewChronikPopup(event)"><lang admin_cms_chronik_new /></button>
+                <input type="submit" class="button" value="<lang admin_cms_chronik_save />">
+            </div>
+
+            <ul id="chronik-list" class="sortable-list">
+                <var chronik_list />
+            </ul>
+        </form>
+    </div>
+</div>
+
+<div id="chronik-edit-popup" class="edit-popup" data-curr-chronik-id="">
+    <div class="glass-block-border glass-border">
+        <div class="glass-block">
+            <h2><lang admin_cms_chronik_new_edit_entry /></h2>
+            <div class="glass-block">
+                <div class="flex-2 edit-popup-first-row">
+                    <div class="elment-block">
+                        <label for="chronik-title"><lang admin_cms_chronik_titel /></label>
+                        <input type="text" class="glass-border" id="chronik-title" placeholder="<lang admin_cms_chronik_title_ph />" value="" />
+                    </div>
+                    <div class="elment-block">
+                        <label for="chronik-status"><lang admin_cms_chronik_status /></label>
+                        <input type="checkbox" id="chronik-status" value="1" />
+                    </div>
+                </div>
+
+                <div class="elment-block">
+                    <label for="chronik-content"><lang admin_cms_chronik_content /></label>
+                    <textarea class="glass-border" id="chronik-content" placeholder="<lang admin_cms_chronik_content_ph />"></textarea>
+                </div>
+            </div>
+
+            <div class="glass-block-border glass-border">
+                <div class="glass-block">
+                    <div class="elment-block center-content button-flex">
+                        <button class="button glass-border" onclick="createChronikEntry()"><lang admin_cms_chronik_save_entry /></button>
+                        <button class="button glass-border" onclick="hideChronikPopup()"><lang global_abort /></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<template style="display:none !important;"><var chronik_template /></template>
+
+<script>
+    let new_chronik_item_id_error = "<lang admin_cms_chronik_item_id_error />";
+    let message_element_not_found = "<lang admin_cms_chronik_item_not_found />";
+</script>
+
+<script src="<var_config baseurl />skin/js/jquery-ui/jquery-ui.min.js"></script>
+<script src="<var_config baseurl />skin/js/admin_chronik.js"></script>

@@ -25,11 +25,11 @@ if ( isset($website -> GPC['do']) AND ($website -> GPC['do'] == 'save_vita') ) {
             // check, if element exists and if it has data
             if ( strlen($website -> GPC['vita_title_' . $cnt]) AND ($website -> GPC['vita_decription_' . $cnt]) ) {
                 $vitaData[ $website -> GPC['vita_position_' . $cnt] ] = array(
-                                                                            'vita_position' => $website -> GPC['vita_position_' . $cnt],
-                                                                            'vita_title'    => $website -> GPC['vita_title_' . $cnt],
+                                                                            'vita_position' => $website -> GPC['vita_position_'   . $cnt],
+                                                                            'vita_title'    => $website -> GPC['vita_title_'      . $cnt],
                                                                             'vita_text'     => $website -> GPC['vita_decription_' . $cnt],
-                                                                            'vita_image'    => $website -> GPC['vita_image_' . $cnt],
-                                                                            'vita_enable'   => $website -> GPC['vita_enable_' . $cnt],
+                                                                            'vita_image'    => $website -> GPC['vita_image_'      . $cnt],
+                                                                            'vita_enable'   => $website -> GPC['vita_enable_'     . $cnt],
                                                                             'username'      => $website -> userinfo['username'],
                                                                         );
             }
