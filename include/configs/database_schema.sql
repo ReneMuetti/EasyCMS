@@ -79,6 +79,22 @@ CREATE TABLE `config` (
 -- --------------------------------------------------------
 
 --
+-- Data for table `config`
+--
+
+INSERT INTO `config` (`config_id`, `config_path`, `config_value`, `config_type`, `datetime`, `username`) VALUES
+  (null, 'default/layout/header', '', 'gridster', CURRENT_TIMESTAMP(), 'Install'),
+  (null, 'default/layout/footer', '', 'gridster', CURRENT_TIMESTAMP(), 'Install'),
+  (null, 'image/thumbnail/size', '400', 'input', CURRENT_TIMESTAMP(), 'Install'),
+  (null, 'image/thumbnail/quality', '85', 'input', CURRENT_TIMESTAMP(), 'Install'),
+  (null, 'image/thumbnail/prefix_small', 'small_', 'input', CURRENT_TIMESTAMP(), 'Install'),
+  (null, 'image/thumbnail/prefix_low', 'low_', 'input', CURRENT_TIMESTAMP(), 'Install'),
+  (null, 'design/theme/skin', 'default', 'select', CURRENT_TIMESTAMP(), 'Install'),
+  (null, 'design/theme/page_width', '1200', 'input', CURRENT_TIMESTAMP(), 'Install'),
+  (null, 'design/theme/page_back_dark', '', 'input', CURRENT_TIMESTAMP(), 'Install'),
+  (null, 'design/theme/page_back_light', '', 'input', CURRENT_TIMESTAMP(), 'Install');
+
+--
 -- Table structure for table `gallery`
 --
 

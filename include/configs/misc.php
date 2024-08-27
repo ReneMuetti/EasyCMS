@@ -32,6 +32,9 @@ $config_data['Mail']['dev_mail'] = '** E-Mail for Developer-BCC and for Debug-Mo
 
 $config_data['Misc']['path']              = APP_ROOT;
 $config_data['Misc']['media_directory']   = 'media';
+$config_data['Misc']['skin_directory']    = 'skin';
+$config_data['Misc']['js_directory']      = 'skin/js';
+$config_data['Misc']['design_directory']  = 'skin/css/frontend';
 $config_data['Misc']['log_directory']     = 'var/log';
 $config_data['Misc']['upload_directory']  = 'var/temp';
 $config_data['Misc']['baseurl']           = $config_data['Host']['protocol'] . '://' . $config_data['Host']['host'] . '/';

@@ -338,10 +338,16 @@ class Templater
 
         $this -> vars['<var ' . THIS_SCRIPT . '_content />'] = '';
 
-        $this -> vars['<var_config host />']         = $this -> registry -> config['Host']['host'];
-        $this -> vars['<var_config protocol />']     = $this -> registry -> config['Host']['protocol'];
-        $this -> vars['<var_config script />']       = $this -> registry -> config['Host']['script'];
-        $this -> vars['<var_config baseurl />']      = $this -> registry -> config['Misc']['baseurl'];
+        $this -> vars['<var_config host />']     = $this -> registry -> config['Host']['host'];
+        $this -> vars['<var_config protocol />'] = $this -> registry -> config['Host']['protocol'];
+        $this -> vars['<var_config script />']   = $this -> registry -> config['Host']['script'];
+        $this -> vars['<var_config baseurl />']  = $this -> registry -> config['Misc']['baseurl'];
+
+        $this -> vars['<var_config media_directory />']  = $this -> registry -> config['Misc']['media_directory']  . DS;
+        $this -> vars['<var_config skin_directory />']   = $this -> registry -> config['Misc']['skin_directory']   . DS;
+        $this -> vars['<var_config design_directory />'] = $this -> registry -> config['Misc']['design_directory'] . DS;
+        $this -> vars['<var_config js_directory />']     = $this -> registry -> config['Misc']['js_directory']     . DS;
+        $this -> vars['<var_config fa_directory />']     = $this -> registry -> config['Misc']['skin_directory']   . DS . 'font-awesome/css/';
 
         $this -> vars['<var global_jquery_version />'] = $this -> registry -> config['Misc']['jquery_version'];
 

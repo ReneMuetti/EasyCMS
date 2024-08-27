@@ -56,6 +56,9 @@ class Config
 
                 $template_name = 'config_block_' . $config['type'] . '.htm';
                 $raw_config = $config['value'];
+                $sel_config = array(
+                                  '<option value="no_select">' . $this -> registry -> user_lang['global']['option_actions_select'] . '</option>'
+                              );
 
                 if ( $config['type'] == 'gridster' ) {
                     // fetch blocks for gridster-default-config
@@ -66,11 +69,24 @@ class Config
                     $config['value'] = $this -> _loadGridsterElement($raw_config, $element, $position);
                 }
 
+                if ( $config['type'] == 'select' ) {
+                    switch($path) {
+                        case 'design/theme/skin': // load all skin-directorys
+                                                  $this -> _loadAllSkins($sel_config, $config['value']);
+                                                  break;
+
+                        default: // no valid section found
+                                 $template_name = 'config_block_input.htm';
+                                 break;
+                    }
+                }
+
                 $this -> renderer -> loadTemplate('admin' . DS . 'config' . DS . $template_name);
                     $this -> renderer -> setVariable('config_path'     , $path);
                     $this -> renderer -> setVariable('config_path_id'  , str_replace('/', '-', $path));
                     $this -> renderer -> setVariable('config_raw_value', $raw_config);
                     $this -> renderer -> setVariable('config_value'    , $config['value']);
+                    $this -> renderer -> setVariable('config_select'   , implode("", $sel_config) );
                 $data[] = $this -> renderer -> renderTemplate();
             }
         }
@@ -164,6 +180,26 @@ class Config
             }
 
             ksort($this -> config);
+        }
+    }
+
+    private function _loadAllSkins(&$sel_options, $curr_select)
+    {
+        $skinPath = realpath( APP_ROOT . DS . $this -> registry -> config['Misc']['skin_directory'] ) . DS;
+
+        $dir = new FileDir();
+        $list = $dir -> get_dir_content($skinPath);
+
+        if ( is_array($list) AND count($list) ) {
+            foreach( $list AS $item ) {
+                if ( $item['type'] == 'dir' ) {
+                    $sel_options[] = '<option value="' .
+                                         $item['name'] .
+                                         ( ($item['name'] == $curr_select) ? ' selected="select"' : '' ) . '>' .
+                                         $item['name'] .
+                                     '</option>';
+                }
+            }
         }
     }
 }

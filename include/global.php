@@ -5,6 +5,10 @@
 date_default_timezone_set('Europe/Berlin');
 locale_set_default('de-DE');
 
+if ( !defined('DS') ) {
+    define('DS', DIRECTORY_SEPARATOR );
+}
+
 if ( !is_file( realpath('./include/configs/database.php') ) OR !is_file( realpath('./include/configs/misc.php') ) ) {
     die("<!DOCTYPE html><html><head><title>ERROR</title><link rel=\"shortcut icon\" href=\"favicon.ico\"></head><body><p>The website has not yet been configured.</p></body></html>");
 }
@@ -41,10 +45,6 @@ if ( !defined('CHARSET') ) {
 
 if ( !defined('TIMENOW') ) {
     define('TIMENOW', time());
-}
-
-if ( !defined('DS') ) {
-    define('DS', DIRECTORY_SEPARATOR );
 }
 
 if ( !defined('DIR') ) {
