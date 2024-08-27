@@ -331,6 +331,49 @@ td.cms-actions {
 /* End System-Information */
 
 /* Start System-Configuration */
+#system-configuration {
+    label {
+        background: linear-gradient(90deg, var(--rgba-color-dark-05) 0%, transparent 100%);
+        color: var(--font-color-light);
+        font-size: 1.1rem;
+        font-weight: 300;
+        padding: 10px 20px;
+        border-radius: 5px 0 0 5px;
+    }
+    .config-radio {
+        display: flex;
+        gap: 100px;
+        padding: 0 30px;
+
+        input[type="radio"] {
+            width: initial;
+        }
+    }
+    .config-hint {
+        background: var(--color-warn-back);
+        color: var(--color-warn-font);
+        padding: 10px 0 10px 30px;
+        position: relative;
+        border-left: 10px solid var(--color-warn-font);
+        margin: 15px 0 0 0;
+        border-radius: 5px;
+        box-shadow: 2px 2px 5px var(--rgba-color-dark-03);
+
+        &:before {
+            content: "";
+            position: absolute;
+            border-width: 10px 0 10px 10px;
+            border-style: solid;
+            border-color: transparent;
+            border-left-color: var(--color-warn-font);
+            left: 0;
+            top: 50%;
+            width: 0;
+            height: 0;
+            transform: translateY(-50%);
+        }
+    }
+}
 .system-configuration-result {
     max-width: 1000px;
     margin: 0 auto;
@@ -338,20 +381,24 @@ td.cms-actions {
     display: flex;
     gap: 20px;
     align-items: self-start;
-}
-.system-configuration-result:not(:last-child) {
-    margin-bottom: 20px;
-}
-.system-configuration-result ul {
-    flex: 1;
-    list-style: none;
-}
-.system-configuration-result ul li {
-    padding: 10px 10px 10px 20px;
-    text-align: left;
-}
-.system-configuration-result ul li:not(:last-child) {
-    margin-bottom: 10px;
+
+    &:not(:last-child) {
+        margin-bottom: 20px;
+    }
+
+    ul {
+        flex: 1;
+        list-style: none;
+
+        li {
+            padding: 10px 10px 10px 20px;
+            text-align: left;
+
+            &:not(:last-child) {
+                margin-bottom: 10px;
+            }
+        }
+    }
 }
 /* End System-Configuration */
 

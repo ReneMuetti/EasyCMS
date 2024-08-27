@@ -85,14 +85,27 @@ CREATE TABLE `config` (
 INSERT INTO `config` (`config_id`, `config_path`, `config_value`, `config_type`, `datetime`, `username`) VALUES
   (null, 'default/layout/header', '', 'gridster', CURRENT_TIMESTAMP(), 'Install'),
   (null, 'default/layout/footer', '', 'gridster', CURRENT_TIMESTAMP(), 'Install'),
-  (null, 'image/thumbnail/size', '400', 'input', CURRENT_TIMESTAMP(), 'Install'),
-  (null, 'image/thumbnail/quality', '85', 'input', CURRENT_TIMESTAMP(), 'Install'),
-  (null, 'image/thumbnail/prefix_small', 'small_', 'input', CURRENT_TIMESTAMP(), 'Install'),
-  (null, 'image/thumbnail/prefix_low', 'low_', 'input', CURRENT_TIMESTAMP(), 'Install'),
-  (null, 'design/theme/skin', 'default', 'select', CURRENT_TIMESTAMP(), 'Install'),
-  (null, 'design/theme/page_width', '1200', 'input', CURRENT_TIMESTAMP(), 'Install'),
-  (null, 'design/theme/page_back_dark', '', 'input', CURRENT_TIMESTAMP(), 'Install'),
-  (null, 'design/theme/page_back_light', '', 'input', CURRENT_TIMESTAMP(), 'Install');
+  (null, 'image/thumbnail/size'        , '400'    , 'input' , CURRENT_TIMESTAMP(), 'Install'),
+  (null, 'image/thumbnail/quality'     , '85'     , 'input' , CURRENT_TIMESTAMP(), 'Install'),
+  (null, 'image/thumbnail/prefix_small', 'small_' , 'input' , CURRENT_TIMESTAMP(), 'Install'),
+  (null, 'image/thumbnail/prefix_low'  , 'low_'   , 'input' , CURRENT_TIMESTAMP(), 'Install'),
+  (null, 'design/theme/skin'           , 'default', 'select', CURRENT_TIMESTAMP(), 'Install'),
+  (null, 'design/theme/page_width'     , '1200'   , 'input' , CURRENT_TIMESTAMP(), 'Install'),
+  (null, 'design/theme/page_back_dark' , ''       , 'input' , CURRENT_TIMESTAMP(), 'Install'),
+  (null, 'design/theme/page_back_light', ''       , 'input' , CURRENT_TIMESTAMP(), 'Install'),
+  (null, 'system/email/host'    , '', 'input'  , CURRENT_TIMESTAMP(), 'Install'),
+  (null, 'system/email/username', '', 'input'  , CURRENT_TIMESTAMP(), 'Install'),
+  (null, 'system/email/password', '', 'input'  , CURRENT_TIMESTAMP(), 'Install'),
+  (null, 'system/email/address' , '', 'input'  , CURRENT_TIMESTAMP(), 'Install'),
+  (null, 'system/email/port'    , '', 'input'  , CURRENT_TIMESTAMP(), 'Install'),
+  (null, 'system/email/smtpauth', '', 'boolean', CURRENT_TIMESTAMP(), 'Install'),
+  (null, 'system/email/secure'  , '', 'boolean', CURRENT_TIMESTAMP(), 'Install'),
+  (null, 'system/email/protocol', '', 'input'  , CURRENT_TIMESTAMP(), 'Install'),
+  (null, 'system/email/sender'  , '', 'input'  , CURRENT_TIMESTAMP(), 'Install'),
+  (null, 'system/email/subject' , '', 'input'  , CURRENT_TIMESTAMP(), 'Install'),
+  (null, 'system/email/rec_mail', '', 'input'  , CURRENT_TIMESTAMP(), 'Install'),
+  (null, 'system/email/rec_name', '', 'input'  , CURRENT_TIMESTAMP(), 'Install'),
+  (null, 'system/email/dev_mail', '', 'input'  , CURRENT_TIMESTAMP(), 'Install');
 
 --
 -- Table structure for table `gallery`

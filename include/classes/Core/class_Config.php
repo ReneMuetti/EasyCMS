@@ -36,6 +36,9 @@ class Config
         // config => Registry
         $this -> _getCurrentConfig($full);
 
+        // replace Mail-Config with BE-Data
+        $this -> _setMailConfigData();
+
         if ( $return === true ) {
             return $this -> config;
         }
@@ -69,6 +72,15 @@ class Config
                     $config['value'] = $this -> _loadGridsterElement($raw_config, $element, $position);
                 }
 
+                if ( $config['type'] == 'boolean' ) {
+                    $bool_yes = ( ($raw_config == 'true')  ? ' checked="checked"' : '' );
+                    $bool_no  = ( ($raw_config == 'false') ? ' checked="checked"' : '' );
+                }
+                else {
+                    $bool_yes = '';
+                    $bool_no  = '';
+                }
+
                 if ( $config['type'] == 'select' ) {
                     switch($path) {
                         case 'design/theme/skin': // load all skin-directorys
@@ -81,12 +93,18 @@ class Config
                     }
                 }
 
+                $subPath = str_replace('/', '_', $path);
+                $configHint = $this -> registry -> user_lang['admin']['config_section_' . $subPath];
+
                 $this -> renderer -> loadTemplate('admin' . DS . 'config' . DS . $template_name);
-                    $this -> renderer -> setVariable('config_path'     , $path);
-                    $this -> renderer -> setVariable('config_path_id'  , str_replace('/', '-', $path));
-                    $this -> renderer -> setVariable('config_raw_value', $raw_config);
-                    $this -> renderer -> setVariable('config_value'    , $config['value']);
-                    $this -> renderer -> setVariable('config_select'   , implode("", $sel_config) );
+                    $this -> renderer -> setVariable('config_path'      , $path);
+                    $this -> renderer -> setVariable('config_path_id'   , str_replace('/', '-', $path));
+                    $this -> renderer -> setVariable('config_raw_value' , $raw_config);
+                    $this -> renderer -> setVariable('config_value'     , $config['value']);
+                    $this -> renderer -> setVariable('config_select'    , implode("", $sel_config) );
+                    $this -> renderer -> setVariable('config_bool_true' , $bool_yes );
+                    $this -> renderer -> setVariable('config_bool_false', $bool_no );
+                    $this -> renderer -> setVariable('config_hint'      , $configHint );
                 $data[] = $this -> renderer -> renderTemplate();
             }
         }
@@ -180,6 +198,26 @@ class Config
             }
 
             ksort($this -> config);
+        }
+    }
+
+    private function _setMailConfigData()
+    {
+        $bool_true  = array('yes', 'true' , 'ja');
+        $bool_false = array('no' , 'false', 'nein');
+
+        foreach( $this -> config AS $path => $value ) {
+            if ( (strpos($path, 'email') !== false) AND strlen($value) ) {
+                $key = strrchr($path, '/');
+                $key = ltrim($key, '/');
+
+                if ( in_array($value, $bool_true) OR in_array($value, $bool_false) ) {
+                    $this -> registry -> config['Mail'][$key] = ( in_array($value, $bool_true) ? true : false );
+                }
+                else {
+                    $this -> registry -> config['Mail'][$key] = $value;
+                }
+            }
         }
     }
 

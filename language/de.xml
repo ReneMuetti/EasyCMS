@@ -204,6 +204,30 @@
 	    <config_saved_okay>Einstellunge gespeichert für: </config_saved_okay>
 	    <config_saved_fail>Fehler beim Speichenr für: </config_saved_fail>
 
+	    <config_section_default_layout_header>Layout des Headers für jede neu erstellte CMS-Seite</config_section_default_layout_header>
+	    <config_section_default_layout_footer>Layout des Footers für jede neu erstellte CMS-Seite</config_section_default_layout_footer>
+	    <config_section_image_thumbnail_size>Größe der Thumbnails beim Hochladen von Bildern</config_section_image_thumbnail_size>
+	    <config_section_image_thumbnail_quality>Qualität der Thumbnails beim Hochladen von Bildern</config_section_image_thumbnail_quality>
+	    <config_section_image_thumbnail_prefix_small>Präfix für Thumbnails, falls diese beim hochladen von Bildern erstellt wird</config_section_image_thumbnail_prefix_small>
+	    <config_section_image_thumbnail_prefix_low>Präfix für Niedrige-Auflösung, falls diese beim hochladen von Bildern erstellt wird</config_section_image_thumbnail_prefix_low>
+	    <config_section_design_theme_skin>Skin-Verzeichnis für die Darstellung im Forntend</config_section_design_theme_skin>
+	    <config_section_design_theme_page_width>mavimale Seitenbreite in Pixeln</config_section_design_theme_page_width>
+	    <config_section_design_theme_page_back_dark>Pfad zur Grafik für dunkle Bereiche der Webseite</config_section_design_theme_page_back_dark>
+	    <config_section_design_theme_page_back_light>Pfad zur Grafik für helle Bereiche der Webseite</config_section_design_theme_page_back_light>
+	    <config_section_system_email_host>Hostname für den Versand von E-Mails</config_section_system_email_host>
+	    <config_section_system_email_username>Benutzername für die Anmeldung zum Versand von E-Mails</config_section_system_email_username>
+	    <config_section_system_email_password>Password für die Anmeldung zum Versand von E-Mails</config_section_system_email_password>
+	    <config_section_system_email_address>Absende-Adresse für den Versand von E-Mails</config_section_system_email_address>
+	    <config_section_system_email_port>Port für den Versand von E-Mails</config_section_system_email_port>
+	    <config_section_system_email_smtpauth>Benötigt der Postausgangs-Server eine Anmelung?</config_section_system_email_smtpauth>
+	    <config_section_system_email_secure>Unterstützt der Postausgangsserver den sicheren Versand von E-Mails</config_section_system_email_secure>
+	    <config_section_system_email_protocol>Protokoll den sicheren Versand von E-Mails</config_section_system_email_protocol>
+	    <config_section_system_email_sender>Name des Absenders für den Versand von E-Mails</config_section_system_email_sender>
+	    <config_section_system_email_subject>Betreff der versendeten E-Mail</config_section_system_email_subject>
+	    <config_section_system_email_rec_mail>Empfänger-Adresse der E-Mail</config_section_system_email_rec_mail>
+	    <config_section_system_email_rec_name>Name für den Empfänger der E-Mail</config_section_system_email_rec_name>
+	    <config_section_system_email_dev_mail>Entwickler-Adresse (Diese wird im Debug-Modus verwendet)</config_section_system_email_dev_mail>
+
 	    <dashboard_greeting_morning>Guten Morgen</dashboard_greeting_morning>
 	    <dashboard_greeting_day>Guten Tag</dashboard_greeting_day>
 	    <dashboard_greeting_evening>Guten Abend</dashboard_greeting_evening>
