@@ -353,6 +353,10 @@ nav {
     }
 }
 
+#page-chronik [class^="tab-content-"] {
+    font-size: 1.2rem;
+}
+
 #page-partner .gs-w img{
     max-width: 90%;
 }
