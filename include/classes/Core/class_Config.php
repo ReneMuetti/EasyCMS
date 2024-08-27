@@ -185,7 +185,7 @@ class Config
 
     private function _loadAllSkins(&$sel_options, $curr_select)
     {
-        $skinPath = realpath( APP_ROOT . DS . $this -> registry -> config['Misc']['skin_directory'] ) . DS;
+        $skinPath = realpath( APP_ROOT . DS . $this -> registry -> config['Misc']['design_directory'] ) . DS;
 
         $dir = new FileDir();
         $list = $dir -> get_dir_content($skinPath);
@@ -194,7 +194,7 @@ class Config
             foreach( $list AS $item ) {
                 if ( $item['type'] == 'dir' ) {
                     $sel_options[] = '<option value="' .
-                                         $item['name'] .
+                                         $item['name'] . '"' .
                                          ( ($item['name'] == $curr_select) ? ' selected="select"' : '' ) . '>' .
                                          $item['name'] .
                                      '</option>';
