@@ -210,6 +210,23 @@
      #gridster-footer div:last-child {
         margin: 0;
      }
+     .tab-widget .tabs {
+        flex-direction: column;
+        height: initial;
+
+        input:checked + label {
+            background-image: linear-gradient( var(--tab-widget-tab-active-gradient-start), var(--tab-widget-tab-active-gradient-end) );
+        }
+
+        label {
+            border: 1px solid var(--tab-widget-tab-border);
+            padding: 10px 0;
+        }
+
+        &:after {
+            display: none;
+        }
+     }
      .desktop-block {
         display: block;
     }
@@ -304,5 +321,24 @@
     }
     #header-company-first {
        font-size: 0.8rem;
+    }
+
+     #gridster-footer {
+        height: auto !important;
+     }
+
+    #page-impressum #gridster-content a {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        max-width: 200px;
+        display: inline-block;
+    }
+
+    .input-field input:focus ~ label,
+    .input-field textarea:focus ~ label,
+    .input-field input:not(:placeholder-shown) ~ label,
+    .input-field textarea:not(:placeholder-shown) ~ label {
+        top: 16px;
     }
 }
