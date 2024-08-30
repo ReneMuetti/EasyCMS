@@ -249,37 +249,31 @@ nav {
 }
 
 /**
- * Content
+ * CSS-Grid
  */
-
-/* Full-Pages */
-.services #gridster-content {
-    height: auto !important;
+ #gridster-content {
+    height: initial !important;
+    width: initial !important;
     display: grid;
-    grid-template-columns: repeat(8, 1fr);  /* TODO :: cols must be configurable */
+    grid-template-columns: repeat(var(--data-col-count), 1fr);
     grid-auto-rows: min-content;
-    gap: 0;
+    gap: 20px 10px;
 
     div.gs-w {
-        position: initial;
         grid-column: var(--data-col) / span var(--data-sizex);
         grid-row: var(--data-row) / span var(--data-sizey);
-        padding: 10px;
+        padding: 0;
+        box-sizing: border-box;
+        height: initial !important;
+        width: initial !important;
 
         img {
-            max-height: 200px;
-            box-shadow: 0 0 10px 5px var(--services-first-image-shadow);
-            border-radius: var(--services-first-image-radius);
+            max-height: 100%;
+            max-width: 100%;
+            width: auto;
+            height: auto;
         }
     }
-    [data-content-type="block"],
-    [data-content-type="gallery"] {
-        height: initial;
-        width: initial;
-    }
-}
-
-#gridster-content {
     p {
         margin: 0;
     }
@@ -293,45 +287,22 @@ nav {
             background: var(--link-text-active-color-back)
         }
     }
-}
-
-#page-kontakt, #page-datenschutz, #page-impressum,
-#page-referenzen, #page-chronik {
-    div.gs-w {
-        min-height: calc( var(--data-sizey) * var(--default-block-height) );
-        height: initial;
-        left: initial;
-        top: initial;
-        display: contents;
+    [data-content-type="block"],
+    [data-content-type="gallery"] {
+        height: auto;
+        width: 100%;
     }
-    #gridster-content {
-        position: initial !important;
-        height: auto !important;
+    [data-content-type="gallery"] img,
+    img.small-image {
+        box-shadow: 0 0 10px 5px var(--services-first-image-shadow);
+        border-radius: var(--services-first-image-radius);
+        max-height: 200px !important;
     }
 }
 
-#page-impressum {
-    #gridster-content {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-
-        div.gs-w {
-            position: initial;
-            display: grid;
-        }
-        div.gs-w:last-child {
-            grid-column: span 2;
-        }
-    }
-    #disclaimer > p {
-        margin: 0 0 20px 0;
-
-        &:last-child {
-            margin-bottom: 0;
-        }
-    }
-}
-
+/**
+ * special-Page-Customization
+ */
 #vita-grid {
     display: grid;
     gap: 20px;
@@ -671,118 +642,111 @@ nav {
 /**
  * Form-Elements
  */
-.form-section * {
-    box-sizing: border-box;
-}
 .form-section {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
     gap: 30px;
-}
-.form-section:not(:last-child) {
-    margin-bottom: 30px;
+
+    &:not(:last-child) {
+        margin-bottom: 30px;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    .button {
+        width: 100%;
+        background: var(--form-element-button-background);
+        outline: none;
+        padding: 20px 20px;
+        border-radius: 7px;
+        color: var(--form-element-button-color);
+        box-shadow: 0 5px 15px var(--form-element-button-shadow);
+        font-weight: bold;
+        font-size: 1.1rem;
+        max-width: 50%;
+        min-width: 240px;
+
+        &:hover, &:active {
+            background: var(--form-element-button-hover-background);
+            color: var(--form-element-button-hover-color);
+            box-shadow: 0 5px 15px var(--form-element-button-hover-shadow);
+        }
+    }
 }
 .input-field {
     flex: 1 1 calc(50% - 15px);
     min-width: 400px;
     position: relative;
-}
-.input-field input,
-.input-field textarea {
-    width: 100%;
-    height: 60px;
-    border-radius: 6px;
-    font-size: 1.1rem;
-    padding: 3px 15px;
-    border: 2px solid var(--form-element-input-border);
-    background: var(--form-element-input-background);
-    color: var(--form-element-input-font-color);
-    outline: none;
-}
-.input-field textarea {
-    padding: 15px;
-    font-size: 1rem;
-    height: 400px;
-    resize: none;
-}
-.input-field input::placeholder,
-.input-field textarea::placeholder {
-    color: var(--form-element-input-placeholder);
-    opacity: var(--form-element-input-placeholder-opacity);
-}
-.input-field label {
-    font-size: 1.2rem;
-    font-weight: bold;
-    position: absolute;
-    top: 30px;
-    left: 15px;
-    transform: translateY(-50%);
-    color: var(--form-element-input-label);
-    pointer-events: none;
-    transition: .3s ease-in-out;
-    border-radius: 3px;
-    padding: 0 10px;
-}
-.input-field input[required] + label:after,
-.input-field textarea[required] + label:after {
-    content: "*";
-    color: var(--form-element-required-color);
-    margin-left: 5px;
-}
-.input-field input:focus,
-.input-field textarea:focus {
-    border-color: var(--form-element-input-border-active);
-}
-.input-field input:focus ~ label,
-.input-field textarea:focus ~ label,
-.input-field input:not(:placeholder-shown) ~ label,
-.input-field textarea:not(:placeholder-shown) ~ label {
-    top: 0;
-    font-size: 1rem;
-    background: var(--form-element-input-label-focus-background);
-    color: var(--form-element-input-label-focus-color);
-}
-.input-field input:focus:invalid,
-.input-field input:not(:placeholder-shown):invalid,
-.input-field textarea:focus:invalid,
-.input-field textarea:not(:placeholder-shown):invalid {
-    border-color: var(--form-element-input-label-fail-background);
-}
-.input-field input:focus:invalid ~ label,
-.input-field input:not(:placeholder-shown):invalid ~ label,
-.input-field textarea:focus:invalid ~ label,
-.input-field textarea:not(:placeholder-shown):invalid ~ label {
-    background: var(--form-element-input-label-fail-background);
-    color: var(--form-element-input-label-fail-color);
-}
-.input-field input[type="checkbox"] {
-    width: 30px;
-    height: 30px;
-}
-.input-field input[type="checkbox"] ~ label {
-    left: initial;
-    top: 16px;
-    background: initial;
-    color: initial;
-}
-.form-section .button {
-    width: 100%;
-    background: var(--form-element-button-background);
-    outline: none;
-    padding: 20px 20px;
-    border-radius: 7px;
-    color: var(--form-element-button-color);
-    box-shadow: 0 5px 15px var(--form-element-button-shadow);
-    font-weight: bold;
-    font-size: 1.1rem;
-    max-width: 50%;
-    min-width: 240px;
-}
-.form-section .button:hover,
-.form-section .button:active {
-    background: var(--form-element-button-hover-background);
-    color: var(--form-element-button-hover-color);
-    box-shadow: 0 5px 15px var(--form-element-button-hover-shadow);
+
+    label {
+        font-size: 1.2rem;
+        font-weight: bold;
+        position: absolute;
+        top: 30px;
+        left: 15px;
+        transform: translateY(-50%);
+        color: var(--form-element-input-label);
+        pointer-events: none;
+        transition: .3s ease-in-out;
+        border-radius: 3px;
+        padding: 0 10px;
+    }
+    input, textarea {
+        width: 100%;
+        height: 60px;
+        border-radius: 6px;
+        font-size: 1.1rem;
+        padding: 3px 15px;
+        border: 2px solid var(--form-element-input-border);
+        background: var(--form-element-input-background);
+        color: var(--form-element-input-font-color);
+        outline: none;
+
+        &::placeholder {
+            color: var(--form-element-input-placeholder);
+            opacity: var(--form-element-input-placeholder-opacity);
+        }
+        &:focus {
+            border-color: var(--form-element-input-border-active);
+        }
+        &:focus ~ label, &:not(:placeholder-shown) ~ label {
+            top: 0;
+            font-size: 1rem;
+            background: var(--form-element-input-label-focus-background);
+            color: var(--form-element-input-label-focus-color);
+        }
+        &:focus:invalid, :not(:placeholder-shown):invalid {
+            border-color: var(--form-element-input-label-fail-background);
+        }
+        &:focus:invalid ~ label, :not(:placeholder-shown):invalid ~ label {
+            background: var(--form-element-input-label-fail-background);
+            color: var(--form-element-input-label-fail-color);
+        }
+
+        [required] + label:after {
+            content: "*";
+            color: var(--form-element-required-color);
+            margin-left: 5px;
+        }
+    }
+    textarea {
+        padding: 15px;
+        font-size: 1rem;
+        height: 400px;
+        resize: none;
+    }
+    input[type="checkbox"] {
+        width: 30px;
+        height: 30px;
+    }
+    input[type="checkbox"] ~ label {
+        left: initial;
+        top: 16px;
+        background: initial;
+        color: initial;
+    }
 }

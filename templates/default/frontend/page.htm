@@ -23,8 +23,6 @@
         <link href="<var_config baseurl /><var_config design_directory /><var current_page_skin />/favicon.gif" rel="shortcut icon" />
         <link href="<var_config baseurl /><var_config design_directory /><var current_page_skin />/favicon.gif" rel="apple-touch-icon" />
 
-        <link rel="stylesheet" type="text/css" media="screen" href="<var_config baseurl /><var_config js_directory />gridster/jquery.gridster.css" />
-
         <link rel="stylesheet" type="text/css" media="screen" href="<var_config baseurl /><var_config fa_directory />fontawesome.css" />
         <link rel="stylesheet" type="text/css" media="screen" href="<var_config baseurl /><var_config fa_directory />brands.css" />
         <link rel="stylesheet" type="text/css" media="screen" href="<var_config baseurl /><var_config fa_directory />solid.css" />
@@ -64,7 +62,7 @@
     <body>
         <header>
             <div class="page-width">
-                <div id="gridster-header" class="gridster">
+                <div id="gridster-header" class="gridster" style="--data-col-count:<var page_col_count />;">
                     <var index_header />
                 </div>
                 <nav>
@@ -73,12 +71,12 @@
             </div>
         </header>
         <main id="page-<var current_page_code />" class="<var index_cms_class />">
-            <section id="gridster-content" class="page-width gridster">
+            <section id="gridster-content" class="page-width gridster" style="--data-col-count:<var page_col_count />;">
                 <var index_content />
             </section>
         </main>
         <footer>
-            <div id="gridster-footer" class="page-width">
+            <div id="gridster-footer" class="page-width" style="--data-col-count:<var page_col_count />;">
                 <var index_footer />
             </div>
         </footer>
