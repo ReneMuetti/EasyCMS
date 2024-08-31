@@ -61,6 +61,7 @@ class Chronik
             $this -> renderer -> setVariable('chronik_position', '{{position}}');
             $this -> renderer -> setVariable('chronik_title'   , '{{title}}');
             $this -> renderer -> setVariable('chronik_content' , '{{content}}');
+            $this -> renderer -> setVariable('chronik_hint'    , '');
             $this -> renderer -> setVariable('chronik_enable'  , '{{enable}}');
         $template = $this -> renderer -> renderTemplate();
 

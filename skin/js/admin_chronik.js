@@ -109,9 +109,9 @@ function createChronikEntry()
         $("li[data-element=" + elementId + "] > span:first-child").html(chronikTitle);
         $("li[data-element=" + elementId + "] > span:nth-child(2)").html(chronikContent);
 
-        $("#chronik-title-" + elementId).val(chronikTitle);
+        $("#chronik-title-"   + elementId).val(chronikTitle);
         $("#chronik-content-" + elementId).val(chronikContent);
-        $("#chronik-enable-" + elementId).val( $("#chronik-status").prop("checked") );
+        $("#chronik-enable-"  + elementId).val( $("#chronik-status").prop("checked") );
 
         if ( $("#chronik-status").prop("checked") == true ) {
             $("li[data-element=" + elementId + "]").removeClass(disableClass);

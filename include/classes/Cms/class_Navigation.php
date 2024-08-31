@@ -23,6 +23,16 @@ class Navigation
         unset($this -> renderer);
     }
 
+    public function switchNavigationItemState($navID, $newState)
+    {
+        $sqlData = array(
+                       'item_enable' => $newState,
+                   );
+        $insertResult = $this -> registry -> db -> updateRow($sqlData, 'navigation', 'WHERE `item_id` = ' . $navID);
+
+        return ( ( $insertResult == false ) ? true : false);
+    }
+
     public function editCurrentNavigation()
     {
         $this -> currNavigationData = null;
@@ -262,6 +272,10 @@ class Navigation
 
         // Render Navigation
         foreach ($this -> currNavigationData AS $navElement) {
+            if ( $navElement['item_enable'] != true ) {
+                $navElement['item_class'] .= ' item-disable';
+            }
+
             $this -> renderer -> loadTemplate('admin' . DS . 'navigation' . DS . 'item.htm');
                 $this -> renderer -> setVariable('item_element'   , $navElement['item_element']);
                 $this -> renderer -> setVariable('item_home'      , ( ($navElement['item_home'] == true) ? 'true' : 'false' ) );

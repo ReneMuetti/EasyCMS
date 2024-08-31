@@ -109,16 +109,41 @@ function resetPopupFormElements()
 function switchStatus(itemNumber)
 {
     let elementId = "#" + prefix + itemNumber;
+    let newState;
 
     if ( $(elementId).length ) {
-         if ( $(elementId).attr("data-enable") == "false" ) {
-            $(elementId).attr("data-enable", "true")
-                        .removeClass(disableClass);
-         }
-         else {
-            $(elementId).attr("data-enable", "false")
-                        .addClass(disableClass);
-         }
+        if ( $(elementId).attr("data-enable") == "false" ) {
+           $(elementId).attr("data-enable", "true")
+                       .removeClass(disableClass);
+           newState = true;
+        }
+        else {
+           $(elementId).attr("data-enable", "false")
+                       .addClass(disableClass);
+           newState = false;
+        }
+
+        $.ajax({
+            "url"   : baseurl + "ajax_navigation.php",
+            "method": "POST",
+            "data"  : {
+                          "action" : "change_state",
+                          "navid"  : itemNumber,
+                          "state"  : newState,
+                      },
+            "beforeSend": function() {
+            }
+        })
+        .done(function(result) {
+            let ajaxReturn = $.parseJSON(result);
+
+            if ( ajaxReturn.error == true ) {
+                alert( ajaxReturn.message );
+            }
+        })
+        .fail(function(jqXHR, textStatus) {
+            alert( ajax_error + textStatus );
+        });
     }
     else {
         alert( message_element_not_found + " (" + elementId + ")" );

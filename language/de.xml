@@ -35,6 +35,7 @@
 		<under_construction>im Aufbau</under_construction>
 		<error_loading_module>Fehler!! Das Modul kann nicht geladen werden!</error_loading_module>
 		<error_sending_data>Die Verarbeitung der Daten ist fehlgeschlagen!</error_sending_data>
+		<error_saving_data>Beim Abspeichern der Daten ist ein Fehler aufgetreten!</error_saving_data>
 		<ajax_error>Ajax-Abfrage-Fehler: </ajax_error>
 		<upload_error_0>Es liegt kein Fehler vor, die Datei wurde erfolgreich hochgeladen</upload_error_0>
 		<upload_error_1>Die hochgeladene Datei überschreitet die Richtlinie upload_max_filesize in php.ini</upload_error_1>
