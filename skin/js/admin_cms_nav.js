@@ -113,15 +113,31 @@ function switchStatus(itemNumber)
 
     if ( $(elementId).length ) {
         if ( $(elementId).attr("data-enable") == "false" ) {
-           $(elementId).attr("data-enable", "true")
-                       .removeClass(disableClass);
-           newState = true;
+            $(elementId).attr("data-enable", "true")
+                        .removeClass(disableClass);
+            newState = true;
+
+            if ( $("#" + prefixSub + prefix + itemNumber).length ) {
+                $("#" + prefixSub + prefix + itemNumber + " li").each(function() {
+                    $(this).attr("data-enable", "true")
+                           .removeClass(disableClass);
+                });
+            }
         }
         else {
-           $(elementId).attr("data-enable", "false")
-                       .addClass(disableClass);
-           newState = false;
+            $(elementId).attr("data-enable", "false")
+                        .addClass(disableClass);
+            newState = false;
+
+            if ( $("#" + prefixSub + prefix + itemNumber).length ) {
+                $("#" + prefixSub + prefix + itemNumber + " li").each(function() {
+                    $(this).attr("data-enable", "false")
+                           .removeClass(disableClass);
+                });
+            }
         }
+
+        setNewPositionAfterMoving(navContainer, 1);
 
         $.ajax({
             "url"   : baseurl + "ajax_navigation.php",

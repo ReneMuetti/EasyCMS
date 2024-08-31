@@ -28,7 +28,10 @@ class Navigation
         $sqlData = array(
                        'item_enable' => $newState,
                    );
-        $insertResult = $this -> registry -> db -> updateRow($sqlData, 'navigation', 'WHERE `item_id` = ' . $navID);
+
+        $sqlWhere = 'WHERE `item_id` = ' . $navID . ' OR `item_parent` = "nav-item-' . $navID . '";';
+
+        $insertResult = $this -> registry -> db -> updateRow($sqlData, 'navigation', $sqlWhere);
 
         return ( ( $insertResult == false ) ? true : false);
     }
