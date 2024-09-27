@@ -29,15 +29,15 @@ class Chronik
 
         if ( is_array($chronikData) AND count($chronikData[0]) ) {
             foreach( $chronikData AS $chronikElement ) {
-                $chronikHint = str_replace(
-                                   array('<br />\r', '<br />',"\\n", '\n'),
-                                   array('{{rn}}'  , '{{rn}}', ''  , ''),
-                                   $chronikElement['chronik_text']
-                               );
+                $chronikStringLine = str_replace(
+                                         array('<br />\r', '<br />',"\\n", '\n', '&amp;amp;'),
+                                         array('{{rn}}'  , '{{rn}}', ''  , ''  , '&amp;'),
+                                         $chronikElement['chronik_text']
+                                     );
 
                 $chronikElement['chronik_text'] = str_replace(
-                                                      array('<br />\r', '<br />',"\\n", '\n'),
-                                                      array(''        , ''      , ''  , ''),
+                                                      array('<br />\r', '<br />',"\\n", '\n', '&amp;amp;'),
+                                                      array(''        , ''      , ''  , ''  , '&amp;'),
                                                       $chronikElement['chronik_text']
                                                   );
 
@@ -46,8 +46,8 @@ class Chronik
                     $this -> renderer -> setVariable('chronik_id'        , $chronikElement['chronik_id']);
                     $this -> renderer -> setVariable('chronik_position'  , $chronikElement['chronik_position']);
                     $this -> renderer -> setVariable('chronik_title'     , $chronikElement['chronik_title']);
-                    $this -> renderer -> setVariable('chronik_hint'      , $chronikHint);
-                    $this -> renderer -> setVariable('chronik_content'   , $chronikElement['chronik_text']);
+                    $this -> renderer -> setVariable('chronik_hint'      , $chronikStringLine);
+                    $this -> renderer -> setVariable('chronik_content'   , $chronikStringLine);
                     $this -> renderer -> setVariable('chronik_enable'    , ($chronikElement['chronik_enable'] ? 'true' : 'false') );
                 $data[] = $this -> renderer -> renderTemplate();
 
