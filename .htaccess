@@ -79,7 +79,7 @@ ErrorDocument 404 /404.php
     Header set X-XSS-Protection "1; mode=block"
     Header set X-Frame-Options "SAMEORIGIN"
     Header set X-Content-Type-Options "nosniff"
-    Header set X-Powered-By "RenPy-Translatior"
+    Header set X-Powered-By "EasyCMS"
     Header set Referrer-Policy "same-origin"
     Header set Feature-Policy "geolocation 'self'; vibrate 'none';"
     Header set Content-Security-Policy "default-src 'self' 'unsafe-inline'; frame-ancestors 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:;"
