@@ -19,3 +19,4 @@ media/*.csv
 media/*.pdf
 
 var/sessions
+/media/seiten/default/logo_missed.png

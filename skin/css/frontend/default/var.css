@@ -1,40 +1,48 @@
 :root {
     --construction-deg: 5deg;
 
+    --grid-gap-color: rgba(0, 0, 0, 0.05);
+
+    --gridster-content-background: rgba(255, 255, 255, 0.4);
+    --gridster-content-hover-background: rgba(255, 255, 255, 0.6);
+    --gridster-border-hover-color: #8DC2DB;
+    --gridster-border-color: rgba(0, 0, 0, 0.05);
+    --gridster-border-width: 1px;
+
     --construction-primary-color: #253753;
     --construction-secondary-color: #A7CCE2;
 
     --font-color-light: #fff;
-    --font-color-dark: #000;
+    --font-color-dark: #2c2c2c;
 
     --background-color-light: #fff;
     --background-color-dark: #000;
 
     --link-normal-color-font: #000;
-    --link-normal-color-back: transparent;
-    --link-active-color-font: #352783;
-    --link-active-color-back: #8DC2DB;
+    --link-normal-color-back: rgba(255, 255, 255, 0.3);
+    --link-active-color-font: #fff;
+    --link-active-color-back: #314a6b;
     --link-text-normal-color-font: #000;
     --link-text-normal-color-back: transparent;
     --link-text-active-color-font: #fff;
-    --link-text-active-color-back: #1F3857;
+    --link-text-active-color-back: #314a6b;
 
-    --form-element-input-border: #6B6B6B;
+    --form-element-input-border: #b5b0a2;
     --form-element-input-border-active: #EC0000;
-    --form-element-input-background: #f8f8f8;
+    --form-element-input-background: rgba(255, 255, 255, 0.5);
     --form-element-input-font-color: #000;
     --form-element-input-placeholder: #7D7D7D;
     --form-element-input-placeholder-opacity: 0;
     --form-element-input-label: #7D7D7D;
     --form-element-input-label-focus-color: #fff;
-    --form-element-input-label-focus-background: #6B6B6B;
+    --form-element-input-label-focus-background: #314a6b;
     --form-element-input-label-fail-color: #ffcdd2;
     --form-element-input-label-fail-background: #c62828;
     --form-element-input-label-fail-border: #c62828;
     --form-element-button-background: #fff;
     --form-element-button-color: #000;
     --form-element-button-shadow: rgba(0, 0, 0, 0.3);
-    --form-element-button-hover-background: rgba(0, 0, 0, 0.2);
+    --form-element-button-hover-background: #314a6b;
     --form-element-button-hover-color: #fff;
     --form-element-button-hover-shadow: rgba(0, 0, 0, 0.7);
 

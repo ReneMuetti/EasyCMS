@@ -20,7 +20,7 @@ header, footer {
     color: var(--font-color-light);
 }
 header {
-    margin-bottom: 20px;
+    color: var(--font-color-dark);
 }
 main {
     flex: 1;
@@ -33,7 +33,6 @@ main {
     }
 }
 footer {
-    margin-top: 20px;
 }
 
 .page-width {
@@ -53,6 +52,7 @@ footer {
 }
 .dot-spacer {
     padding: 0 20px;
+    color: var(--font-color-dark);
 }
 
 /**
@@ -254,8 +254,12 @@ nav {
  * CSS-Grid
  */
  #gridster-content {
+    background: var(--gridster-content-background);
+    border: var(--gridster-border-width) solid var(--gridster-border-color);
+    backdrop-filter: blur(2px);
     height: initial !important;
     width: initial !important;
+    transition: all 0.3s ease;
     display: grid;
     grid-template-columns: repeat(var(--data-col-count), 1fr);
     grid-auto-rows: min-content;
@@ -264,10 +268,15 @@ nav {
     div.gs-w {
         grid-column: var(--data-col) / span var(--data-sizex);
         grid-row: var(--data-row) / span var(--data-sizey);
-        padding: 0;
         box-sizing: border-box;
         height: initial !important;
         width: initial !important;
+        padding: 15px;
+
+        &:hover {
+            background: var(--gridster-content-hover-background);
+            border-color: var(--gridster-border-hover-color);
+        }
 
         img {
             max-height: 100%;
@@ -313,7 +322,7 @@ nav {
 
     article {
         background: var(--vita-artice-background);
-        border: 1px solid var(--vita-artice-border-color)
+        border: 1px solid var(--vita-artice-border-color);
         color: var(--vita-artice-font-color);
         padding: 10px;
         border-radius: 5px;
@@ -391,7 +400,7 @@ nav {
         gap: 10px;
         align-items: center;
         animation: scroll infinite linear var(--slider-speed, 10s);
-        flex-direction: var(--slider-direction, left) == "left" ? "row" : "row-reverse";
+        flex-direction: var(--slider-flex-direction, row);
     }
 
     picture {
@@ -507,7 +516,9 @@ nav {
 
         &:hover, &:active {
             color: var(--link-active-color-font);
-            background: var(--link-active-color-back);
+            background-color: var(--link-active-color-back);
+            background-image: url("/skin/images/frontend/default/header_navi_backgrount.jpg");
+            background-repeat: no-repeat;
             font-weight: bold;
         }
     }
@@ -673,15 +684,18 @@ nav {
         min-width: 240px;
 
         &:hover, &:active {
-            background: var(--form-element-button-hover-background);
+            background-color: var(--form-element-button-hover-background);
+            background-image: url("/skin/images/frontend/default/header_navi_backgrount.jpg");
+            background-repeat: repeat-x;
             color: var(--form-element-button-hover-color);
             box-shadow: 0 5px 15px var(--form-element-button-hover-shadow);
+            cursor: pointer;
         }
     }
 }
 .input-field {
     flex: 1 1 calc(50% - 15px);
-    min-width: 400px;
+    min-width: 100%;
     position: relative;
 
     label {

@@ -1,0 +1,193 @@
+.easy-cms-feature-page {
+    font-family: 'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+/* --- Abstraktes CSS-Visual für den Intro-Bild-Block --- */
+
+.cms-visual-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background: #fdfdfd; /* Heller Hintergrund passend zu deinem Skin */
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #eee;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.03); /* Ganz dezenter Schatten */
+}
+
+/* Der abstrakte Hintergrund (symbolisiert die Struktur) */
+.cms-visual-background {
+    position: absolute;
+    top: 20%;
+    right: 20%;
+    width: 60%;
+    height: 60%;
+    background: #f4f4f4;
+    border-radius: 10px;
+    transform: rotate(15deg);
+    z-index: 1;
+}
+
+/* Das 'Grid' (symbolisiert Gridster) */
+.cms-visual-grid {
+    position: absolute;
+    top: 30%;
+    left: 15%;
+    width: 70%;
+    height: 60%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 10px;
+    z-index: 2;
+}
+
+.grid-item {
+    background: #e0e0e0;
+    border-radius: 4px;
+}
+
+/* Individuelle Akzente für das Grid */
+.grid-item.item-1 { grid-column: 1 / 3; grid-row: 1 / 3; background: #333; /* Dunkler Kontrast passend zur Admin-Leiste */ transition: transform 0.3s ease; }
+.grid-item.item-2 { grid-column: 3; grid-row: 1; background: #666; }
+.grid-item.item-3 { grid-column: 3; grid-row: 2; background: #aaa; }
+.grid-item.item-4 { grid-column: 1; grid-row: 3; background: #ccc; }
+.grid-item.item-5 { grid-column: 2 / 4; grid-row: 3; background: #999; }
+
+.grid-item.item-1:hover {
+    transform: scale(1.02);
+    filter: brightness(1.2);
+}
+
+/* Ein kleiner 'Glanz'-Effekt */
+.cms-visual-highlight {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 50%);
+    z-index: 3;
+    pointer-events: none; /* Klicks gehen durch */
+    animation: fadeInVisual 1.2s ease-out;
+}
+
+/* Spezifische Styles für das Intro-Duo */
+.cms-intro-text {
+    padding: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+}
+
+.cms-intro-text h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1.1;
+    margin: 15px 0;
+    color: var(--text-color-dark); /* Greift auf deine var.css zu */
+}
+
+.cms-intro-text p {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 25px;
+}
+
+.badge {
+    display: inline-block;
+    padding: 5px 12px;
+    background: #eee;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.cta-area {
+    margin-top: 30px;
+}
+
+/* --- Fullwidth Feature Row --- */
+.cms-feature-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 30px;
+    padding: 60px 40px;
+    background-color: #f9f9f9; /* Ganz helles Grau für subtile Trennung vom Header */
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    margin-top: 20px;
+}
+
+.feature-item {
+    flex: 1;
+    text-align: center;
+    padding: 20px;
+    transition: transform 0.3s ease;
+
+    &:hover {
+        transform: translateY(-5px);
+
+        .feature-icon {
+            transform: scale(1.1) rotate(5deg);
+            background-color: var(--construction-primary-color);
+            color: #fff;
+        }
+    }
+}
+
+.feature-item h3 {
+    font-size: 1.25rem;
+    color: var(--text-color-dark);
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.feature-item p {
+    font-size: 0.95rem;
+    color: #777;
+    line-height: 1.6;
+}
+
+/* Die Feature-Icons mit FontAwesome stylen */
+.feature-icon {
+width: 60px;
+    height: 60px;
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--construction-secondary-color); /* Das helle Blau aus deiner var.css */
+    color: var(--construction-primary-color); /* Das dunkle Blau */
+    border-radius: 50%;
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+/* Überschriften im Inhaltsbereich etwas markanter */
+.feature-item h3 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 10px;
+}
+
+.feature-item p {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.5;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+/* Responsivität für den Fullwidth-Block */
+@media (max-width: 768px) {
+    .cms-feature-row {
+        flex-direction: column;
+        padding: 40px 20px;
+    }
+    .feature-item {
+        margin-bottom: 30px;
+    }
+}
