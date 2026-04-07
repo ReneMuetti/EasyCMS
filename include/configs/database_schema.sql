@@ -68,7 +68,7 @@ CREATE TABLE `chronik` (
 --
 
 CREATE TABLE `config` (
-  `config_id` int(10) NOT NULL,
+  `config_id` int(10) PRIMARY KEY AUTO_INCREMENT NOT NULL,
   `config_path` varchar(1024) NOT NULL DEFAULT '',
   `config_value` text NOT NULL,
   `config_type` varchar(1024) NOT NULL DEFAULT '',
@@ -114,7 +114,7 @@ INSERT INTO `config` (`config_id`, `config_path`, `config_value`, `config_type`,
 CREATE TABLE `gallery` (
   `gallery_id` int(10) PRIMARY KEY AUTO_INCREMENT NOT NULL,
   `gallery_title` varchar(100) NOT NULL DEFAULT '',
-  `gallery_type` int(3) NOT NULL DEFAULT '',
+  `gallery_type` int(3) NOT NULL DEFAULT 1,
   `gallery_options` text NOT NULL,
   `gallery_images` text NOT NULL,
   `gallery_enable` int(1) NOT NULL DEFAULT 1,
@@ -171,7 +171,7 @@ CREATE TABLE `pages` (
 --
 
 CREATE TABLE `secure` (
-  `id` int(10) NOT NULL,
+  `id` int(10) PRIMARY KEY NOT NULL,
   `secure` varchar(20) NOT NULL,
   `hash` varchar(200) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
@@ -183,7 +183,7 @@ CREATE TABLE `secure` (
 --
 
 CREATE TABLE `users` (
-  `id` int(10) NOT NULL,
+  `id` int(10) PRIMARY KEY AUTO_INCREMENT NOT NULL,
   `username` varchar(100) NOT NULL,
   `passhash` varchar(32) NOT NULL,
   `pass` varchar(60) NOT NULL,
@@ -208,6 +208,7 @@ CREATE TABLE `users` (
 
 CREATE TABLE `vita` (
   `vita_id` int(10) PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  `vita_position` int(5) NOT NULL DEFAULT 1,
   `vita_title` varchar(100) NOT NULL DEFAULT '',
   `vita_text` varchar(1024) NOT NULL DEFAULT '',
   `vita_image` varchar(1024) NOT NULL DEFAULT '',
@@ -221,113 +222,23 @@ CREATE TABLE `vita` (
 --
 
 --
--- Indizes für die Tabelle `accounts`
---
-ALTER TABLE `accounts`
-  ADD PRIMARY KEY (`userid`);
-
---
--- Indexes for the table `blocks`
---
-ALTER TABLE `blocks`
-  ADD PRIMARY KEY (`block_id`);
-
---
--- Indexes for the table `config`
---
-ALTER TABLE `config`
-  ADD PRIMARY KEY (`config_id`);
-
---
--- Indexes for the table `gallery`
---
-ALTER TABLE `gallery`
-  ADD PRIMARY KEY (`gallery_id`);
-
---
--- Indexes for the table `navigation`
---
-ALTER TABLE `navigation`
-  ADD PRIMARY KEY (`nav_id`);
-
---
 -- Indexes for the table `pages`
 --
 ALTER TABLE `pages`
-  ADD PRIMARY KEY (`page_id`),
   ADD KEY `idx_page_internal` (`page_internal`);
 
 --
 -- Indexes for the table `secure`
 --
 ALTER TABLE `secure`
-  ADD PRIMARY KEY (`id`),
   ADD KEY `idx_secure_hash` (`secure`,`hash`);
 
 --
 -- Indexes for the table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`),
   ADD KEY `idx_user_name` (`username`);
 
---
--- Indexes for the table `vita`
---
-ALTER TABLE `vita`
-  ADD PRIMARY KEY (`vita_id`);
-
---
--- AUTO_INCREMENT for exported tables
---
-
---
--- AUTO_INCREMENT for the table `blocks`
---
-ALTER TABLE `blocks`
-  MODIFY `block_id` int(10) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for the table `config`
---
-ALTER TABLE `config`
-  MODIFY `config_id` int(10) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for the table `gallery`
---
-ALTER TABLE `gallery`
-  MODIFY `gallery_id` int(10) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for the table `navigation`
---
-ALTER TABLE `navigation`
-  MODIFY `nav_id` int(10) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for the table `pages`
---
-ALTER TABLE `pages`
-  MODIFY `page_id` int(10) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for the table `secure`
---
-ALTER TABLE `secure`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for the table `users`
---
-ALTER TABLE `users`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for the table `vita`
---
-ALTER TABLE `vita`
-  MODIFY `vita_id` int(10) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

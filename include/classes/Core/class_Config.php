@@ -163,9 +163,10 @@ class Config
 
     private function _loadGridsterElement($gridsterJSON, $element, $position)
     {
+        $gridsterBlocks[$element] = array();
+
         if ( strlen($gridsterJSON) ) {
             $page = new Pages();
-            $gridsterBlocks[$element] = array();
             $page -> getRenderBlocksFromGridsterJson($gridsterJSON, $gridsterBlocks);
         }
 

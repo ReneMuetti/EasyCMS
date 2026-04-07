@@ -192,7 +192,7 @@ class XML_Parser
             $this -> error_code = XML_ERROR_NO_ELEMENTS + (PHP_VERSION > '5.2.8' ? 0 : 1);
             return false;
         }
-        
+
         $this -> xml_parser = xml_parser_create();
 
         xml_parser_set_option         ( $this -> xml_parser, XML_OPTION_SKIP_WHITE  , 0);
@@ -216,12 +216,12 @@ class XML_Parser
             $this -> error_code = @ xml_get_error_code($this -> xml_parser);
             $this -> error_line = @ xml_get_current_line_number($this -> xml_parser);
 
-            xml_parser_free($this -> xml_parser);
+            PHP_VERSION_ID < 80000 && xml_parser_free($this -> xml_parser);
 
             return false;
         }
 
-        xml_parser_free($this -> xml_parser);
+        PHP_VERSION_ID < 80000 && xml_parser_free($this -> xml_parser);
     }
 
     /**
