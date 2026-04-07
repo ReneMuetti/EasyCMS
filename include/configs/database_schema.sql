@@ -1,9 +1,9 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.3
 -- https://www.phpmyadmin.net/
 --
--- Server-Version: 10.6.18-MariaDB-0ubuntu0.22.04.1
--- PHP-Version: 8.3.6
+-- Server-Version: 10.6.23-MariaDB-0ubuntu0.22.04.1
+-- PHP-Version: 8.4.17
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,11 +18,11 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `accounts`
+-- Tabellenstruktur für Tabelle `accounts`
 --
 
 CREATE TABLE `accounts` (
-  `userid` int(10) PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  `userid` int(10) NOT NULL,
   `chash` varchar(32) NOT NULL,
   `lastaccess` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `username` varchar(100) NOT NULL,
@@ -33,11 +33,11 @@ CREATE TABLE `accounts` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `blocks`
+-- Tabellenstruktur für Tabelle `blocks`
 --
 
 CREATE TABLE `blocks` (
-  `block_id` int(10) PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  `block_id` int(10) NOT NULL,
   `block_title` varchar(100) NOT NULL DEFAULT '',
   `block_content` text NOT NULL,
   `block_enable` int(1) NOT NULL DEFAULT 1,
@@ -48,11 +48,11 @@ CREATE TABLE `blocks` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `chronik`
+-- Tabellenstruktur für Tabelle `chronik`
 --
 
 CREATE TABLE `chronik` (
-  `chronik_id` int(10) PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  `chronik_id` int(10) NOT NULL,
   `chronik_position` int(5) NOT NULL DEFAULT 1,
   `chronik_title` varchar(100) NOT NULL DEFAULT '',
   `chronik_text` text NOT NULL DEFAULT '',
@@ -64,11 +64,11 @@ CREATE TABLE `chronik` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `config`
+-- Tabellenstruktur für Tabelle `config`
 --
 
 CREATE TABLE `config` (
-  `config_id` int(10) PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  `config_id` int(10) NOT NULL,
   `config_path` varchar(1024) NOT NULL DEFAULT '',
   `config_value` text NOT NULL,
   `config_type` varchar(1024) NOT NULL DEFAULT '',
@@ -79,40 +79,11 @@ CREATE TABLE `config` (
 -- --------------------------------------------------------
 
 --
--- Data for table `config`
---
-
-INSERT INTO `config` (`config_id`, `config_path`, `config_value`, `config_type`, `datetime`, `username`) VALUES
-  (null, 'default/layout/header', '', 'gridster', CURRENT_TIMESTAMP(), 'Install'),
-  (null, 'default/layout/footer', '', 'gridster', CURRENT_TIMESTAMP(), 'Install'),
-  (null, 'image/thumbnail/size'        , '400'    , 'input' , CURRENT_TIMESTAMP(), 'Install'),
-  (null, 'image/thumbnail/quality'     , '85'     , 'input' , CURRENT_TIMESTAMP(), 'Install'),
-  (null, 'image/thumbnail/prefix_small', 'small_' , 'input' , CURRENT_TIMESTAMP(), 'Install'),
-  (null, 'image/thumbnail/prefix_low'  , 'low_'   , 'input' , CURRENT_TIMESTAMP(), 'Install'),
-  (null, 'design/theme/skin'           , 'default', 'select', CURRENT_TIMESTAMP(), 'Install'),
-  (null, 'design/theme/page_width'     , '1200'   , 'input' , CURRENT_TIMESTAMP(), 'Install'),
-  (null, 'design/theme/page_back_dark' , ''       , 'input' , CURRENT_TIMESTAMP(), 'Install'),
-  (null, 'design/theme/page_back_light', ''       , 'input' , CURRENT_TIMESTAMP(), 'Install'),
-  (null, 'system/email/host'    , '', 'input'  , CURRENT_TIMESTAMP(), 'Install'),
-  (null, 'system/email/username', '', 'input'  , CURRENT_TIMESTAMP(), 'Install'),
-  (null, 'system/email/password', '', 'input'  , CURRENT_TIMESTAMP(), 'Install'),
-  (null, 'system/email/address' , '', 'input'  , CURRENT_TIMESTAMP(), 'Install'),
-  (null, 'system/email/port'    , '', 'input'  , CURRENT_TIMESTAMP(), 'Install'),
-  (null, 'system/email/smtpauth', '', 'boolean', CURRENT_TIMESTAMP(), 'Install'),
-  (null, 'system/email/secure'  , '', 'boolean', CURRENT_TIMESTAMP(), 'Install'),
-  (null, 'system/email/protocol', '', 'input'  , CURRENT_TIMESTAMP(), 'Install'),
-  (null, 'system/email/sender'  , '', 'input'  , CURRENT_TIMESTAMP(), 'Install'),
-  (null, 'system/email/subject' , '', 'input'  , CURRENT_TIMESTAMP(), 'Install'),
-  (null, 'system/email/rec_mail', '', 'input'  , CURRENT_TIMESTAMP(), 'Install'),
-  (null, 'system/email/rec_name', '', 'input'  , CURRENT_TIMESTAMP(), 'Install'),
-  (null, 'system/email/dev_mail', '', 'input'  , CURRENT_TIMESTAMP(), 'Install');
-
---
--- Table structure for table `gallery`
+-- Tabellenstruktur für Tabelle `gallery`
 --
 
 CREATE TABLE `gallery` (
-  `gallery_id` int(10) PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  `gallery_id` int(10) NOT NULL,
   `gallery_title` varchar(100) NOT NULL DEFAULT '',
   `gallery_type` int(3) NOT NULL DEFAULT 1,
   `gallery_options` text NOT NULL,
@@ -125,11 +96,11 @@ CREATE TABLE `gallery` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `navigation`
+-- Tabellenstruktur für Tabelle `navigation`
 --
 
 CREATE TABLE `navigation` (
-  `nav_id` int(10) PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  `nav_id` int(10) NOT NULL,
   `item_id` int(10) NOT NULL DEFAULT 1,
   `item_element` varchar(100) NOT NULL DEFAULT '',
   `item_title` varchar(100) NOT NULL DEFAULT '',
@@ -146,11 +117,11 @@ CREATE TABLE `navigation` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pages`
+-- Tabellenstruktur für Tabelle `pages`
 --
 
 CREATE TABLE `pages` (
-  `page_id` int(10) PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  `page_id` int(10) NOT NULL,
   `page_title` varchar(100) NOT NULL DEFAULT '',
   `page_internal` varchar(100) NOT NULL DEFAULT '',
   `page_enable` int(1) NOT NULL DEFAULT 1,
@@ -167,11 +138,11 @@ CREATE TABLE `pages` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `secure`
+-- Tabellenstruktur für Tabelle `secure`
 --
 
 CREATE TABLE `secure` (
-  `id` int(10) PRIMARY KEY NOT NULL,
+  `id` int(10) NOT NULL,
   `secure` varchar(20) NOT NULL,
   `hash` varchar(200) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
@@ -179,11 +150,11 @@ CREATE TABLE `secure` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Tabellenstruktur für Tabelle `users`
 --
 
 CREATE TABLE `users` (
-  `id` int(10) PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  `id` int(10) NOT NULL,
   `username` varchar(100) NOT NULL,
   `passhash` varchar(32) NOT NULL,
   `pass` varchar(60) NOT NULL,
@@ -203,11 +174,11 @@ CREATE TABLE `users` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `vita`
+-- Tabellenstruktur für Tabelle `vita`
 --
 
 CREATE TABLE `vita` (
-  `vita_id` int(10) PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  `vita_id` int(10) NOT NULL,
   `vita_position` int(5) NOT NULL DEFAULT 1,
   `vita_title` varchar(100) NOT NULL DEFAULT '',
   `vita_text` varchar(1024) NOT NULL DEFAULT '',
@@ -218,27 +189,129 @@ CREATE TABLE `vita` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 --
--- Indexes of the exported tables
+-- Indizes der exportierten Tabellen
 --
 
 --
--- Indexes for the table `pages`
+-- Indizes für die Tabelle `accounts`
+--
+ALTER TABLE `accounts`
+  ADD PRIMARY KEY (`userid`);
+
+--
+-- Indizes für die Tabelle `blocks`
+--
+ALTER TABLE `blocks`
+  ADD PRIMARY KEY (`block_id`);
+
+--
+-- Indizes für die Tabelle `chronik`
+--
+ALTER TABLE `chronik`
+  ADD PRIMARY KEY (`chronik_id`);
+
+--
+-- Indizes für die Tabelle `config`
+--
+ALTER TABLE `config`
+  ADD PRIMARY KEY (`config_id`);
+
+--
+-- Indizes für die Tabelle `gallery`
+--
+ALTER TABLE `gallery`
+  ADD PRIMARY KEY (`gallery_id`);
+
+--
+-- Indizes für die Tabelle `navigation`
+--
+ALTER TABLE `navigation`
+  ADD PRIMARY KEY (`nav_id`);
+
+--
+-- Indizes für die Tabelle `pages`
 --
 ALTER TABLE `pages`
+  ADD PRIMARY KEY (`page_id`),
   ADD KEY `idx_page_internal` (`page_internal`);
 
 --
--- Indexes for the table `secure`
+-- Indizes für die Tabelle `secure`
 --
 ALTER TABLE `secure`
+  ADD PRIMARY KEY (`id`),
   ADD KEY `idx_secure_hash` (`secure`,`hash`);
 
 --
--- Indexes for the table `users`
+-- Indizes für die Tabelle `users`
 --
 ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
   ADD KEY `idx_user_name` (`username`);
 
+--
+-- Indizes für die Tabelle `vita`
+--
+ALTER TABLE `vita`
+  ADD PRIMARY KEY (`vita_id`);
+
+--
+-- AUTO_INCREMENT für exportierte Tabellen
+--
+
+--
+-- AUTO_INCREMENT für Tabelle `accounts`
+--
+ALTER TABLE `accounts`
+  MODIFY `userid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT für Tabelle `blocks`
+--
+ALTER TABLE `blocks`
+  MODIFY `block_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT für Tabelle `chronik`
+--
+ALTER TABLE `chronik`
+  MODIFY `chronik_id` int(10) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT für Tabelle `config`
+--
+ALTER TABLE `config`
+  MODIFY `config_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+
+--
+-- AUTO_INCREMENT für Tabelle `gallery`
+--
+ALTER TABLE `gallery`
+  MODIFY `gallery_id` int(10) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT für Tabelle `navigation`
+--
+ALTER TABLE `navigation`
+  MODIFY `nav_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT für Tabelle `pages`
+--
+ALTER TABLE `pages`
+  MODIFY `page_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT für Tabelle `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT für Tabelle `vita`
+--
+ALTER TABLE `vita`
+  MODIFY `vita_id` int(10) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
