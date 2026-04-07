@@ -18,6 +18,10 @@ $pageElements = array(
                     'cms_class'   => '',
                 );
 
+$cmsPage    = new Pages();
+$config     = new Config();
+$navigation = new Navigation();
+
 // #######################################################################
 // ######################## START MAIN SCRIPT ############################
 // #######################################################################
@@ -25,8 +29,6 @@ $website -> input -> clean_array_gpc('r', array('page' => TYPE_NOHTML));
 
 
 if ( isset($website -> GPC['page']) ) {
-    $cmsPage = new Pages();
-
     if ( empty($website -> GPC['page']) ) {
         $website -> GPC['page'] = $cmsPage -> getDefaltHomeCode();
     }
@@ -42,21 +44,18 @@ if ( empty($pageElements['content']) OR !strlen($pageElements['content']) ) {
     $pageElements['content'] = $website -> user_lang['global']['unkonwn_action'];
 }
 
-$navigation = new Navigation();
 $pageElements['navbar'] = $navigation -> getFrontendNavigation();
 
 $renderer -> loadTemplate(THIS_TEMPLATE . '.htm');
-    $renderer -> setVariable('current_page_skin'      , 'geith');
-    $renderer -> setVariable('current_page_back_light', '/skin/images/frontend/geith/page_background_light.jpg');
-    $renderer -> setVariable('current_page_back_dark' , '/skin/images/frontend/geith/page_background_dark.jpg');
-    $renderer -> setVariable('current_page_skin'      , 'geith');
+    $renderer -> setVariable('current_page_skin'      , $config -> getConfigValue('design/theme/skin') );
+    $renderer -> setVariable('default_page_width'     , $config -> getConfigValue('design/theme/page_width') );
+    $renderer -> setVariable('default_block_height'   , '100' ); // TODO :: replace fixed gridster with CSS-GRID
+    $renderer -> setVariable('current_page_back_light', $config -> getConfigValue('design/theme/page_back_light') );
+    $renderer -> setVariable('current_page_back_dark' , $config -> getConfigValue('design/theme/page_back_dark') );
     $renderer -> setVariable('current_page_code'      , $website -> GPC['page']);
-    $renderer -> setVariable('default_page_width'     , '1200');
-    $renderer -> setVariable('default_block_height'   , '100');
 
     foreach ($pageElements AS $element => $data) {
         $renderer -> setVariable(THIS_SCRIPT . '_' . $element, $data);
     }
 
-    //$renderer -> addCustonStyle(array('script' => 'skin/css/index.css'), THIS_SCRIPT);
 print_output($renderer -> renderTemplate());
