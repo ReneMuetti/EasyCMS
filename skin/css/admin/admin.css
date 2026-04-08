@@ -81,7 +81,7 @@ section#register {
 /* End RGB-Progress-Bar */
 
 .block-watermark {
-    font-family: "Font Awesome 6 Free";
+    font-family: "Font Awesome 7 Free";
     font-size: 12rem;
     font-style: normal;
     color: var(--rgba-color-dark-02);
@@ -580,7 +580,7 @@ td.cms-actions {
     margin-bottom: 5px;
 }
 .sortable-list li:before {
-    font-family: "Font Awesome 6 Free";
+    font-family: "Font Awesome 7 Free";
     font-style: normal;
     text-decoration: none;
 
@@ -616,7 +616,7 @@ td.cms-actions {
     text-decoration: line-through;
 }
 .sortable-list li a {
-    font-family: "Font Awesome 6 Free";
+    font-family: "Font Awesome 7 Free";
     font-size: 2rem;
     font-style: normal;
     line-height: 2rem;
@@ -688,7 +688,7 @@ td.cms-actions {
 }
 #nav-template li[data-type="1"] > span:first-child:after,
 #nav-template li[data-type="2"] > span:first-child:after {
-    font-family: "Font Awesome 6 Free";
+    font-family: "Font Awesome 7 Free";
     font-style: normal;
     text-decoration: none;
 
