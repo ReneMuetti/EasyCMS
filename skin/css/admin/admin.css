@@ -497,6 +497,7 @@ td.cms-actions {
     text-decoration: none;
     margin: 0;
     padding: 6px;
+    min-width: 30px;
 }
 .cms-page-layout-block .block-content {
     display: block;
