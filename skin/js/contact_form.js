@@ -32,7 +32,7 @@ function sendForm()
                           }
         })
         .done(function(result) {
-            let ajaxReturn = $.parseJSON(result);
+            let ajaxReturn = JSON.parse(result);
 
             if ( ajaxReturn.error == true ) {
                 addMessage("error", ajaxReturn.message);

@@ -90,8 +90,7 @@ function applySortableToElement(newElement)
                   "stop" : function(event, ui) {
                                setNewPositionAfterMoving(navContainer, 1);
                            },
-              })
-              .disableSelection();
+              });
 }
 
 function resetPopupFormElements()
@@ -151,7 +150,7 @@ function switchStatus(itemNumber)
             }
         })
         .done(function(result) {
-            let ajaxReturn = $.parseJSON(result);
+            let ajaxReturn = JSON.parse(result);
 
             if ( ajaxReturn.error == true ) {
                 alert( ajaxReturn.message );

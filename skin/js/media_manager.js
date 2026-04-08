@@ -86,7 +86,7 @@ function createNewDirectory()
             }
         })
         .done(function(result) {
-            let ajaxReturn = $.parseJSON(result);
+            let ajaxReturn = JSON.parse(result);
 
             if ( ajaxReturn.error == true ) {
                 alert( ajaxReturn.message );
@@ -118,7 +118,7 @@ function openDirectory(subDirectory, parentDir)
             }
         })
         .done(function(result) {
-            let ajaxReturn = $.parseJSON(result);
+            let ajaxReturn = JSON.parse(result);
 
             if ( ajaxReturn.error == true ) {
                 alert( ajaxReturn.message );
@@ -150,7 +150,7 @@ function deleteDirectory(subDirectory)
             }
         })
         .done(function(result) {
-            let ajaxReturn = $.parseJSON(result);
+            let ajaxReturn = JSON.parse(result);
 
             if ( ajaxReturn.error == true ) {
                 alert( ajaxReturn.message );
@@ -180,7 +180,7 @@ function deleteFile(filename)
             }
         })
         .done(function(result) {
-            let ajaxReturn = $.parseJSON(result);
+            let ajaxReturn = JSON.parse(result);
 
             if ( ajaxReturn.error == true ) {
                 alert( ajaxReturn.message );

@@ -54,6 +54,7 @@ function escapeHTML(text) {
     return $("<div></div>").text(text).html();
 }
 
+/*
 JSON.stringify = JSON.stringify || function (obj)
 {
     var t = typeof (obj);
@@ -88,3 +89,4 @@ JSON.stringify = JSON.stringify || function (obj)
         return (arr ? "[" : "{") + String(json) + (arr ? "]" : "}");
    }
 };
+*/

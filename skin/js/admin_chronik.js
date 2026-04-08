@@ -23,8 +23,7 @@ $(document).ready(function() {
                                  "stop" : function(event, ui) {
                                               setNewPositionAfterMoving(chronikContainer, 1);
                                           },
-                             })
-                             .disableSelection();
+                             });
 
     resetForm();
 });
@@ -148,7 +147,6 @@ function getNewChronikId()
     $.ajax({
         "url"   : baseurl + "ajax_chronik.php",
         "method": "POST",
-        "async" : false,
         "data"  : {
                       "action" : "get_id",
                       "last-id": parseInt( $("#chronik-last").val() ),

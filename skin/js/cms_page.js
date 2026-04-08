@@ -73,7 +73,7 @@ function loadPopupContent()
         }
     })
     .done(function(result) {
-        let ajaxReturn = $.parseJSON(result);
+        let ajaxReturn = JSON.parse(result);
 
         if ( ajaxReturn.error == true ) {
             alert( ajaxReturn.message );
@@ -102,7 +102,7 @@ function addNewCmsBlock(element)
         }
     })
     .done(function(result) {
-        let ajaxReturn = $.parseJSON(result);
+        let ajaxReturn = JSON.parse(result);
 
         if ( ajaxReturn.error == true ) {
             alert( ajaxReturn.message );

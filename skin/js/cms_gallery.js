@@ -37,7 +37,6 @@ function loadPopupContent()
     $.ajax({
         "url"   : baseurl + "ajax_file_popup.php",
         "method": "POST",
-        "async" : false,
         "data"  : {
                       "action": "block_list",
                       "subdir": $(popup).attr("data-curr-path"),
@@ -47,7 +46,7 @@ function loadPopupContent()
         }
     })
     .done(function(result) {
-        let ajaxReturn = $.parseJSON(result);
+        let ajaxReturn = JSON.parse(result);
 
         if ( ajaxReturn.error == true ) {
             alert( ajaxReturn.message );
@@ -82,7 +81,7 @@ function loadGalleryConfiguration(sender)
             }
         })
         .done(function(result) {
-            let ajaxReturn = $.parseJSON(result);
+            let ajaxReturn = JSON.parse(result);
 
             if ( ajaxReturn.error == true ) {
                 alert( ajaxReturn.message );
@@ -240,7 +239,7 @@ function addSelectedElements()
         }
     })
     .done(function(result) {
-        let ajaxReturn = $.parseJSON(result);
+        let ajaxReturn = JSON.parse(result);
 
         if ( ajaxReturn.error == true ) {
             alert( ajaxReturn.message );
