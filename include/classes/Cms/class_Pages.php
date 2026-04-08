@@ -278,10 +278,12 @@ class Pages
             $pageLayout = json_decode($this -> _getDefaultPageLayoutFromConfig(), true);
         }
 
-        foreach( $pageLayout AS $id => $value ) {
-            if ( is_string($value) ) {
-                $pageElements[$value] = $this -> _renderFrontendLayoutSection($pageLayout[$id + 1]);
-                $id++;
+        if ( is_array($pageLayout) AND count($pageLayout) ) {
+            foreach( $pageLayout AS $id => $value ) {
+                if ( is_string($value) ) {
+                    $pageElements[$value] = $this -> _renderFrontendLayoutSection($pageLayout[$id + 1]);
+                    $id++;
+                }
             }
         }
     }

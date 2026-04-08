@@ -260,7 +260,7 @@ class ImageProcessor
                     }
                 }
 
-                imagedestroy($this -> thumbImage);
+                PHP_VERSION_ID < 80000 && imagedestroy($this -> thumbImage);
                 $this -> _deleteTempImage();
 
                 return $this -> destinationFile;
@@ -298,7 +298,7 @@ class ImageProcessor
     private function _deleteTempImage()
     {
         if ( $this -> gobalError === FALSE ) {
-            imagedestroy( $this -> tmpImage );
+            PHP_VERSION_ID < 80000 && imagedestroy( $this -> tmpImage );
         }
     }
 

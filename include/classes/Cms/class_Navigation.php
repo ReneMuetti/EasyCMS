@@ -206,7 +206,7 @@ class Navigation
         $return = array();
 
         foreach($data AS $navItem) {
-            $isHome = ( ($navItem['item_home'] === 1) ? true : false );
+            $isHome = ( ($navItem['item_home'] == 1) ? true : false );
 
             switch ($navItem['item_type']) {
                 case 0 : $link =  $this -> registry -> baseurl . $navItem['seo_code'];
