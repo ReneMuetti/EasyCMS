@@ -65,8 +65,12 @@ class Gallery
         $this -> _renderGalleryImageElementsForFrontend($images, $imageData, $templateName);
 
         if ( count($images) ) {
+            // Loop-Content verdoppeln, damit das Band ruhiger läuft
+            $renderedImages  = implode("\n", $images);
+            $fullLoopContent = $renderedImages . "\n" . $renderedImages;
+
             $this -> renderer -> loadTemplate('frontend' . DS . 'gallery' . DS . 'css_slider.htm');
-                $this -> renderer -> setVariable('images'   , implode("\n", $images));
+                $this -> renderer -> setVariable('images'   , $fullLoopContent);
                 $this -> renderer -> setVariable('height'   , $height );
                 $this -> renderer -> setVariable('speed'    , $speed );
                 $this -> renderer -> setVariable('direction', ($direction == 0 ? 'left' : 'right') );
