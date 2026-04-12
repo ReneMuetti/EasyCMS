@@ -29,7 +29,7 @@ nav {
         &:active, &:hover {
             color: var(--link-text-active-color-font);
             background-color: var(--link-text-active-color-back);
-            background-image: url("/skin/images/frontend/default/header_navi_backgrount.jpg");
+            background-image: var(--header-navigation-background-image);
             background-repeat: no-repeat;
             cursor: pointer;
         }

@@ -31,7 +31,7 @@
 
         &:hover, &:active {
             background-color: var(--form-element-button-hover-background);
-            background-image: url("/skin/images/frontend/default/header_navi_backgrount.jpg");
+            background-image: var(-header-navigation-background-image)
             background-repeat: repeat-x;
             color: var(--form-element-button-hover-color);
             box-shadow: 0 5px 15px var(--form-element-button-hover-shadow);
