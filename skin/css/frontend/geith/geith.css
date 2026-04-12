@@ -1,0 +1,37 @@
+/**
+ * Footer
+ */
+#gridster-footer {
+    > div:last-child a {
+        &:hover, &:active {
+            background-color: var(--link-active-color-back);
+            background-image: none;
+        }
+    }
+}
+
+/**
+ * Navigation
+ */
+nav {
+    a, span, .sub-items label {
+        &:active, &:hover {
+            color: var(--link-text-active-color-font);
+            background-color: var(--link-text-active-color-back);
+            background-image: none;
+            cursor: pointer;
+        }
+    }
+}
+
+/**
+ * Form-Elements
+ */
+.form-section {
+    .button {
+        &:hover, &:active {
+            background-color: var(--form-element-button-hover-background);
+            background-image: none;
+        }
+    }
+}
