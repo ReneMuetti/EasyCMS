@@ -1,5 +1,5 @@
 :root {
-    --font-awesome: "Font Awesome 7 Free"
+    --font-awesome: "Font Awesome 7 Free";
 
     --header-navigation-background-image: url("/skin/images/frontend/default/header_navi_backgrount.jpg");
     --footer-navigation-background-image: url("/skin/images/frontend/default/header_navi_backgrount.jpg");
