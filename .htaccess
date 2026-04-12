@@ -36,6 +36,10 @@ ErrorDocument 404 /404.php
     RewriteRule ^ajax_(.*)$ /ajax/$1 [L]
 
     ############################################
+    ## Ausnahmen für System-Files
+    RewriteRule ^style\.php$ - [L]
+
+    ############################################
     ## Rewrite-Conditions Frontend
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
@@ -63,7 +67,7 @@ ErrorDocument 404 /404.php
     php_value session.gc_probability 1
     php_value session.gc_divisor 100
     php_value session.gc_maxlifetime 86400
-    
+
     ############################################
     ## Speicherlimit
     php_value memory_limit 2048M
