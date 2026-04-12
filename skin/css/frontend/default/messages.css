@@ -1,0 +1,50 @@
+/**
+ * Message-Elemente
+ */
+#message-block {
+    gap: 0;
+}
+.message-success, .message-warning, .message-error {
+    padding: 10px 20px;
+    width: 100%;
+    font-size: 1.1rem;
+    font-weight: bold;
+    position: relative;
+    border-left: 5px solid transparent;
+}
+.message-success:before, .message-warning:before, .message-error:before {
+    content: '';
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 10px solid transparent;
+    position: absolute;
+    left: 0px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+}
+.message-success {
+    color: var(--form-element-success-color);
+    background: var(--form-element-success-background);
+    border-left-color: var(--form-element-success-color);
+}
+.message-success:before {
+    border-left-color: var(--form-element-success-color);
+}
+.message-warning {
+    color: var(--form-element-warning-color);
+    background: var(--form-element-warning-background);
+    border-left-color: var(--form-element-warning-color);
+}
+.message-warning:before {
+    border-left-color: var(--form-element-warning-color);
+}
+.message-error {
+    color: var(--form-element-error-color);
+    background: var(--form-element-error-background);
+    border-left-color: var(--form-element-error-color);
+}
+.message-error:before {
+    border-left-color: var(--form-element-error-color);
+}

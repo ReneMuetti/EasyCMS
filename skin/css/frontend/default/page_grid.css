@@ -1,0 +1,58 @@
+/**
+ * CSS-Grid
+ */
+ #gridster-content {
+    background: var(--gridster-content-background);
+    border: var(--gridster-border-width) solid var(--gridster-border-color);
+    backdrop-filter: blur(2px);
+    height: initial !important;
+    width: initial !important;
+    transition: all 0.3s ease;
+    display: grid;
+    grid-template-columns: repeat(var(--data-col-count), 1fr);
+    grid-auto-rows: min-content;
+    gap: 20px 10px;
+
+    div.gs-w {
+        grid-column: var(--data-col) / span var(--data-sizex);
+        grid-row: var(--data-row) / span var(--data-sizey);
+        box-sizing: border-box;
+        height: initial;
+        width: initial;
+        padding: 15px;
+
+        &:hover {
+            background: var(--gridster-content-hover-background);
+            border-color: var(--gridster-border-hover-color);
+        }
+
+        img {
+            width: 99%;
+            height: auto;
+        }
+    }
+    p {
+        margin: 0;
+    }
+    a {
+        color: var(--link-text-normal-color-font);
+        background: var(--link-text-normal-color-back);
+        padding: 0 5px 2px 5px;
+
+        &:hover, &:active {
+            color: var(--link-text-active-color-font);
+            background: var(--link-text-active-color-back)
+        }
+    }
+    [data-content-type="block"],
+    [data-content-type="gallery"] {
+        height: auto;
+        width: 100%;
+    }
+    [data-content-type="gallery"] img,
+    img.small-image {
+        box-shadow: 0 0 10px 5px var(--services-first-image-shadow);
+        border-radius: var(--services-first-image-radius);
+        max-height: 200px !important;
+    }
+}

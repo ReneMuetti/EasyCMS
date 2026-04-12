@@ -1,0 +1,116 @@
+/**
+ * Button Styling
+ */
+#gridster-content .back-button {
+    text-align: center;
+    margin-top: 30px;
+}
+#gridster-content .back-button > a.button {
+    display: inline-block;
+    padding: 12px 25px;
+    color: var(--font-color-dark);
+    text-decoration: none;
+    border-radius: var(--services-first-image-radius);
+    font-weight: bold;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+
+    &:hover {
+        background-color: var(--form-element-button-hover-background);
+        background-image: url("/skin/images/frontend/default/header_navi_backgrount.jpg");
+        background-repeat: repeat-x;
+        color: var(--form-element-button-hover-color);
+        border-color: var(--gridster-border-hover-color);
+        transform: translateY(-2px); /* Kleiner "Lift-Up" Effekt */
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        cursor: pointer;
+    }
+}
+
+/**
+ * Container für die Karten
+ */
+.info-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+/* Basis-Design der Karten */
+.info-card {
+    flex: 1 1 300px; /* Wachsen, Schrumpfen, Basisbreite 300px */
+    padding: 20px;
+    border-radius: var(--services-first-image-radius);
+    background-color: var(--gridster-content-background);
+    border: 1px solid var(--gridster-border-color);
+    transition: transform 0.2s ease;
+}
+
+.info-card:hover {
+    background-color: var(--gridster-content-hover-background);
+    border-color: var(--gridster-border-hover-color);
+}
+
+.info-card h3 {
+    margin-top: 0;
+    color: var(--font-color-dark);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.info-card h3 i {
+    color: var(--link-text-normal-color-back); /* Nutzt dein Button-Blau/Grün */
+}
+
+.info-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.info-card li {
+    margin-bottom: 10px;
+    line-height: 1.4;
+}
+
+/* Spezielle Liste für die Fakten (mit Icons) */
+.facts-list li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.facts-list i {
+    width: 20px; /* Sorgt dafür, dass die Icons sauber untereinander stehen */
+    text-align: center;
+}
+
+/* Optionale optische Hervorhebung für die zweite Karte */
+.facts-card {
+    background-color: rgba(0, 0, 0, 0.02); /* Ein ganz leichter Grauschleier */
+}
+
+/*
+ * Styling für die neuen Unterseiten-Inhalte
+ */
+.page-intro {
+    padding: 40px 15px;
+    max-width: 800px; /* Bessere Lesbarkeit durch begrenzte Breite */
+    margin: 0 auto;
+}
+
+.section-title {
+    font-size: 2rem;
+    color: var(--font-color-dark);
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--link-text-normal-color-back);
+    display: inline-block;
+}
+
+.intro-text {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--font-color-dark);
+}

@@ -11,13 +11,15 @@ function htmlspecialchars_uni($text, $entities = true)
 {
 	return str_replace(
 		// replace special html characters
-		array('<', '>', '"'),
-		array('&lt;', '&gt;', '&quot;'),
+		array('<'   , '>'   , '"'     , "'"),
+		array('&lt;', '&gt;', '&quot;', '&#039;'),
+
 		// translates all non-unicode entities
-		preg_replace('/&(?!' . ($entities ? '#[0-9]+|shy' : '(#[0-9]+|[a-z]+)') . ';)/si',
-			         '&amp;',
-			         $text
-		            )
+		preg_replace(
+		    '/&(?!' . ($entities ? '#[0-9]+|shy' : '(#[0-9]+|[a-z]+)') . ';)/si',
+		    '&amp;',
+			$text
+		)
 	);
 }
 

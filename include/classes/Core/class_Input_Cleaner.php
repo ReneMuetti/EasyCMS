@@ -57,63 +57,63 @@ class Input_Cleaner
 	*
 	* @var     array
 	*/
-	var $superglobal_lookup = array('g' => '_GET',
-		                            'p' => '_POST',
-		                            'r' => '_REQUEST',
-		                            'c' => '_COOKIE',
-		                            's' => '_SERVER',
-		                            'e' => '_ENV',
-		                            'f' => '_FILES'
-	                               );
+	private $superglobal_lookup = array('g' => '_GET',
+		                                'p' => '_POST',
+		                                'r' => '_REQUEST',
+		                                'c' => '_COOKIE',
+		                                's' => '_SERVER',
+		                                'e' => '_ENV',
+		                                'f' => '_FILES'
+	                              );
 
 	/**
 	* System state. The complete URL of the current page, without sessionhash
 	*
 	* @var	string
 	*/
-	var $scriptpath = '';
+	private $scriptpath = '';
 
 	/**
 	* Reload URL. Complete URL of the current page including sessionhash
 	*
 	* @var	string
 	*/
-	var $reloadurl = '';
+	private $reloadurl = '';
 
 	/**
 	* System state. The complete URL of the referring page
 	*
 	* @var	string
 	*/
-	var $url = '';
+	private $url = '';
 
 	/**
 	* System state. The IP address of the current visitor
 	*
 	* @var	string
 	*/
-	var $ipaddress = '';
+	private $ipaddress = '';
 
 	/**
 	* System state. An attempt to find a second IP for the current visitor (proxy etc)
 	*
 	* @var	string
 	*/
-	var $alt_ip = '';
+	private $alt_ip = '';
 
 	/**
 	* A reference to the main registry object
 	*
 	* @var	Registry
 	*/
-	var $registry = null;
+	private $registry = null;
 
 	/**
 	* Keep track of variables that have already been cleaned
 	*
 	* @var	array
 	*/
-	var $cleaned_vars = array();
+	private $cleaned_vars = array();
 
 	/**
 	* Constructor
@@ -124,7 +124,7 @@ class Input_Cleaner
 	*
 	* @param	Registry	The instance of the Registry object
 	*/
-	function __construct(&$registry)
+	public function __construct(&$registry)
 	{
 		$this->registry =& $registry;
 
@@ -149,6 +149,7 @@ class Input_Cleaner
     	}
 
 		// reverse the effects of magic quotes if necessary
+		/*
 		if (function_exists('get_magic_quotes_gpc') AND get_magic_quotes_gpc())
 		{
 			$this->stripslashes_deep($_REQUEST); // needed for some reason (at least on php5 - not tested on php4)
@@ -165,6 +166,8 @@ class Input_Cleaner
 				$this->stripslashes_deep($_FILES);
 			}
 		}
+		*/
+
 		//@set_magic_quotes_runtime(0);
 		@ini_set('magic_quotes_sybase', 0);
 
@@ -274,7 +277,7 @@ class Input_Cleaner
 	*
 	* @return	array
 	*/
-	function &clean_array(&$source, $variables)
+	public function &clean_array(&$source, $variables)
 	{
 		$return = array();
 
@@ -294,7 +297,7 @@ class Input_Cleaner
 	*
 	* @return	array
 	*/
-	function clean_array_gpc($source, $variables)
+	public function clean_array_gpc($source, $variables)
 	{
 		$sg =& $GLOBALS[$this->superglobal_lookup["$source"]];
 
@@ -321,7 +324,7 @@ class Input_Cleaner
 	*
 	* @return	mixed
 	*/
-	function &clean_gpc($source, $varname, $vartype = TYPE_NOCLEAN)
+	public function &clean_gpc($source, $varname, $vartype = TYPE_NOCLEAN)
 	{
 		// clean a variable only once unless its a different type
 		if (!isset($this->cleaned_vars["$varname"]) OR $this->cleaned_vars["$varname"] != $vartype)
@@ -349,7 +352,7 @@ class Input_Cleaner
 	*
 	* @return	mixed	The cleaned value
 	*/
-	function &clean(&$var, $vartype = TYPE_NOCLEAN, $exists = true)
+	public function &clean(&$var, $vartype = TYPE_NOCLEAN, $exists = true)
 	{
 		if ($exists)
 		{
@@ -443,7 +446,7 @@ class Input_Cleaner
 	*
 	* @return	mixed
 	*/
-	function &do_clean(&$data, $type)
+	public function &do_clean(&$data, $type)
 	{
 		static $booltypes = array('1', 'yes', 'y', 'true');
 
@@ -561,7 +564,7 @@ class Input_Cleaner
 	*
 	* @return	string
 	*/
-	function xss_clean($var)
+	public function xss_clean($var)
 	{
 		static $preg_find    = array('#^javascript#i', '#^vbscript#i', '#^script#i'),
 			   $preg_replace = array('',               '',             '');
@@ -574,7 +577,7 @@ class Input_Cleaner
 	*
 	* @param	array	The array on which we want to work
 	*/
-	function stripslashes_deep(&$value, $depth = 0)
+	public function stripslashes_deep(&$value, $depth = 0)
 	{
 		if (is_array($value))
 		{
@@ -599,7 +602,7 @@ class Input_Cleaner
 	*
 	* @return	string
 	*/
-	function strip_sessionhash($string)
+	public function strip_sessionhash($string)
 	{
 		$string = preg_replace('/(s|sessionhash)=[a-z0-9]{32}?&?/', '', $string);
 		return $string;
@@ -610,7 +613,7 @@ class Input_Cleaner
 	*
 	* @return	string
 	*/
-	function fetch_scriptpath()
+	public function fetch_scriptpath()
 	{
 		if ($this->registry->scriptpath != '')
 		{
@@ -683,7 +686,7 @@ class Input_Cleaner
 	*
 	* @return	string
 	*/
-	function fetch_url()
+	public function fetch_url()
 	{
 		if ( isset($_REQUEST['url']) )
 		{
@@ -731,7 +734,7 @@ class Input_Cleaner
 	*
 	* @return	string
 	*/
-	function fetch_ip()
+	public function fetch_ip()
 	{
 		if ( !empty($_SERVER['REMOTE_ADDR']) )
 		{
@@ -748,7 +751,7 @@ class Input_Cleaner
 	*
 	* @return	string
 	*/
-	function fetch_alt_ip()
+	public function fetch_alt_ip()
 	{
 		$alt_ip = ( isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : '' );
 
@@ -798,4 +801,3 @@ class Input_Cleaner
 		return $alt_ip;
 	}
 }
-?>

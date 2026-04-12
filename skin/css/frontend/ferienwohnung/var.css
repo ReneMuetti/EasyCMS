@@ -1,4 +1,6 @@
 :root {
+    --font-awesome: "Font Awesome 7 Free"
+
     --construction-deg: 5deg;
 
     --grid-gap-color: rgba(0, 0, 0, 0.05);
